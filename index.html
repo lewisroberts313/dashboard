@@ -72,6 +72,16 @@
     .email-check input:checked + .checkmark { background: var(--green); border-color: var(--green); }
     .email-check input:checked + .checkmark::after { content: '✓'; display: block; color: #000; font-size: 11px; text-align: center; line-height: 18px; font-weight: 800; }
     .footer { color: rgba(255,255,255,0.1); font-size: 0.72rem; text-align: center; margin-top: 36px; padding-bottom: 24px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .cal-day { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 10px; min-height: 100px; }
+    .cal-day.today { border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.06); }
+    .cal-header { margin-bottom: 10px; }
+    .cal-dow { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; display: block; }
+    .cal-date { font-size: 1rem; font-weight: 700; color: #fff; }
+    .cal-day.today .cal-date { color: #6366f1; }
+    .cal-event { font-size: 0.72rem; color: #94a3b8; background: rgba(99,102,241,0.1); border-radius: 4px; padding: 3px 6px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cal-empty { color: rgba(255,255,255,0.1); font-size: 0.75rem; }
+    @media (max-width: 700px) { .cal-grid { grid-template-columns: repeat(3, 1fr); } }
   </style>
 </head>
 <body>
@@ -81,7 +91,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 11, 6:06PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 11, 6:07PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -237,6 +247,62 @@
       <canvas id="plChart" height="80"></canvas>
     </div>
   </div>
+  <div class="card full-width" style="margin-top:4px">
+    <h2><span class="icon">🗓️</span> 7-Day Calendar</h2>
+    <div class="cal-grid">
+      <div class="cal-day today">
+  <div class="cal-header">
+    <span class="cal-dow">Mon</span>
+    <span class="cal-date">11 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">1:00pm Modern European Histor</div><div class="cal-event">2:30pm American History Since</div><div class="cal-event">7:30pm B hall meeting</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Tue</span>
+    <span class="cal-date">12 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">5:00pm Team meeting</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Wed</span>
+    <span class="cal-date">13 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Thu</span>
+    <span class="cal-date">14 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">1:00pm Modern European Histor</div><div class="cal-event">2:30pm American History Since</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Fri</span>
+    <span class="cal-date">15 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">All day Busch Gardens with Cla</div><div class="cal-event">9:00am Mathematical thinking</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Sat</span>
+    <span class="cal-date">16 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-empty">—</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Sun</span>
+    <span class="cal-date">17 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-empty">—</div></div>
+</div>
+
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const ctx = document.getElementById('plChart').getContext('2d');
