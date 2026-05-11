@@ -91,7 +91,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 11, 6:07PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 11, 6:09PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -123,11 +123,61 @@
     </div>
     <div class="card">
       <h2><span class="icon">✅</span> To-Do List</h2>
-      <div class="todo-item"><div class="dot"></div><span>Buy stock for back home </span></div>
-<div class="todo-item"><div class="dot"></div><span>Buy boxes for storage </span></div>
-<div class="todo-item"><div class="dot"></div><span>Book a candle light making session with Claire </span></div>
-<div class="todo-item"><div class="dot"></div><span>Get Jalen to pay $75  <span class="badge yellow">due May 15</span></span></div>
-<div class="todo-item"><div class="dot"></div><span>Set up a direct deposit to dad </span></div>
+      <div class="email-item" id="task-Buy_stock_for_back_home">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Buy_stock_for_back_home')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Buy stock for back home</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Buy_boxes_for_storage">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Buy_boxes_for_storage')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Buy boxes for storage</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Book_a_candle_light_makin">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Book_a_candle_light_makin')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Book a candle light making session with Claire</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Get_Jalen_to_pay_$75_">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Get_Jalen_to_pay_$75_')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Get Jalen to pay $75 </div>
+  </div>
+  <span class="badge yellow">due May 15</span>
+</div>
+<div class="email-item" id="task-Set_up_a_direct_deposit_t">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Set_up_a_direct_deposit_t')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Set up a direct deposit to dad</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Top_up_Anthropic_credits"><label class="email-check"><input type="checkbox" onchange="dismissTask('Top_up_Anthropic_credits')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Top up Anthropic credits</div><div class="email-sender">API goes dark without it</div></div></div>
+<div class="email-item" id="task-Sort_overdrawn_Chase_acco"><label class="email-check"><input type="checkbox" onchange="dismissTask('Sort_overdrawn_Chase_acco')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Sort overdrawn Chase account</div><div class="email-sender">Flagged in email</div></div></div>
+<div class="email-item" id="task-eBay_API_approval_-_check"><label class="email-check"><input type="checkbox" onchange="dismissTask('eBay_API_approval_-_check')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">eBay API approval - check tomorrow</div><div class="email-sender">Applied today</div></div></div>
+<div class="email-item" id="task-Wed_2:30pm_-_Andrew_Humph"><label class="email-check"><input type="checkbox" onchange="dismissTask('Wed_2:30pm_-_Andrew_Humph')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Wed 2:30pm - Andrew Humphries meeting</div><div class="email-sender">Odyssey annotations</div></div></div>
+<div class="email-item" id="task-Plan_UK_stock_order_(1-2k"><label class="email-check"><input type="checkbox" onchange="dismissTask('Plan_UK_stock_order_(1-2k')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Plan UK stock order (1-2k Essentials)</div><div class="email-sender">For summer</div></div></div>
 
     </div>
     <div class="card">
@@ -347,6 +397,24 @@
     const dismissed = JSON.parse(localStorage.getItem('dismissedEmails') || '[]');
     dismissed.forEach(id => {
       const el = document.getElementById('email-' + id);
+      if (el) el.style.display = 'none';
+    });
+
+    function dismissTask(id) {
+      setTimeout(() => {
+        const el = document.getElementById('task-' + id);
+        if (el) { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; }
+        setTimeout(() => { if (el) el.style.display = 'none'; }, 300);
+        const dismissed = JSON.parse(localStorage.getItem('dismissedTasks') || '[]');
+        if (!dismissed.includes(id)) dismissed.push(id);
+        localStorage.setItem('dismissedTasks', JSON.stringify(dismissed));
+      }, 400);
+    }
+
+    // Restore dismissed tasks
+    const dismissedTasks = JSON.parse(localStorage.getItem('dismissedTasks') || '[]');
+    dismissedTasks.forEach(id => {
+      const el = document.getElementById('task-' + id);
       if (el) el.style.display = 'none';
     });
 
