@@ -36,6 +36,16 @@
     .todo-item:last-child { border-bottom: none; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: #444; flex-shrink: 0; }
     .updated { color: #333; font-size: 0.75rem; text-align: center; margin-top: 32px; }
+    .email-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #1a1a1a; }
+    .email-item:last-child { border-bottom: none; }
+    .email-body { flex: 1; min-width: 0; }
+    .email-subject { color: #ccc; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .email-sender { color: #555; font-size: 0.75rem; margin-top: 2px; }
+    .email-check { position: relative; cursor: pointer; flex-shrink: 0; }
+    .email-check input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .checkmark { display: block; width: 18px; height: 18px; border: 1px solid #333; border-radius: 4px; background: #1a1a1a; transition: all 0.15s; }
+    .email-check input:checked + .checkmark { background: #4ade80; border-color: #4ade80; }
+    .email-check input:checked + .checkmark::after { content: '✓'; display: block; color: #000; font-size: 12px; text-align: center; line-height: 18px; font-weight: 700; }
   </style>
 </head>
 <body>
@@ -43,7 +53,7 @@
     <span>🤖</span>
     <div>
       <h1>Ultron Dashboard</h1>
-      <div class="subtitle">Lewis Roberts — Live · Updated May 11, 3:34PM EST</div>
+      <div class="subtitle">Lewis Roberts — Live · Updated May 11, 3:37PM EST</div>
     </div>
   </header>
   <div class="grid">
@@ -78,15 +88,94 @@
     </div>
     <div class="card">
       <h2><span>📧</span> Recent Emails</h2>
-      <div class="item"><span class="label">Your receipt from Anthropic, PBC #2577-3042-3728<br><small style="color:#555">Anthropic, PBC</small></span><span class="badge">unread</span></div>
-<div class="item"><span class="label">Your ride with Jawad on May 10<br><small style="color:#555">Lyft Receipts</small></span><span class="badge">unread</span></div>
-<div class="item"><span class="label">[action needed] Your Claude API access is turned off<br><small style="color:#555">Anthropic</small></span><span class="badge red">urgent</span></div>
-<div class="item"><span class="label">Verify your email address with eBay Developers Program<br><small style="color:#555">dev-relations@ebay.com</small></span><span class="badge red">urgent</span></div>
-<div class="item"><span class="label">Your receipt from Anthropic, PBC #2731-1971-9760<br><small style="color:#555">Anthropic, PBC</small></span><span class="badge">unread</span></div>
-<div class="item"><span class="label">Your account ending in (...2698) is overdrawn<br><small style="color:#555">Chase</small></span><span class="badge red">urgent</span></div>
+      <div class="email-item" id="email-Anthropic,_PBC_Your_receipt_from_An">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Anthropic,_PBC_Your_receipt_from_An')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your receipt from Anthropic, PBC #2577-3042-3728</div>
+    <div class="email-sender">Anthropic, PBC</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Lyft_Receipts_Your_ride_with_Jawad">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Lyft_Receipts_Your_ride_with_Jawad')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your ride with Jawad on May 10</div>
+    <div class="email-sender">Lyft Receipts</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Anthropic_[action_needed]_Your">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Anthropic_[action_needed]_Your')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">[action needed] Your Claude API access is turned off</div>
+    <div class="email-sender">Anthropic</div>
+  </div>
+  <span class="badge red">urgent</span>
+</div>
+<div class="email-item" id="email-dev-relations@ebay.com_Verify_your_email_ad">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('dev-relations@ebay.com_Verify_your_email_ad')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Verify your email address with eBay Developers Program</div>
+    <div class="email-sender">dev-relations@ebay.com</div>
+  </div>
+  <span class="badge red">urgent</span>
+</div>
+<div class="email-item" id="email-Anthropic,_PBC_Your_receipt_from_An">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Anthropic,_PBC_Your_receipt_from_An')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your receipt from Anthropic, PBC #2731-1971-9760</div>
+    <div class="email-sender">Anthropic, PBC</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Chase_Your_account_ending_">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Chase_Your_account_ending_')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your account ending in (...2698) is overdrawn</div>
+    <div class="email-sender">Chase</div>
+  </div>
+  <span class="badge red">urgent</span>
+</div>
 
     </div>
   </div>
   <div class="updated">Auto-refreshes every 5 minutes</div>
+  <script>
+    // Restore dismissed emails
+    const dismissed = JSON.parse(localStorage.getItem('dismissedEmails') || '[]');
+    dismissed.forEach(id => {
+      const el = document.getElementById('email-' + id);
+      if (el) el.style.display = 'none';
+    });
+
+    function dismissEmail(id) {
+      setTimeout(() => {
+        const el = document.getElementById('email-' + id);
+        if (el) { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; }
+        setTimeout(() => { if (el) el.style.display = 'none'; }, 300);
+        const dismissed = JSON.parse(localStorage.getItem('dismissedEmails') || '[]');
+        if (!dismissed.includes(id)) dismissed.push(id);
+        localStorage.setItem('dismissedEmails', JSON.stringify(dismissed));
+      }, 400);
+    }
+  </script>
 </body>
 </html>
