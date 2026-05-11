@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultron Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid #222;
+      padding-bottom: 20px;
+    }
+    header h1 { font-size: 1.6rem; color: #fff; font-weight: 700; }
+    header span { font-size: 1.4rem; }
+    .subtitle { color: #666; font-size: 0.85rem; margin-top: 2px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card h2 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #666;
+      margin-bottom: 16px;
+    }
+    .card h2 span { margin-right: 6px; }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 0.9rem;
+    }
+    .item:last-child { border-bottom: none; }
+    .item .label { color: #ccc; }
+    .item .value { color: #fff; font-weight: 600; }
+    .badge {
+      background: #1a1a1a;
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      color: #888;
+    }
+    .badge.green { background: #0d2a1a; color: #4ade80; }
+    .badge.red { background: #2a0d0d; color: #f87171; }
+    .badge.yellow { background: #2a1f00; color: #fbbf24; }
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .stat {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    .stat .num { font-size: 1.4rem; font-weight: 700; color: #fff; }
+    .stat .lbl { font-size: 0.7rem; color: #666; margin-top: 2px; }
+    .stat .num.green { color: #4ade80; }
+    .stat .num.red { color: #f87171; }
+    .time-block {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      align-items: flex-start;
+    }
+    .time-block:last-child { border-bottom: none; }
+    .time { color: #666; font-size: 0.8rem; min-width: 90px; padding-top: 2px; }
+    .event { color: #ccc; font-size: 0.9rem; }
+    .event.free { color: #4ade80; }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-size: 0.9rem;
+    }
+    .todo-item:last-child { border-bottom: none; }
+    .todo-item .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #444;
+      flex-shrink: 0;
+    }
+    .todo-item.due .dot { background: #fbbf24; }
+    .updated { color: #333; font-size: 0.75rem; text-align: center; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span>🤖</span>
+    <div>
+      <h1>Ultron Dashboard</h1>
+      <div class="subtitle">Lewis Roberts — Updated <span id="updated"></span></div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- Inventory -->
+    <div class="card">
+      <h2><span>📦</span>US Inventory</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="num">3</div><div class="lbl">In Stock</div></div>
+        <div class="stat"><div class="num green">$66.10</div><div class="lbl">Profit</div></div>
+        <div class="stat"><div class="num red">-$3.77</div><div class="lbl">Overall P&L</div></div>
+      </div>
+      <div class="item">
+        <span class="label">Essentials Shorts — Dark Oat M</span>
+        <span class="badge">×2</span>
+      </div>
+      <div class="item">
+        <span class="label">Essentials Shorts — Light Oat M</span>
+        <span class="badge">×1</span>
+      </div>
+      <div class="item">
+        <span class="label">Essentials Hoodie — Dark Oat L</span>
+        <span class="badge red">sold out</span>
+      </div>
+      <div class="item">
+        <span class="label">Essentials Shorts — Black M</span>
+        <span class="badge red">sold out</span>
+      </div>
+    </div>
+
+    <!-- Schedule -->
+    <div class="card">
+      <h2><span>📅</span>Today's Schedule</h2>
+      <div class="time-block">
+        <div class="time">9:00–9:50am</div>
+        <div class="event">Mathematical Thinking</div>
+      </div>
+      <div class="time-block">
+        <div class="time">9:50am–1:00pm</div>
+        <div class="event free">Free</div>
+      </div>
+      <div class="time-block">
+        <div class="time">1:00–2:20pm</div>
+        <div class="event">Modern European History II</div>
+      </div>
+      <div class="time-block">
+        <div class="time">2:30–3:50pm</div>
+        <div class="event">American History Since 1877</div>
+      </div>
+      <div class="time-block">
+        <div class="time">3:50pm+</div>
+        <div class="event free">Free</div>
+      </div>
+    </div>
+
+    <!-- To-Dos -->
+    <div class="card">
+      <h2><span>✅</span>To-Do List</h2>
+      <div class="todo-item">
+        <div class="dot"></div>
+        <span>Buy stock for back home</span>
+      </div>
+      <div class="todo-item">
+        <div class="dot"></div>
+        <span>Buy boxes for storage</span>
+      </div>
+      <div class="todo-item">
+        <div class="dot"></div>
+        <span>Book candle light making session with Claire</span>
+      </div>
+      <div class="todo-item due">
+        <div class="dot"></div>
+        <span>Get Jalen to pay $75 <span class="badge yellow">due May 15</span></span>
+      </div>
+      <div class="todo-item">
+        <div class="dot"></div>
+        <span>Set up direct deposit to dad</span>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="card">
+      <h2><span>⚠️</span>Alerts</h2>
+      <div class="item">
+        <span class="label">Chase account overdrawn</span>
+        <span class="badge red">urgent</span>
+      </div>
+      <div class="item">
+        <span class="label">Anthropic credits depleted</span>
+        <span class="badge red">urgent</span>
+      </div>
+      <div class="item">
+        <span class="label">Wed May 13 — Odyssey annotations meeting (Andrew)</span>
+        <span class="badge yellow">2:30pm</span>
+      </div>
+      <div class="item">
+        <span class="label">Depop items expiring soon</span>
+        <span class="badge yellow">action needed</span>
+      </div>
+      <div class="item">
+        <span class="label">eBay API approval pending</span>
+        <span class="badge">pending</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="updated">Last updated: <span id="ts"></span></div>
+
+  <script>
+    const now = new Date();
+    const fmt = now.toLocaleString('en-US', { weekday:'short', month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+    document.getElementById('updated').textContent = fmt;
+    document.getElementById('ts').textContent = fmt;
+  </script>
+</body>
+</html>
