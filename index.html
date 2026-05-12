@@ -81,49 +81,6 @@
     .cal-day.today .cal-date { color: #6366f1; }
     .cal-event { font-size: 0.72rem; color: #94a3b8; background: rgba(99,102,241,0.1); border-radius: 4px; padding: 3px 6px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .cal-empty { color: rgba(255,255,255,0.1); font-size: 0.75rem; }
-    .room { position: relative; min-height: 650px; margin-bottom: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.09); border-radius: 28px; background:#02030a; box-shadow: 0 35px 110px rgba(0,0,0,.55); }
-    .loft { position:absolute; left:50%; top:52%; width:980px; height:560px; transform:translate(-50%,-50%); filter: drop-shadow(0 35px 70px rgba(0,0,0,.55)); }
-    .wall-left { position:absolute; left:74px; top:58px; width:420px; height:300px; background:linear-gradient(135deg,#242733,#11131d); transform:skewY(26deg); transform-origin:right top; border:1px solid rgba(255,255,255,.08); }
-    .wall-right { position:absolute; right:76px; top:58px; width:420px; height:300px; background:linear-gradient(225deg,#2a2631,#12131d); transform:skewY(-26deg); transform-origin:left top; border:1px solid rgba(255,255,255,.08); }
-    .floor { position:absolute; left:142px; right:142px; top:302px; height:248px; background:repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 2px, transparent 2px 54px), linear-gradient(135deg,#5a2f22,#27140f 62%,#120907); clip-path:polygon(50% 0,100% 33%,50% 100%,0 33%); border:1px solid rgba(255,255,255,.08); }
-    .room-title { position:absolute; top:22px; left:24px; z-index:10; }
-    .room-title .eyebrow { color:#22d3ee; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; font-weight:800; }
-    .room-title .headline { color:#fff; font-size:clamp(1.7rem,4vw,3.1rem); line-height:1; font-weight:900; letter-spacing:-.06em; margin-top:7px; }
-    .room-title .subline { max-width:440px; margin-top:10px; color:#94a3b8; font-size:.9rem; }
-    .window-bank { position:absolute; left:116px; top:88px; width:330px; height:120px; transform:skewY(26deg); display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-    .win { background:linear-gradient(180deg,#060713,#010208); border:3px solid #111827; box-shadow:inset 0 0 20px rgba(34,211,238,.08); }
-    .neon-pink { position:absolute; right:226px; top:90px; width:12px; height:150px; border-radius:999px; background:#fb2eff; box-shadow:0 0 24px #fb2eff; }
-    .neon-cyan { position:absolute; right:170px; top:202px; width:150px; height:10px; border-radius:999px; background:#22d3ee; box-shadow:0 0 24px #22d3ee; }
-    .poster { position:absolute; right:252px; top:112px; width:74px; height:90px; background:linear-gradient(135deg,#111827,#7f1d1d); border:5px solid #0b0b10; transform:skewY(-26deg); box-shadow:0 12px 25px rgba(0,0,0,.35); }
-    .poster.two { right:156px; top:118px; background:linear-gradient(135deg,#18181b,#312e81,#be123c); }
-    .sofa { position:absolute; left:172px; top:282px; width:260px; height:86px; transform:skewY(18deg); background:#d6b99b; border-radius:18px 18px 12px 12px; box-shadow:0 20px 30px rgba(0,0,0,.35); }
-    .sofa::before { content:''; position:absolute; left:18px; right:18px; top:-34px; height:62px; border-radius:18px; background:#caa984; }
-    .sofa::after { content:'MESSAGES'; position:absolute; left:34px; top:24px; color:#3b2416; font-weight:900; font-size:.72rem; letter-spacing:.12em; }
-    .coffee { position:absolute; left:314px; top:394px; width:126px; height:58px; clip-path:polygon(50% 0,100% 30%,50% 100%,0 30%); background:#8b5a35; box-shadow:0 18px 22px rgba(0,0,0,.28); }
-    .desk { position:absolute; right:214px; top:312px; width:300px; height:90px; clip-path:polygon(12% 0,100% 0,88% 100%,0 100%); background:linear-gradient(135deg,#8b5a35,#4b2a1b); box-shadow:0 22px 36px rgba(0,0,0,.4); }
-    .chair { position:absolute; right:330px; top:406px; width:84px; height:84px; border-radius:16px; background:#151827; box-shadow:0 18px 24px rgba(0,0,0,.35); }
-    .monitor { position:absolute; width:82px; height:58px; background:#e9fbff; border:7px solid #12131a; border-radius:8px; box-shadow:0 0 20px rgba(34,211,238,.35); }
-    .monitor.m1 { right:420px; top:244px; } .monitor.m2 { right:326px; top:230px; transform:rotate(-2deg); } .monitor.m3 { right:238px; top:254px; }
-    .monitor::after { content:attr(data-label); position:absolute; left:7px; top:8px; color:#111827; font-weight:900; font-size:.52rem; letter-spacing:.08em; }
-    .avatar-zone { position:absolute; right:350px; top:316px; z-index:5; width:90px; height:150px; }
-    .halo { position:absolute; left:-56px; top:-62px; width:210px; height:210px; border-radius:50%; background:radial-gradient(circle,rgba(139,92,246,.26),transparent 64%); animation:breathe 4s infinite; }
-    .ultron-avatar { position:relative; width:86px; height:128px; filter:drop-shadow(0 0 24px rgba(139,92,246,.55)); }
-    .head { width:62px; height:54px; margin:0 auto; border-radius:22px 22px 18px 18px; background:linear-gradient(145deg,#f1f5f9,#64748b 50%,#111827); border:1px solid rgba(255,255,255,.3); position:relative; }
-    .head::before,.head::after { content:''; position:absolute; top:23px; width:12px; height:5px; border-radius:9px; background:#c084fc; box-shadow:0 0 12px #c084fc; } .head::before{left:15px} .head::after{right:15px}
-    .body-core { width:80px; height:72px; margin:-1px auto 0; border-radius:28px 28px 16px 16px; background:linear-gradient(145deg,#1e293b,#020617); border:1px solid rgba(148,163,184,.25); position:relative; }
-    .body-core::before { content:''; position:absolute; left:50%; top:22px; transform:translateX(-50%); width:21px; height:21px; border-radius:50%; background:#22c55e; box-shadow:0 0 24px #22c55e; }
-    .status-pill { position:absolute; left:50%; top:126px; transform:translateX(-50%); color:#bbf7d0; background:rgba(34,197,94,.14); border:1px solid rgba(34,197,94,.25); padding:6px 10px; border-radius:999px; font-size:.65rem; white-space:nowrap; }
-    .fridge { position:absolute; right:102px; top:334px; width:78px; height:130px; background:linear-gradient(180deg,#f8fafc,#cbd5e1); border-radius:12px; box-shadow:0 0 30px rgba(251,46,255,.2),0 18px 24px rgba(0,0,0,.35); }
-    .fridge::after { content:'FILES'; position:absolute; left:14px; top:18px; color:#111827; font-size:.65rem; font-weight:900; }
-    .rail { position:absolute; left:92px; right:92px; bottom:42px; height:54px; border-top:10px solid #8b5a35; display:flex; justify-content:space-between; }
-    .rail span { width:10px; height:62px; background:#5a321e; display:block; }
-    .station { position:absolute; z-index:7; width:178px; min-height:74px; border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:12px; background:rgba(2,6,23,.66); backdrop-filter:blur(14px); box-shadow:0 18px 42px rgba(0,0,0,.35); }
-    .station h3 { font-size:.62rem; letter-spacing:.13em; text-transform:uppercase; color:#22d3ee; margin-bottom:7px; }
-    .station p { color:#cbd5e1; font-size:.76rem; line-height:1.28; } .station .mini { color:#64748b; font-size:.65rem; margin-top:6px; }
-    .memory-wall { left:62px; top:228px; } .task-desk { right:450px; top:112px; } .business-corner { right:52px; top:474px; } .comms-panel { left:188px; top:462px; }
-    .shelf { display:flex; gap:5px; margin-top:7px; } .book { width:14px; height:28px; border-radius:3px; background:linear-gradient(180deg,#8b5cf6,#312e81); } .book:nth-child(2){height:22px;background:linear-gradient(180deg,#22c55e,#14532d)} .book:nth-child(3){height:33px;background:linear-gradient(180deg,#f59e0b,#78350f)} .book:nth-child(4){height:25px;background:linear-gradient(180deg,#38bdf8,#0c4a6e)}
-    @keyframes breathe { 0%,100% { transform: scale(1); opacity:.85; } 50% { transform: scale(1.08); opacity:1; } }
-    @media (max-width: 1000px) { .room { min-height: 720px; } .window { display:none; } .avatar-zone { top: 34%; } .station { width: calc(50% - 38px); } .memory-wall { left:24px; bottom:170px; } .task-desk { left:auto; right:24px; bottom:170px; } .business-corner { left:24px; right:auto; bottom:36px; } .comms-panel { right:24px; bottom:36px; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
   </style>
@@ -135,7 +92,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 12, 6:52PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 12, 6:54PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -143,27 +100,6 @@
       <div class="clock" id="clock"></div>
     </div>
   </header>
-  <section class="room" aria-label="Ultron living environment">
-    <div class="room-title">
-      <div class="eyebrow">Living Environment v2</div>
-      <div class="headline">Ultron's Cyber Loft</div>
-      <div class="subline">A 2D isometric control room: live data becomes furniture, screens, shelves, and systems I can move between.</div>
-    </div>
-    <div class="loft">
-      <div class="wall-left"></div><div class="wall-right"></div><div class="floor"></div>
-      <div class="window-bank"><div class="win"></div><div class="win"></div><div class="win"></div></div>
-      <div class="neon-pink"></div><div class="neon-cyan"></div><div class="poster"></div><div class="poster two"></div>
-      <div class="sofa"></div><div class="coffee"></div>
-      <div class="desk"></div><div class="chair"></div>
-      <div class="monitor m1" data-label="TASKS"></div><div class="monitor m2" data-label="CALENDAR"></div><div class="monitor m3" data-label="SALES"></div>
-      <div class="avatar-zone"><div class="halo"></div><div class="ultron-avatar"><div class="head"></div><div class="body-core"></div></div><div class="status-pill">online · in the room</div></div>
-      <div class="fridge"></div><div class="rail"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="station memory-wall"><h3>Memory Wall</h3><p>Context, decisions, lessons, and operating rules.</p><div class="shelf"><span class="book"></span><span class="book"></span><span class="book"></span><span class="book"></span></div></div>
-      <div class="station task-desk"><h3>Task Desk</h3><p>10 open tasks queued.</p><div class="mini">Money · school · eBay.</div></div>
-      <div class="station business-corner"><h3>Inventory Store</h3><p>3 US items · £800 UK potential.</p><div class="mini">Source of truth.</div></div>
-      <div class="station comms-panel"><h3>Lounge / Comms</h3><p>6 emails scanned · Discord command center.</p></div>
-    </div>
-  </section>
   <div class="grid">
     <div class="card">
       <h2><span class="icon">📦</span> US Inventory</h2>
