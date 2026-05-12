@@ -81,7 +81,35 @@
     .cal-day.today .cal-date { color: #6366f1; }
     .cal-event { font-size: 0.72rem; color: #94a3b8; background: rgba(99,102,241,0.1); border-radius: 4px; padding: 3px 6px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .cal-empty { color: rgba(255,255,255,0.1); font-size: 0.75rem; }
+    .room { position: relative; min-height: 430px; margin-bottom: 18px; overflow: hidden; border: 1px solid rgba(139,92,246,0.22); border-radius: 26px; background:
+      radial-gradient(circle at 50% 22%, rgba(99,102,241,0.22), transparent 28%),
+      linear-gradient(180deg, rgba(11,13,28,0.96) 0%, rgba(10,10,18,0.98) 58%, rgba(7,7,16,1) 100%); box-shadow: 0 30px 90px rgba(0,0,0,0.35), inset 0 0 80px rgba(99,102,241,0.06); }
+    .room::before { content: ''; position: absolute; inset: 48% -10% -28% -10%; background: linear-gradient(135deg, rgba(255,255,255,0.035), rgba(99,102,241,0.06)); transform: perspective(700px) rotateX(58deg); border-top: 1px solid rgba(255,255,255,0.07); }
+    .room-title { position: absolute; top: 22px; left: 24px; z-index: 3; }
+    .room-title .eyebrow { color: #818cf8; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+    .room-title .headline { color: #fff; font-size: clamp(1.6rem, 4vw, 3rem); line-height: 1; font-weight: 800; letter-spacing: -0.05em; margin-top: 7px; }
+    .room-title .subline { max-width: 520px; margin-top: 10px; color: #94a3b8; font-size: 0.9rem; }
+    .window { position: absolute; right: 26px; top: 26px; width: 290px; height: 150px; border: 1px solid rgba(255,255,255,0.11); border-radius: 18px; background: linear-gradient(180deg, rgba(79,70,229,0.25), rgba(15,23,42,0.4)); box-shadow: inset 0 0 40px rgba(96,165,250,0.08); overflow: hidden; }
+    .window::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 68px, rgba(255,255,255,0.07) 69px 70px), repeating-linear-gradient(0deg, transparent 0 68px, rgba(255,255,255,0.07) 69px 70px); }
+    .avatar-zone { position: absolute; left: 50%; top: 42%; transform: translate(-50%,-40%); z-index: 4; width: 210px; height: 260px; display:flex; align-items:center; justify-content:center; }
+    .halo { position:absolute; width:210px; height:210px; border-radius:50%; background: radial-gradient(circle, rgba(99,102,241,0.20), transparent 64%); filter: blur(2px); animation: breathe 4s infinite; }
+    .ultron-avatar { position:relative; width:104px; height:144px; filter: drop-shadow(0 0 25px rgba(99,102,241,0.45)); }
+    .head { width:76px; height:64px; margin:0 auto; border-radius:26px 26px 22px 22px; background: linear-gradient(145deg, #e5e7eb, #64748b 45%, #111827); border:1px solid rgba(255,255,255,0.28); position:relative; }
+    .head::before, .head::after { content:''; position:absolute; top:27px; width:15px; height:6px; border-radius:12px; background:#a78bfa; box-shadow:0 0 12px #8b5cf6; }
+    .head::before { left:18px; } .head::after { right:18px; }
+    .body-core { width:96px; height:86px; margin: -2px auto 0; border-radius:32px 32px 18px 18px; background: linear-gradient(145deg, #1e293b, #020617); border: 1px solid rgba(148,163,184,0.24); position:relative; }
+    .body-core::before { content:''; position:absolute; left:50%; top:26px; transform:translateX(-50%); width:24px; height:24px; border-radius:50%; background:#22c55e; box-shadow:0 0 22px #22c55e; }
+    .status-pill { position:absolute; left:50%; bottom:18px; transform:translateX(-50%); color:#bbf7d0; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.22); padding:7px 12px; border-radius:999px; font-size:0.72rem; white-space:nowrap; }
+    .station { position:absolute; z-index:3; width:220px; min-height:94px; border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:15px; background:rgba(2,6,23,0.58); backdrop-filter: blur(18px); box-shadow: 0 18px 45px rgba(0,0,0,0.25); }
+    .station h3 { font-size:0.72rem; letter-spacing:0.13em; text-transform:uppercase; color:#818cf8; margin-bottom:10px; }
+    .station p { color:#cbd5e1; font-size:0.84rem; line-height:1.35; }
+    .station .mini { color:#64748b; font-size:0.72rem; margin-top:8px; }
+    .memory-wall { left:24px; bottom:26px; } .task-desk { left:280px; bottom:42px; } .business-corner { right:280px; bottom:42px; } .comms-panel { right:24px; bottom:26px; }
+    .shelf { display:flex; gap:6px; margin-top:8px; } .book { width:18px; height:35px; border-radius:4px; background:linear-gradient(180deg,#8b5cf6,#312e81); } .book:nth-child(2){height:28px;background:linear-gradient(180deg,#22c55e,#14532d)} .book:nth-child(3){height:41px;background:linear-gradient(180deg,#f59e0b,#78350f)} .book:nth-child(4){height:31px;background:linear-gradient(180deg,#38bdf8,#0c4a6e)}
+    @keyframes breathe { 0%,100% { transform: scale(1); opacity:.85; } 50% { transform: scale(1.08); opacity:1; } }
+    @media (max-width: 1000px) { .room { min-height: 720px; } .window { display:none; } .avatar-zone { top: 34%; } .station { width: calc(50% - 38px); } .memory-wall { left:24px; bottom:170px; } .task-desk { left:auto; right:24px; bottom:170px; } .business-corner { left:24px; right:auto; bottom:36px; } .comms-panel { right:24px; bottom:36px; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
   </style>
 </head>
 <body>
@@ -91,7 +119,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 12, 1:44PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 12, 6:46PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -99,6 +127,42 @@
       <div class="clock" id="clock"></div>
     </div>
   </header>
+  <section class="room" aria-label="Ultron living environment">
+    <div class="room-title">
+      <div class="eyebrow">Living Environment v1</div>
+      <div class="headline">Ultron's Room</div>
+      <div class="subline">A visible second brain: memory on the wall, tasks on the desk, business systems in the corner, and me in the middle keeping watch.</div>
+    </div>
+    <div class="window"></div>
+    <div class="avatar-zone">
+      <div class="halo"></div>
+      <div class="ultron-avatar">
+        <div class="head"></div>
+        <div class="body-core"></div>
+      </div>
+      <div class="status-pill">online · watching dashboard</div>
+    </div>
+    <div class="station memory-wall">
+      <h3>Memory Wall</h3>
+      <p>Lewis context, decisions, lessons, and operating rules persist here.</p>
+      <div class="shelf"><span class="book"></span><span class="book"></span><span class="book"></span><span class="book"></span></div>
+    </div>
+    <div class="station task-desk">
+      <h3>Task Desk</h3>
+      <p>10 open tasks queued for action.</p>
+      <div class="mini">Next focus: money, school, eBay automation.</div>
+    </div>
+    <div class="station business-corner">
+      <h3>Business Corner</h3>
+      <p>3 US items live · £800 UK potential revenue tracked.</p>
+      <div class="mini">Inventory is the source of truth.</div>
+    </div>
+    <div class="station comms-panel">
+      <h3>Comms Panel</h3>
+      <p>6 recent emails scanned · today's calendar loaded.</p>
+      <div class="mini">Discord remains command center.</div>
+    </div>
+  </section>
   <div class="grid">
     <div class="card">
       <h2><span class="icon">📦</span> US Inventory</h2>
@@ -179,7 +243,29 @@
     </div>
     <div class="card">
       <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-Disney_Debit_Save_over_60%_on_the">
+      <div class="email-item" id="email-Adventure_Island_📰_Pass_Member:_It's_">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Adventure_Island_📰_Pass_Member:_It's_')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">📰 Pass Member: It's Time To Use Your Island Bucks!</div>
+    <div class="email-sender">Adventure Island</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-dev-relations@ebay.com_Your_eBay_Applicatio">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('dev-relations@ebay.com_Your_eBay_Applicatio')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your eBay Application Keys have changed</div>
+    <div class="email-sender">dev-relations@ebay.com</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Disney_Debit_Save_over_60%_on_the">
   <label class="email-check">
     <input type="checkbox" onchange="dismissEmail('Disney_Debit_Save_over_60%_on_the')">
     <span class="checkmark"></span>
@@ -220,28 +306,6 @@
   <div class="email-body">
     <div class="email-subject">Get your verified rider badge</div>
     <div class="email-sender">Lyft</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Alibaba_artificial_flowers:_">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Alibaba_artificial_flowers:_')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">artificial flowers: Easy Return</div>
-    <div class="email-sender">Alibaba</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Chess.com_New_Bots:_Pirates_Se">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Chess.com_New_Bots:_Pirates_Se')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">New Bots: Pirates Set Sail ⛵️</div>
-    <div class="email-sender">Chess.com</div>
   </div>
   <span class="badge">unread</span>
 </div>
