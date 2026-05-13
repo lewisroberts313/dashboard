@@ -20,7 +20,7 @@
       --red: #f87171;
       --yellow: #fbbf24;
     }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; padding: 0; overflow-x: hidden; }
     body::before { content: ''; position: fixed; top: -40%; left: -20%; width: 60%; height: 80%; background: radial-gradient(ellipse, rgba(99,102,241,0.07) 0%, transparent 70%); pointer-events: none; z-index: 0; }
     body::after { content: ''; position: fixed; bottom: -20%; right: -10%; width: 50%; height: 60%; background: radial-gradient(ellipse, rgba(74,222,128,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
     .wrapper { position: relative; z-index: 1; width: min(1440px, 100vw); margin: 0 auto; padding: 18px 22px; overflow-x: hidden; }
@@ -62,8 +62,8 @@
     .stock-carousel-controls { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:8px; color:#64748b; font-size:0.75rem; }
     .carousel-dot { width:6px; height:6px; border-radius:999px; background:rgba(255,255,255,0.18); }
     .carousel-dot.active { background:#818cf8; box-shadow:0 0 8px #818cf8; }
-    @media (max-width: 1100px) { .sketch-layout { grid-template-columns: 1fr 1fr; } .dash-col.center { grid-column: 1 / -1; grid-row: 1; } }
-    @media (max-width: 760px) { .sketch-layout { grid-template-columns: 1fr; } .dash-col.center { grid-column:auto; } }
+    @media (max-width: 1180px) { .sketch-layout { grid-template-columns: 1fr; min-height: auto; } .dash-col.left, .dash-col.right, .dash-col.center { grid-template-rows: none; } .dash-card { max-height: none; } }
+    @media (max-width: 760px) { .wrapper { padding: 14px 12px; } header { align-items:flex-start; } .header-right { width:100%; justify-content:space-between; } }
     .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.24); background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(7,7,16,0.72) 45%, rgba(74,222,128,0.06)); border-radius: 18px; padding: 16px; margin: 0; box-shadow: 0 0 40px rgba(99,102,241,0.08); }
     .mission::after { content: ''; position: absolute; inset: -40% -10% auto auto; width: 360px; height: 360px; background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 62%); pointer-events: none; }
     .mission::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,0.018) 19px); opacity: 0.45; pointer-events: none; }
@@ -128,8 +128,8 @@
     .email-check input:checked + .checkmark { background: var(--green); border-color: var(--green); }
     .email-check input:checked + .checkmark::after { content: '✓'; display: block; color: #000; font-size: 11px; text-align: center; line-height: 18px; font-weight: 800; }
     .footer { color: rgba(255,255,255,0.1); font-size: 0.72rem; text-align: center; margin-top: 36px; padding-bottom: 24px; }
-    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
-    .cal-day { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 10px; min-height: 100px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; overflow: hidden; }
+    .cal-day { min-width: 0; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 8px; min-height: 88px; }
     .cal-day.today { border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.06); }
     .cal-header { margin-bottom: 10px; }
     .cal-dow { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; display: block; }
@@ -149,7 +149,7 @@
     .agent-desc { position: relative; z-index: 1; color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
     .agent-activity { position: relative; z-index: 1; color: var(--green); font-size: 0.68rem; margin-top: 10px; }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 700px) { .cal-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
   </style>
 </head>
@@ -170,7 +170,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 12:59PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 1:03PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -462,18 +462,18 @@
       <div class="card dash-card page-card active" data-pages="finance">
         <h2><span class="icon">📈</span> Trading 212 <span class="section-pill">Grouped</span></h2>
         <div class="stat-row">
-          <div class="stat"><div class="num">£1323</div><div class="lbl">Value</div></div>
-          <div class="stat"><div class="num green">£103</div><div class="lbl">Unreal</div></div>
+          <div class="stat"><div class="num">£1324</div><div class="lbl">Value</div></div>
+          <div class="stat"><div class="num green">£104</div><div class="lbl">Unreal</div></div>
           <div class="stat"><div class="num green">57</div><div class="lbl">Pos</div></div>
         </div>
         <div class="card-compact-scroll"><div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.38</span><br><small style="color:var(--green);font-size:0.72rem">+18.49</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.67</span><br><small style="color:var(--green);font-size:0.72rem">+8.57</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.63</span><br><small style="color:var(--green);font-size:0.72rem">+4.96</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.40</span><br><small style="color:var(--green);font-size:0.72rem">+10.48</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.74</span><br><small style="color:var(--green);font-size:0.72rem">+19.18</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.54</span><br><small style="color:var(--red);font-size:0.72rem">-0.39</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.34</span><br><small style="color:var(--green);font-size:0.72rem">+9.42</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.44</span><br><small style="color:var(--green);font-size:0.72rem">+18.55</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.79</span><br><small style="color:var(--green);font-size:0.72rem">+8.69</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.66</span><br><small style="color:var(--green);font-size:0.72rem">+4.99</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.41</span><br><small style="color:var(--green);font-size:0.72rem">+10.49</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.89</span><br><small style="color:var(--green);font-size:0.72rem">+19.33</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.57</span><br><small style="color:var(--red);font-size:0.72rem">-0.36</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.40</span><br><small style="color:var(--green);font-size:0.72rem">+9.48</small></span></div>
 </div>
       </div>
     </div>
