@@ -81,6 +81,13 @@
     .cal-day.today .cal-date { color: #6366f1; }
     .cal-event { font-size: 0.72rem; color: #94a3b8; background: rgba(99,102,241,0.1); border-radius: 4px; padding: 3px 6px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .cal-empty { color: rgba(255,255,255,0.1); font-size: 0.75rem; }
+    .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .agent-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 16px 12px; text-align: center; min-height: 172px; }
+    .agent-avatar { width: 46px; height: 46px; margin: 0 auto 10px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.55rem; background: linear-gradient(135deg, rgba(99,102,241,0.18), rgba(74,222,128,0.08)); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 0 18px rgba(99,102,241,0.12); }
+    .agent-name { color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; }
+    .agent-role { color: #818cf8; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
+    .agent-desc { color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
+    .agent-activity { color: var(--green); font-size: 0.68rem; margin-top: 10px; }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
   </style>
@@ -92,7 +99,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 12:11PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 12:15PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -262,20 +269,20 @@
     <div class="card">
       <h2><span class="icon">📈</span> Trading 212 — Live</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1319.77</div><div class="lbl">Total Value</div></div>
-        <div class="stat"><div class="num green">£99.80</div><div class="lbl">Unrealized</div></div>
+        <div class="stat"><div class="num">£1320.28</div><div class="lbl">Total Value</div></div>
+        <div class="stat"><div class="num green">£100.31</div><div class="lbl">Unrealized</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Available cash</span><span class="badge">£0.01</span></div>
       <div class="item"><span class="label">Realized P/L</span><span class="badge green">£3.21</span></div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.85</span><br><small style="color:var(--green);font-size:0.72rem">+17.96</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.12</span><br><small style="color:var(--green);font-size:0.72rem">+8.02</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.44</span><br><small style="color:var(--green);font-size:0.72rem">+4.77</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.47</span><br><small style="color:var(--green);font-size:0.72rem">+10.55</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£49.64</span><br><small style="color:var(--green);font-size:0.72rem">+18.08</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.08</span><br><small style="color:var(--red);font-size:0.72rem">-0.85</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.09</span><br><small style="color:var(--green);font-size:0.72rem">+9.17</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.90</span><br><small style="color:var(--green);font-size:0.72rem">+18.01</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.15</span><br><small style="color:var(--green);font-size:0.72rem">+8.05</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.53</span><br><small style="color:var(--green);font-size:0.72rem">+4.86</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.59</span><br><small style="color:var(--green);font-size:0.72rem">+10.67</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£49.97</span><br><small style="color:var(--green);font-size:0.72rem">+18.41</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.09</span><br><small style="color:var(--red);font-size:0.72rem">-0.84</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.13</span><br><small style="color:var(--green);font-size:0.72rem">+9.21</small></span></div>
 
     </div>
     <div class="card full-width">
@@ -330,6 +337,54 @@
     <div class="card full-width">
       <h2><span class="icon">📈</span> P&L Chart — 2026</h2>
       <canvas id="plChart" height="80"></canvas>
+    </div>
+  </div>
+  <div class="card full-width" style="margin-top:16px">
+    <h2><span class="icon">🤖</span> Ultron Taskforce</h2>
+    <div class="agent-grid">
+      <div class="agent-card">
+  <div class="agent-avatar">🛡️</div>
+  <div class="agent-name">Sentinel</div>
+  <div class="agent-role">Ops Agent</div>
+  <div class="agent-desc">Calendar, reminders, daily reports, dashboard checks</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">🏦</div>
+  <div class="agent-name">Vault</div>
+  <div class="agent-role">Inventory Agent</div>
+  <div class="agent-desc">US/UK stock, sales logs, listings, reorder flags</div>
+  <div class="agent-activity">Last: inventory audit today</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">📊</div>
+  <div class="agent-name">Ledger</div>
+  <div class="agent-role">Finance Agent</div>
+  <div class="agent-desc">Trading 212, Chase alerts, P/L watch, budgets</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">🛰️</div>
+  <div class="agent-name">Scout</div>
+  <div class="agent-role">Research Agent</div>
+  <div class="agent-desc">Web research, sourcing, scholarships, comparisons</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">✒️</div>
+  <div class="agent-name">Scribe</div>
+  <div class="agent-role">Writing Agent</div>
+  <div class="agent-desc">Emails, listings, essays, posts, human writing</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">⚒️</div>
+  <div class="agent-name">Forge</div>
+  <div class="agent-role">Builder Agent</div>
+  <div class="agent-desc">Dashboard, code, automation, tooling fixes</div>
+  <div class="agent-activity">Last: dashboard check today</div>
+</div>
+
     </div>
   </div>
   <div class="card full-width" style="margin-top:4px">
