@@ -65,10 +65,10 @@
     .carousel-dot.active { background:#818cf8; box-shadow:0 0 8px #818cf8; }
     @media (max-width: 1180px) { .sketch-layout { grid-template-columns: 1fr; height: auto; min-height: auto; } .dash-col.left, .dash-col.right, .dash-col.center { grid-template-rows: none; height:auto; } .dash-card { max-height: none; } }
     @media (max-width: 760px) { .wrapper { padding: 14px 12px; } header { align-items:flex-start; } .header-right { width:100%; justify-content:space-between; } }
-    .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.22); background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(12,12,25,0.82) 52%, rgba(74,222,128,0.045)); border-radius: 18px; padding: 14px; margin: 0; box-shadow: 0 0 34px rgba(99,102,241,0.06); }
+    .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.24); background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(7,7,16,0.72) 45%, rgba(74,222,128,0.06)); border-radius: 22px; padding: 22px; margin-bottom: 18px; box-shadow: 0 0 50px rgba(99,102,241,0.08); }
     .mission::after { content: ''; position: absolute; inset: -40% -10% auto auto; width: 360px; height: 360px; background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 62%); pointer-events: none; }
     .mission::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,0.018) 19px); opacity: 0.45; pointer-events: none; }
-    .mission-top { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 10px; align-items: stretch; }
+    .mission-top { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; align-items: stretch; }
     .mission-kicker { color: #818cf8; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 700; margin-bottom: 8px; }
     .mission-title { color: #fff; font-size: clamp(1.45rem, 2.4vw, 2.35rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
     .mission-sub { color: #94a3b8; margin-top: 12px; font-size: 0.92rem; }
@@ -79,8 +79,8 @@
     .mission-actions { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; }
     .mission-side { display: grid; gap: 12px; }
     .ultron-core { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.18); border: 1px solid rgba(99,102,241,0.18); border-radius: 14px; padding: 10px; }
-    .core-ring { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(from 180deg, rgba(99,102,241,0.2), rgba(74,222,128,0.55), rgba(99,102,241,0.2)); padding: 2px; }
-    .core-eye { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #080813; font-size: 1.15rem; box-shadow: inset 0 0 16px rgba(99,102,241,0.20), 0 0 18px rgba(74,222,128,0.10); }
+    .core-ring { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(from 180deg, rgba(99,102,241,0.2), rgba(74,222,128,0.55), rgba(99,102,241,0.2)); animation: spinCore 7s linear infinite; padding: 2px; }
+    .core-eye { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #080813; font-size: 1.5rem; box-shadow: inset 0 0 18px rgba(99,102,241,0.22), 0 0 24px rgba(74,222,128,0.12); }
     .core-copy strong { display: block; color: #fff; font-size: 0.95rem; }
     .core-copy span { display: block; color: var(--green); font-size: 0.75rem; margin-top: 3px; }
     @keyframes spinCore { to { transform: rotate(360deg); } }
@@ -157,23 +157,13 @@
   </style>
 </head>
 <body>
-<div class="side-drawer" id="sideDrawer">
-  <div class="drawer-title">Deep View</div>
-  <div class="drawer-sub">Jump into a focused section. This is the base for full detail pages.</div>
-  <div class="drawer-link" onclick="showPage('overview'); toggleDrawer(false)">Overview <span>↗</span></div>
-  <div class="drawer-link" onclick="showPage('business'); toggleDrawer(false)">Business <span>↗</span></div>
-  <div class="drawer-link" onclick="showPage('finance'); toggleDrawer(false)">Finance <span>↗</span></div>
-  <div class="drawer-link" onclick="showPage('taskforce'); toggleDrawer(false)">Taskforce <span>↗</span></div>
-  <div class="drawer-link" onclick="showPage('calendar'); toggleDrawer(false)">Calendar <span>↗</span></div>
-</div>
 <div class="wrapper">
   <header>
     <div class="header-left">
-      <button class="hamburger" onclick="toggleDrawer()">☰</button>
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 1:14PM EST · side tab opens in-depth views</div>
+        <div class="header-sub">Lewis Roberts · May 13, 1:37PM EST · side tab opens in-depth views</div>
       </div>
     </div>
     <div class="header-right">
@@ -181,17 +171,122 @@
       <div class="clock" id="clock"></div>
     </div>
   </header>
-  <div class="sketch-layout">
-    <div class="dash-col left">
-      <div class="card dash-card page-card active" data-pages="overview calendar">
-        <h2><span class="icon">📅</span> Today's Schedule <span class="section-pill">Ops</span></h2>
-        <div class="card-compact-scroll"><div class="time-block"><div class="time">9:00am–9:50am</div><div class="event">Mathematical thinking</div></div>
-<div class="time-block"><div class="time">2:30pm–2:45pm</div><div class="event">Odyssey annotations resolution</div></div>
-</div>
+  <section class="mission">
+    <div class="mission-top">
+      <div>
+        <div class="mission-kicker">Mission Control</div>
+        <div class="mission-title">Ultron systems online</div>
+        <div class="mission-sub">3 action(s) need attention · next event: 2:30pm · Odyssey annotations resolution</div>
+        <div class="mission-metrics">
+          <div class="mission-metric"><div class="big">3</div><div class="tiny">Actions</div></div>
+          <div class="mission-metric"><div class="big">6</div><div class="tiny">Agents</div></div>
+          <div class="mission-metric"><div class="big">2</div><div class="tiny">Events</div></div>
+        </div>
       </div>
-      <div class="card dash-card page-card active" data-pages="overview">
-        <h2><span class="icon">📧</span> Email <span class="section-pill">Inbox</span></h2>
-        <div class="card-compact-scroll"><div class="email-item" id="email-OpenClaw_Automation_Socie_OpenClaw_Automation_">
+      <div class="mission-side">
+        <div class="ultron-core">
+          <div class="core-ring"><div class="core-eye">🤖</div></div>
+          <div class="core-copy"><strong>Ultron Core</strong><span>All systems online</span></div>
+        </div>
+        <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>12 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>15 watcher(s) across UK listings</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('overview', this)">Overview</button>
+    <button class="nav-tab" onclick="showPage('business', this)">Business</button>
+    <button class="nav-tab" onclick="showPage('finance', this)">Finance</button>
+    <button class="nav-tab" onclick="showPage('taskforce', this)">Taskforce</button>
+    <button class="nav-tab" onclick="showPage('calendar', this)">Calendar</button>
+    <button class="nav-tab" onclick="showPage('all', this)">All</button>
+  </div>
+
+  <div class="grid">
+    <div class="card page-card active" data-pages="overview business">
+      <h2><span class="icon">🇺🇸</span> US Inventory</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="num">3</div><div class="lbl">In Stock</div></div>
+        <div class="stat"><div class="num">[{'id': 1, 'item': 'Essentials hoodie', 'color': 'Dark Oatmeal', 'size': 'L', 'costPerUnit': 44.0, 'sellingPrice': 60.0, 'profit': 16.0, 'date': None, 'platform': None}, {'id': 2, 'item': 'Essentials shorts', 'color': 'Black', 'size': 'M', 'costPerUnit': 23.3, 'sellingPrice': 45.0, 'profit': 21.7, 'date': None, 'platform': None}, {'id': 3, 'item': 'Essentials shorts', 'color': 'Black', 'size': 'M', 'costPerUnit': 23.3, 'sellingPrice': 37.5, 'profit': 14.2, 'date': None, 'platform': None}, {'id': 4, 'item': 'Essentials shorts', 'color': 'Light Oatmeal', 'size': 'M', 'costPerUnit': 23.3, 'sellingPrice': 37.5, 'profit': 14.2, 'date': None, 'platform': None}]</div><div class="lbl">Sold</div></div>
+        <div class="stat"><div class="num green">$66</div><div class="lbl">Profit</div></div>
+      </div>
+      <div class="item"><span class="label">Essentials shorts — Black M</span><span class="badge red">sold out</span></div>
+<div class="item"><span class="label">Essentials shorts — Dark Oatmeal M</span><span class="badge green">×2</span></div>
+<div class="item"><span class="label">Essentials shorts — Light Oatmeal M</span><span class="badge ">×1</span></div>
+<div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
+
+    </div>
+
+    <div class="card page-card active" data-pages="overview calendar">
+      <h2><span class="icon">📅</span> Today's Schedule</h2>
+      <div class="time-block"><div class="time">9:00am–9:50am</div><div class="event">Mathematical thinking</div></div>
+<div class="time-block"><div class="time">2:30pm–2:45pm</div><div class="event">Odyssey annotations resolution</div></div>
+
+    </div>
+
+    <div class="card page-card active" data-pages="overview">
+      <h2><span class="icon">✅</span> To-Do List</h2>
+      <div class="email-item" id="task-Buy_stock_for_back_home">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Buy_stock_for_back_home')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Buy stock for back home</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Buy_boxes_for_storage">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Buy_boxes_for_storage')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Buy boxes for storage</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Book_a_candle_light_makin">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Book_a_candle_light_makin')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Book a candle light making session with Claire</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Get_Jalen_to_pay_$75_">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Get_Jalen_to_pay_$75_')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Get Jalen to pay $75 </div>
+  </div>
+  <span class="badge yellow">due May 15</span>
+</div>
+<div class="email-item" id="task-Set_up_a_direct_deposit_t">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissTask('Set_up_a_direct_deposit_t')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Set up a direct deposit to dad</div>
+  </div>
+  
+</div>
+<div class="email-item" id="task-Top_up_Anthropic_credits"><label class="email-check"><input type="checkbox" onchange="dismissTask('Top_up_Anthropic_credits')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Top up Anthropic credits</div><div class="email-sender">API goes dark without it</div></div></div>
+<div class="email-item" id="task-Sort_overdrawn_Chase_acco"><label class="email-check"><input type="checkbox" onchange="dismissTask('Sort_overdrawn_Chase_acco')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Sort overdrawn Chase account</div><div class="email-sender">Flagged in email</div></div></div>
+<div class="email-item" id="task-eBay_API_approval_-_check"><label class="email-check"><input type="checkbox" onchange="dismissTask('eBay_API_approval_-_check')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">eBay API approval - check tomorrow</div><div class="email-sender">Applied today</div></div></div>
+<div class="email-item" id="task-Wed_2:30pm_-_Andrew_Humph"><label class="email-check"><input type="checkbox" onchange="dismissTask('Wed_2:30pm_-_Andrew_Humph')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Wed 2:30pm - Andrew Humphries meeting</div><div class="email-sender">Odyssey annotations</div></div></div>
+<div class="email-item" id="task-Plan_UK_stock_order_(1-2k"><label class="email-check"><input type="checkbox" onchange="dismissTask('Plan_UK_stock_order_(1-2k')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Plan UK stock order (1-2k Essentials)</div><div class="email-sender">For summer</div></div></div>
+
+    </div>
+
+    <div class="card page-card active" data-pages="overview">
+      <h2><span class="icon">📧</span> Recent Emails</h2>
+      <div class="email-item" id="email-OpenClaw_Automation_Socie_OpenClaw_Automation_">
   <label class="email-check">
     <input type="checkbox" onchange="dismissEmail('OpenClaw_Automation_Socie_OpenClaw_Automation_')">
     <span class="checkmark"></span>
@@ -257,16 +352,46 @@
   </div>
   <span class="badge">unread</span>
 </div>
-</div>
+
+    </div>
+
+    <div class="card page-card" data-pages="business">
+      <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="num">20</div><div class="lbl">In Stock</div></div>
+        <div class="stat"><div class="num">12</div><div class="lbl">Unlisted</div></div>
+        <div class="stat"><div class="num green">£800</div><div class="lbl">Potential</div></div>
       </div>
-      <div class="card dash-card page-card active" data-pages="business">
-        <h2><span class="icon">🇬🇧</span> Active Listings <span class="section-pill">eBay</span></h2>
-        <div class="stat-row">
-          <div class="stat"><div class="num">8</div><div class="lbl">Active</div></div>
-          <div class="stat"><div class="num green">8</div><div class="lbl">Listed</div></div>
-          <div class="stat"><div class="num yellow">👀 15</div><div class="lbl">Watchers</div></div>
-        </div>
-        <div class="card-compact-scroll"><div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127850321164" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
+      <div class="item"><span class="label">Nike Air Force 1 — Various Various<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge green">×20</span></div>
+
+    </div>
+
+    <div class="card page-card" data-pages="finance">
+      <h2><span class="icon">📈</span> Trading 212</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="num">£1324</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num green">£104</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
+      </div>
+      <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.13</span><br><small style="color:var(--green);font-size:0.72rem">+18.24</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.91</span><br><small style="color:var(--green);font-size:0.72rem">+8.81</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.35</span><br><small style="color:var(--green);font-size:0.72rem">+4.68</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.26</span><br><small style="color:var(--green);font-size:0.72rem">+10.34</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£51.17</span><br><small style="color:var(--green);font-size:0.72rem">+19.61</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.52</span><br><small style="color:var(--red);font-size:0.72rem">-0.41</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.41</span><br><small style="color:var(--green);font-size:0.72rem">+9.49</small></span></div>
+
+    </div>
+
+    <div class="card full-width page-card" data-pages="business">
+      <h2><span class="icon">📦</span> Active eBay Listings</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="num">8</div><div class="lbl">Active</div></div>
+        <div class="stat"><div class="num green">8</div><div class="lbl">Listed Qty</div></div>
+        <div class="stat"><div class="num yellow">👀 15</div><div class="lbl">Watchers</div></div>
+      </div>
+      <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127850321164" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127850321625" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-1-Men-s-Triple-White-Brand-New-With-Box-Size-Uk-9-/127850323379" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One 1 Men’s Triple White Brand New With Box Size Uk 9</a><br><small style="color:#555">UK-AF1-WHITE-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 4</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-10-Nike-Air-Force-1-White-/127850327879" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 10 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 4</span></div>
@@ -274,14 +399,97 @@
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127850409346" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-002 · £38 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127854055011" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-002 · £35 · qty 1</small></span><span class="badge green">👀 3</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-8-5-Nike-Air-Force-1-White-/127855760157" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 8.5 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
-</div>
-      </div>
+
     </div>
 
-    <div class="dash-col center">
-      <div class="card dash-card primary page-card active" data-pages="calendar">
-        <h2><span class="icon">🗓️</span> Calendar <span class="section-pill">7 days</span></h2>
-        <div class="cal-grid"><div class="cal-day today">
+    <div class="card page-card" data-pages="business">
+      <h2><span class="icon">💰</span> Sales Log (US)</h2>
+      <div class="item">
+  <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$14.20</span>
+  </span>
+</div>
+<div class="item">
+  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$14.20</span>
+  </span>
+</div>
+<div class="item">
+  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$21.70</span>
+  </span>
+</div>
+<div class="item">
+  <span class="label">Essentials hoodie Dark Oatmeal L<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$16.00</span>
+  </span>
+</div>
+
+    </div>
+
+    <div class="card full-width page-card" data-pages="finance">
+      <h2><span class="icon">📈</span> Profit/Loss Chart</h2>
+      <canvas id="plChart" height="80"></canvas>
+    </div>
+
+    <div class="card full-width page-card" data-pages="taskforce" style="margin-top:16px">
+      <h2><span class="icon">🧠</span> Taskforce</h2>
+      <div class="agent-grid"><div class="agent-card">
+  <div class="agent-avatar">🛡️</div>
+  <div class="agent-name">Sentinel</div>
+  <div class="agent-role">Ops Agent</div>
+  <div class="agent-desc">Calendar, reminders, daily reports, dashboard checks</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">🏦</div>
+  <div class="agent-name">Vault</div>
+  <div class="agent-role">Inventory Agent</div>
+  <div class="agent-desc">US/UK stock, sales logs, listings, reorder flags</div>
+  <div class="agent-activity">Last: inventory audit today</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">📊</div>
+  <div class="agent-name">Ledger</div>
+  <div class="agent-role">Finance Agent</div>
+  <div class="agent-desc">Trading 212, Chase alerts, P/L watch, budgets</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">🛰️</div>
+  <div class="agent-name">Scout</div>
+  <div class="agent-role">Research Agent</div>
+  <div class="agent-desc">Web research, sourcing, scholarships, comparisons</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">✒️</div>
+  <div class="agent-name">Scribe</div>
+  <div class="agent-role">Writing Agent</div>
+  <div class="agent-desc">Emails, listings, essays, posts, human writing</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">⚒️</div>
+  <div class="agent-name">Forge</div>
+  <div class="agent-role">Builder Agent</div>
+  <div class="agent-desc">Dashboard, code, automation, tooling fixes</div>
+  <div class="agent-activity">Last: dashboard check today</div>
+</div>
+</div>
+    </div>
+
+    <div class="card full-width page-card" data-pages="calendar" style="margin-top:4px">
+      <h2><span class="icon">🗓️</span> Calendar — Next 7 Days</h2>
+      <div class="cal-grid"><div class="cal-day today">
   <div class="cal-header">
     <span class="cal-dow">Wed</span>
     <span class="cal-date">13 May</span>
@@ -331,147 +539,6 @@
   <div class="cal-events"><div class="cal-event">All day Final exam for America</div></div>
 </div>
 </div>
-      </div>
-      <div class="mission dash-card mission-card page-card active" data-pages="overview taskforce">
-        <div class="mission-top">
-          <div class="ultron-core">
-            <div class="core-ring"><div class="core-eye">🤖</div></div>
-            <div class="core-copy"><strong>Mission Control</strong><span>All systems online</span></div>
-          </div>
-          <div class="mission-metrics">
-            <div class="mission-metric"><div class="big">3</div><div class="tiny">Actions</div></div>
-            <div class="mission-metric"><div class="big">6</div><div class="tiny">Agents</div></div>
-            <div class="mission-metric"><div class="big">2</div><div class="tiny">Events</div></div>
-          </div>
-          <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>12 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>15 watcher(s) across UK listings</small></div></div></div>
-          <div class="agent-strip"><span>Sentinel</span><span>Vault</span><span>Ledger</span><span>Scout</span><span>Scribe</span><span>Forge</span></div>
-        </div>
-      </div>
-      <div class="card dash-card page-card active" data-pages="finance business">
-        <h2><span class="icon">📈</span> P/L Chart <span class="section-pill">2026</span></h2>
-        <canvas id="plChart" height="70"></canvas>
-      </div>
-    </div>
-
-    <div class="dash-col right">
-      <div class="card dash-card page-card active" data-pages="overview">
-        <h2><span class="icon">✅</span> To-do List <span class="section-pill">Tasks</span></h2>
-        <div class="card-compact-scroll"><div class="email-item" id="task-Buy_stock_for_back_home">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Buy_stock_for_back_home')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Buy stock for back home</div>
-  </div>
-  
-</div>
-<div class="email-item" id="task-Buy_boxes_for_storage">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Buy_boxes_for_storage')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Buy boxes for storage</div>
-  </div>
-  
-</div>
-<div class="email-item" id="task-Book_a_candle_light_makin">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Book_a_candle_light_makin')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Book a candle light making session with Claire</div>
-  </div>
-  
-</div>
-<div class="email-item" id="task-Get_Jalen_to_pay_$75_">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Get_Jalen_to_pay_$75_')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Get Jalen to pay $75 </div>
-  </div>
-  <span class="badge yellow">due May 15</span>
-</div>
-<div class="email-item" id="task-Set_up_a_direct_deposit_t">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Set_up_a_direct_deposit_t')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Set up a direct deposit to dad</div>
-  </div>
-  
-</div>
-<div class="email-item" id="task-Top_up_Anthropic_credits"><label class="email-check"><input type="checkbox" onchange="dismissTask('Top_up_Anthropic_credits')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Top up Anthropic credits</div><div class="email-sender">API goes dark without it</div></div></div>
-<div class="email-item" id="task-Sort_overdrawn_Chase_acco"><label class="email-check"><input type="checkbox" onchange="dismissTask('Sort_overdrawn_Chase_acco')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Sort overdrawn Chase account</div><div class="email-sender">Flagged in email</div></div></div>
-<div class="email-item" id="task-eBay_API_approval_-_check"><label class="email-check"><input type="checkbox" onchange="dismissTask('eBay_API_approval_-_check')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">eBay API approval - check tomorrow</div><div class="email-sender">Applied today</div></div></div>
-<div class="email-item" id="task-Wed_2:30pm_-_Andrew_Humph"><label class="email-check"><input type="checkbox" onchange="dismissTask('Wed_2:30pm_-_Andrew_Humph')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Wed 2:30pm - Andrew Humphries meeting</div><div class="email-sender">Odyssey annotations</div></div></div>
-<div class="email-item" id="task-Plan_UK_stock_order_(1-2k"><label class="email-check"><input type="checkbox" onchange="dismissTask('Plan_UK_stock_order_(1-2k')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Plan UK stock order (1-2k Essentials)</div><div class="email-sender">For summer</div></div></div>
-</div>
-      </div>
-      <div class="card dash-card page-card active" data-pages="business">
-        <h2><span class="icon">📦</span> Stock / Sales Log <span class="section-pill">Carousel</span></h2>
-        <div class="stat-row">
-          <div class="stat"><div class="num">3</div><div class="lbl">US Stock</div></div>
-          <div class="stat"><div class="num">20</div><div class="lbl">UK Stock</div></div>
-          <div class="stat"><div class="num green">$66</div><div class="lbl">Profit</div></div>
-        </div>
-        <div class="card-compact-scroll"><div class="item"><span class="label">Essentials shorts — Black M</span><span class="badge red">sold out</span></div>
-<div class="item"><span class="label">Essentials shorts — Dark Oatmeal M</span><span class="badge green">×2</span></div>
-<div class="item"><span class="label">Essentials shorts — Light Oatmeal M</span><span class="badge ">×1</span></div>
-<div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
-<div class="item">
-  <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$14.20</span>
-  </span>
-</div>
-<div class="item">
-  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$14.20</span>
-  </span>
-</div>
-<div class="item">
-  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$21.70</span>
-  </span>
-</div>
-<div class="item">
-  <span class="label">Essentials hoodie Dark Oatmeal L<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$16.00</span>
-  </span>
-</div>
-</div>
-        <div class="stock-carousel-controls"><span>‹</span><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span>›</span></div>
-      </div>
-      <div class="card dash-card page-card active" data-pages="finance">
-        <h2><span class="icon">📈</span> Trading 212 <span class="section-pill">Grouped</span></h2>
-        <div class="stat-row">
-          <div class="stat"><div class="num">£1324</div><div class="lbl">Value</div></div>
-          <div class="stat"><div class="num green">£104</div><div class="lbl">Unreal</div></div>
-          <div class="stat"><div class="num green">57</div><div class="lbl">Pos</div></div>
-        </div>
-        <div class="card-compact-scroll"><div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.41</span><br><small style="color:var(--green);font-size:0.72rem">+18.52</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.75</span><br><small style="color:var(--green);font-size:0.72rem">+8.65</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.51</span><br><small style="color:var(--green);font-size:0.72rem">+4.84</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.47</span><br><small style="color:var(--green);font-size:0.72rem">+10.55</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.68</span><br><small style="color:var(--green);font-size:0.72rem">+19.12</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.54</span><br><small style="color:var(--red);font-size:0.72rem">-0.39</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.41</span><br><small style="color:var(--green);font-size:0.72rem">+9.49</small></span></div>
-</div>
-      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
