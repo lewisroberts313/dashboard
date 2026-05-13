@@ -20,15 +20,16 @@
       --red: #f87171;
       --yellow: #fbbf24;
     }
+    * { box-sizing: border-box; }
     body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; padding: 0; overflow-x: hidden; }
     body::before { content: ''; position: fixed; top: -40%; left: -20%; width: 60%; height: 80%; background: radial-gradient(ellipse, rgba(99,102,241,0.07) 0%, transparent 70%); pointer-events: none; z-index: 0; }
     body::after { content: ''; position: fixed; bottom: -20%; right: -10%; width: 50%; height: 60%; background: radial-gradient(ellipse, rgba(74,222,128,0.04) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-    .wrapper { position: relative; z-index: 1; width: min(1440px, 100vw); margin: 0 auto; padding: 18px 22px; overflow-x: hidden; }
+    .wrapper { position: relative; z-index: 1; width: min(1440px, 100vw); margin: 0 auto; padding: 18px 22px 14px; overflow-x: hidden; }
     header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
-    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
     .logo { width: 42px; height: 42px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 0 20px rgba(99,102,241,0.4); }
-    .header-title { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
-    .header-sub { color: var(--muted); font-size: 0.8rem; margin-top: 1px; }
+    .header-title { font-size: 1.28rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+    .header-sub { color: #64748b; font-size: 0.78rem; margin-top: 1px; }
     .header-right { display: flex; align-items: center; gap: 16px; }
     .clock { font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
     .live-dot { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--green); }
@@ -42,14 +43,14 @@
     .nav-tab.active { background: rgba(99,102,241,0.18); border-color: rgba(99,102,241,0.45); color: #fff; box-shadow: 0 0 18px rgba(99,102,241,0.12); }
     .page-card { display: none; }
     .page-card.active { display: block; }
-    .sketch-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(380px, 1.22fr) minmax(0, 0.9fr); gap: 14px; align-items: stretch; min-height: calc(100vh - 118px); }
+    .sketch-layout { display: grid; grid-template-columns: minmax(260px, 0.92fr) minmax(430px, 1.25fr) minmax(260px, 0.92fr); gap: 14px; align-items: stretch; min-height: calc(100vh - 104px); }
     .dash-col { display: grid; gap: 14px; min-width: 0; }
-    .dash-col.left, .dash-col.right { grid-template-rows: 0.9fr 0.9fr 1.1fr; }
-    .dash-col.center { grid-template-rows: 0.95fr 1.35fr 0.7fr; }
+    .dash-col.left, .dash-col.right { grid-template-rows: 0.82fr 0.9fr 1.18fr; }
+    .dash-col.center { grid-template-rows: 1.02fr 1.22fr 0.76fr; }
     .dash-card { min-height: 0; overflow: hidden; }
     .dash-card.primary { min-height: 0; }
     .dash-card.mission-card { min-height: 0; }
-    .card-compact-scroll { max-height: 100%; overflow: hidden; padding-right: 2px; }
+    .card-compact-scroll { max-height: calc(100% - 28px); overflow: hidden; padding-right: 2px; }
     .dash-card:hover .card-compact-scroll { overflow: auto; }
     .side-drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(360px, 86vw); background: rgba(8,8,19,0.96); border-right: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(20px); z-index: 50; transform: translateX(-105%); transition: transform 0.22s ease; padding: 22px; box-shadow: 24px 0 70px rgba(0,0,0,0.45); }
     .side-drawer.open { transform: translateX(0); }
@@ -64,7 +65,7 @@
     .carousel-dot.active { background:#818cf8; box-shadow:0 0 8px #818cf8; }
     @media (max-width: 1180px) { .sketch-layout { grid-template-columns: 1fr; min-height: auto; } .dash-col.left, .dash-col.right, .dash-col.center { grid-template-rows: none; } .dash-card { max-height: none; } }
     @media (max-width: 760px) { .wrapper { padding: 14px 12px; } header { align-items:flex-start; } .header-right { width:100%; justify-content:space-between; } }
-    .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.24); background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(7,7,16,0.72) 45%, rgba(74,222,128,0.06)); border-radius: 18px; padding: 16px; margin: 0; box-shadow: 0 0 40px rgba(99,102,241,0.08); }
+    .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.22); background: linear-gradient(135deg, rgba(99,102,241,0.10), rgba(12,12,25,0.82) 52%, rgba(74,222,128,0.045)); border-radius: 18px; padding: 14px; margin: 0; box-shadow: 0 0 34px rgba(99,102,241,0.06); }
     .mission::after { content: ''; position: absolute; inset: -40% -10% auto auto; width: 360px; height: 360px; background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 62%); pointer-events: none; }
     .mission::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,0.018) 19px); opacity: 0.45; pointer-events: none; }
     .mission-top { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 10px; align-items: stretch; }
@@ -77,9 +78,9 @@
     .mission-metric .tiny { color: var(--muted); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
     .mission-actions { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; }
     .mission-side { display: grid; gap: 12px; }
-    .ultron-core { display: flex; align-items: center; gap: 14px; background: rgba(0,0,0,0.2); border: 1px solid rgba(99,102,241,0.22); border-radius: 16px; padding: 14px; }
-    .core-ring { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(from 180deg, rgba(99,102,241,0.2), rgba(74,222,128,0.55), rgba(99,102,241,0.2)); animation: spinCore 7s linear infinite; padding: 2px; }
-    .core-eye { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; background: #080813; font-size: 1.5rem; box-shadow: inset 0 0 18px rgba(99,102,241,0.22), 0 0 24px rgba(74,222,128,0.12); }
+    .ultron-core { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.18); border: 1px solid rgba(99,102,241,0.18); border-radius: 14px; padding: 10px; }
+    .core-ring { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(from 180deg, rgba(99,102,241,0.2), rgba(74,222,128,0.55), rgba(99,102,241,0.2)); padding: 2px; }
+    .core-eye { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #080813; font-size: 1.15rem; box-shadow: inset 0 0 16px rgba(99,102,241,0.20), 0 0 18px rgba(74,222,128,0.10); }
     .core-copy strong { display: block; color: #fff; font-size: 0.95rem; }
     .core-copy span { display: block; color: var(--green); font-size: 0.75rem; margin-top: 3px; }
     @keyframes spinCore { to { transform: rotate(360deg); } }
@@ -92,17 +93,19 @@
     .status-dot.green { background: var(--green); color: var(--green); }
     .status-dot.yellow { background: var(--yellow); color: var(--yellow); }
     .status-dot.red { background: var(--red); color: var(--red); }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px; backdrop-filter: blur(20px); transition: border-color 0.2s, transform 0.2s; }
+    .agent-strip { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 6px; margin-top: 9px; }
+    .agent-strip span { border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.035); color: #94a3b8; border-radius: 999px; padding: 6px 7px; text-align: center; font-size: 0.66rem; font-weight: 700; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.026)); border: 1px solid var(--border); border-radius: 16px; padding: 13px; backdrop-filter: blur(18px); transition: border-color 0.2s, transform 0.2s; box-shadow: 0 12px 40px rgba(0,0,0,0.14); }
     .card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-1px); }
-    .card h2 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 7px; }
+    .card h2 { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.105em; color: #94a3b8; margin-bottom: 10px; display: flex; align-items: center; gap: 7px; white-space: nowrap; }
     .card h2 .icon { font-size: 0.9rem; }
-    .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 18px; }
-    .stat { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px 10px; text-align: center; }
-    .stat .num { font-size: 1.35rem; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
+    .stat-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; margin-bottom: 10px; }
+    .stat { background: rgba(255,255,255,0.032); border: 1px solid var(--border); border-radius: 10px; padding: 8px 6px; text-align: center; min-width:0; }
+    .stat .num { font-size: 1.05rem; font-weight: 800; color: #fff; letter-spacing: -0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .stat .num.green { color: var(--green); }
     .stat .num.red { color: var(--red); }
     .stat .lbl { font-size: 0.68rem; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .item { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.875rem; }
+    .item { display: flex; justify-content: space-between; align-items: center; gap:10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.8rem; }
     .item:last-child { border-bottom: none; }
     .item .label { color: #cbd5e1; }
     .badge { border-radius: 6px; padding: 3px 9px; font-size: 0.72rem; font-weight: 500; }
@@ -110,14 +113,14 @@
     .badge.green { background: rgba(74,222,128,0.12); color: var(--green); }
     .badge.red { background: rgba(248,113,113,0.12); color: var(--red); }
     .badge.yellow { background: rgba(251,191,36,0.12); color: var(--yellow); }
-    .time-block { display: flex; gap: 14px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: flex-start; }
+    .time-block { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: flex-start; }
     .time-block:last-child { border-bottom: none; }
     .time { color: var(--muted); font-size: 0.78rem; min-width: 115px; padding-top: 1px; font-variant-numeric: tabular-nums; }
     .event { color: #cbd5e1; font-size: 0.875rem; }
     .todo-item { display: flex; align-items: center; gap: 11px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.875rem; }
     .todo-item:last-child { border-bottom: none; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15); flex-shrink: 0; }
-    .email-item { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .email-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
     .email-item:last-child { border-bottom: none; }
     .email-body { flex: 1; min-width: 0; }
     .email-subject { color: #cbd5e1; font-size: 0.875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -128,14 +131,14 @@
     .email-check input:checked + .checkmark { background: var(--green); border-color: var(--green); }
     .email-check input:checked + .checkmark::after { content: '✓'; display: block; color: #000; font-size: 11px; text-align: center; line-height: 18px; font-weight: 800; }
     .footer { color: rgba(255,255,255,0.1); font-size: 0.72rem; text-align: center; margin-top: 36px; padding-bottom: 24px; }
-    .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; overflow: hidden; }
-    .cal-day { min-width: 0; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 8px; min-height: 88px; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; overflow: hidden; }
+    .cal-day { min-width: 0; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 8px 6px; min-height: 74px; }
     .cal-day.today { border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.06); }
     .cal-header { margin-bottom: 10px; }
     .cal-dow { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; display: block; }
     .cal-date { font-size: 1rem; font-weight: 700; color: #fff; }
     .cal-day.today .cal-date { color: #6366f1; }
-    .cal-event { font-size: 0.72rem; color: #94a3b8; background: rgba(99,102,241,0.1); border-radius: 4px; padding: 3px 6px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cal-event { font-size: 0.62rem; color: #94a3b8; background: rgba(99,102,241,0.1); border-radius: 4px; padding: 2px 4px; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .cal-empty { color: rgba(255,255,255,0.1); font-size: 0.75rem; }
     .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
     .agent-card { position: relative; overflow: hidden; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 16px 12px; text-align: center; min-height: 172px; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
@@ -170,7 +173,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 1:03PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 1:14PM EST · side tab opens in-depth views</div>
       </div>
     </div>
     <div class="header-right">
@@ -331,25 +334,18 @@
       </div>
       <div class="mission dash-card mission-card page-card active" data-pages="overview taskforce">
         <div class="mission-top">
-          <div>
-            <div class="mission-kicker">Mission Control</div>
-            <div class="mission-title">Ultron systems online</div>
-            <div class="mission-sub">3 action(s) need attention · next event: 2:30pm · Odyssey annotations resolution</div>
-            <div class="mission-metrics">
-              <div class="mission-metric"><div class="big">3</div><div class="tiny">Actions</div></div>
-              <div class="mission-metric"><div class="big">6</div><div class="tiny">Agents</div></div>
-              <div class="mission-metric"><div class="big">2</div><div class="tiny">Events</div></div>
-            </div>
+          <div class="ultron-core">
+            <div class="core-ring"><div class="core-eye">🤖</div></div>
+            <div class="core-copy"><strong>Mission Control</strong><span>All systems online</span></div>
           </div>
-          <div class="mission-side">
-            <div class="ultron-core">
-              <div class="core-ring"><div class="core-eye">🤖</div></div>
-              <div class="core-copy"><strong>Ultron Core</strong><span>All systems online</span></div>
-            </div>
-            <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>12 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>15 watcher(s) across UK listings</small></div></div></div>
+          <div class="mission-metrics">
+            <div class="mission-metric"><div class="big">3</div><div class="tiny">Actions</div></div>
+            <div class="mission-metric"><div class="big">6</div><div class="tiny">Agents</div></div>
+            <div class="mission-metric"><div class="big">2</div><div class="tiny">Events</div></div>
           </div>
+          <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>12 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>15 watcher(s) across UK listings</small></div></div></div>
+          <div class="agent-strip"><span>Sentinel</span><span>Vault</span><span>Ledger</span><span>Scout</span><span>Scribe</span><span>Forge</span></div>
         </div>
-        <div style="margin-top:10px;color:#64748b;font-size:0.78rem">Taskforce online: Sentinel · Vault · Ledger · Scout · Scribe · Forge</div>
       </div>
       <div class="card dash-card page-card active" data-pages="finance business">
         <h2><span class="icon">📈</span> P/L Chart <span class="section-pill">2026</span></h2>
@@ -467,13 +463,13 @@
           <div class="stat"><div class="num green">57</div><div class="lbl">Pos</div></div>
         </div>
         <div class="card-compact-scroll"><div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.44</span><br><small style="color:var(--green);font-size:0.72rem">+18.55</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.79</span><br><small style="color:var(--green);font-size:0.72rem">+8.69</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.66</span><br><small style="color:var(--green);font-size:0.72rem">+4.99</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.41</span><br><small style="color:var(--green);font-size:0.72rem">+10.49</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.89</span><br><small style="color:var(--green);font-size:0.72rem">+19.33</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.57</span><br><small style="color:var(--red);font-size:0.72rem">-0.36</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.40</span><br><small style="color:var(--green);font-size:0.72rem">+9.48</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.41</span><br><small style="color:var(--green);font-size:0.72rem">+18.52</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.80</span><br><small style="color:var(--green);font-size:0.72rem">+8.70</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.51</span><br><small style="color:var(--green);font-size:0.72rem">+4.84</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.43</span><br><small style="color:var(--green);font-size:0.72rem">+10.51</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.65</span><br><small style="color:var(--green);font-size:0.72rem">+19.09</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.52</span><br><small style="color:var(--red);font-size:0.72rem">-0.41</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.41</span><br><small style="color:var(--green);font-size:0.72rem">+9.49</small></span></div>
 </div>
       </div>
     </div>
