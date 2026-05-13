@@ -36,6 +36,12 @@
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
     .grid .full-width { grid-column: 1 / -1; }
+    .nav-tabs { display: flex; gap: 8px; margin: -16px 0 18px; flex-wrap: wrap; }
+    .nav-tab { border: 1px solid var(--border); background: rgba(255,255,255,0.035); color: #94a3b8; border-radius: 999px; padding: 9px 14px; font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .nav-tab:hover { border-color: rgba(255,255,255,0.16); color: #fff; }
+    .nav-tab.active { background: rgba(99,102,241,0.18); border-color: rgba(99,102,241,0.45); color: #fff; box-shadow: 0 0 18px rgba(99,102,241,0.12); }
+    .page-card { display: none; }
+    .page-card.active { display: block; }
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; backdrop-filter: blur(20px); transition: border-color 0.2s, transform 0.2s; }
     .card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-1px); }
     .card h2 { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 18px; display: flex; align-items: center; gap: 7px; }
@@ -99,7 +105,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 12:15PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 12:24PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -107,8 +113,16 @@
       <div class="clock" id="clock"></div>
     </div>
   </header>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('overview', this)">Overview</button>
+    <button class="nav-tab" onclick="showPage('business', this)">Business</button>
+    <button class="nav-tab" onclick="showPage('finance', this)">Finance</button>
+    <button class="nav-tab" onclick="showPage('taskforce', this)">Taskforce</button>
+    <button class="nav-tab" onclick="showPage('calendar', this)">Calendar</button>
+    <button class="nav-tab" onclick="showPage('all', this)">All</button>
+  </div>
   <div class="grid">
-    <div class="card">
+    <div class="card page-card active" data-pages="overview business">
       <h2><span class="icon">📦</span> US Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">3</div><div class="lbl">In Stock</div></div>
@@ -121,13 +135,13 @@
 <div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
 
     </div>
-    <div class="card">
+    <div class="card page-card active" data-pages="overview calendar">
       <h2><span class="icon">📅</span> Today's Schedule</h2>
       <div class="time-block"><div class="time">9:00am–9:50am</div><div class="event">Mathematical thinking</div></div>
 <div class="time-block"><div class="time">2:30pm–2:45pm</div><div class="event">Odyssey annotations resolution</div></div>
 
     </div>
-    <div class="card">
+    <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">✅</span> To-Do List</h2>
       <div class="email-item" id="task-Buy_stock_for_back_home">
   <label class="email-check">
@@ -186,7 +200,7 @@
 <div class="email-item" id="task-Plan_UK_stock_order_(1-2k"><label class="email-check"><input type="checkbox" onchange="dismissTask('Plan_UK_stock_order_(1-2k')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Plan UK stock order (1-2k Essentials)</div><div class="email-sender">For summer</div></div></div>
 
     </div>
-    <div class="card">
+    <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
       <div class="email-item" id="email-Lyft_Receipts_Your_ride_with_Carlo">
   <label class="email-check">
@@ -256,7 +270,7 @@
 </div>
 
     </div>
-    <div class="card">
+    <div class="card page-card" data-pages="business">
       <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">20</div><div class="lbl">In Stock</div></div>
@@ -266,26 +280,26 @@
       <div class="item"><span class="label">Nike Air Force 1 — Various Various<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge green">×20</span></div>
 
     </div>
-    <div class="card">
+    <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212 — Live</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1320.28</div><div class="lbl">Total Value</div></div>
-        <div class="stat"><div class="num green">£100.31</div><div class="lbl">Unrealized</div></div>
+        <div class="stat"><div class="num">£1321.78</div><div class="lbl">Total Value</div></div>
+        <div class="stat"><div class="num green">£101.81</div><div class="lbl">Unrealized</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Available cash</span><span class="badge">£0.01</span></div>
       <div class="item"><span class="label">Realized P/L</span><span class="badge green">£3.21</span></div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.90</span><br><small style="color:var(--green);font-size:0.72rem">+18.01</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.15</span><br><small style="color:var(--green);font-size:0.72rem">+8.05</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.53</span><br><small style="color:var(--green);font-size:0.72rem">+4.86</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.59</span><br><small style="color:var(--green);font-size:0.72rem">+10.67</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£49.97</span><br><small style="color:var(--green);font-size:0.72rem">+18.41</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.09</span><br><small style="color:var(--red);font-size:0.72rem">-0.84</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.13</span><br><small style="color:var(--green);font-size:0.72rem">+9.21</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.07</span><br><small style="color:var(--green);font-size:0.72rem">+18.18</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.34</span><br><small style="color:var(--green);font-size:0.72rem">+8.24</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.59</span><br><small style="color:var(--green);font-size:0.72rem">+4.92</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.57</span><br><small style="color:var(--green);font-size:0.72rem">+10.65</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.41</span><br><small style="color:var(--green);font-size:0.72rem">+18.85</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.17</span><br><small style="color:var(--red);font-size:0.72rem">-0.76</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.17</span><br><small style="color:var(--green);font-size:0.72rem">+9.25</small></span></div>
 
     </div>
-    <div class="card full-width">
+    <div class="card full-width page-card" data-pages="business">
       <h2><span class="icon">🇬🇧</span> Active eBay Listings — UK Stock</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">8</div><div class="lbl">Active</div></div>
@@ -302,7 +316,7 @@
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-8-5-Nike-Air-Force-1-White-/127855760157" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 8.5 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
 
     </div>
-    <div class="card">
+    <div class="card page-card" data-pages="business">
       <h2><span class="icon">💰</span> Sales Log (US)</h2>
       <div class="item">
   <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
@@ -334,12 +348,12 @@
 </div>
 
     </div>
-    <div class="card full-width">
+    <div class="card full-width page-card" data-pages="finance">
       <h2><span class="icon">📈</span> P&L Chart — 2026</h2>
       <canvas id="plChart" height="80"></canvas>
     </div>
   </div>
-  <div class="card full-width" style="margin-top:16px">
+  <div class="card full-width page-card" data-pages="taskforce" style="margin-top:16px">
     <h2><span class="icon">🤖</span> Ultron Taskforce</h2>
     <div class="agent-grid">
       <div class="agent-card">
@@ -387,7 +401,7 @@
 
     </div>
   </div>
-  <div class="card full-width" style="margin-top:4px">
+  <div class="card full-width page-card" data-pages="calendar" style="margin-top:4px">
     <h2><span class="icon">🗓️</span> 7-Day Calendar</h2>
     <div class="cal-grid">
       <div class="cal-day today">
@@ -446,7 +460,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const ctx = document.getElementById('plChart').getContext('2d');
-    new Chart(ctx, {
+    window.plChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
@@ -482,6 +496,23 @@
     }
     updateClock();
     setInterval(updateClock, 1000);
+
+    function showPage(page, btn) {
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.querySelectorAll('.page-card').forEach(card => {
+        const pages = (card.dataset.pages || '').split(' ');
+        card.classList.toggle('active', page === 'all' || pages.includes(page));
+      });
+      localStorage.setItem('dashboardPage', page);
+      setTimeout(() => { if (window.plChart) window.plChart.resize(); }, 50);
+    }
+
+    const savedPage = localStorage.getItem('dashboardPage');
+    if (savedPage) {
+      const btn = Array.from(document.querySelectorAll('.nav-tab')).find(b => b.textContent.toLowerCase() === savedPage);
+      showPage(savedPage, btn);
+    }
 
     // Restore dismissed emails
     const dismissed = JSON.parse(localStorage.getItem('dismissedEmails') || '[]');
