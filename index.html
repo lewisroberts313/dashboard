@@ -140,7 +140,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 3:05PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 3:08PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -356,13 +356,13 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.16</span><br><small style="color:var(--green);font-size:0.72rem">+18.27</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.67</span><br><small style="color:var(--green);font-size:0.72rem">+8.57</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.52</span><br><small style="color:var(--green);font-size:0.72rem">+4.85</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.30</span><br><small style="color:var(--green);font-size:0.72rem">+10.38</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£51.36</span><br><small style="color:var(--green);font-size:0.72rem">+19.80</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.68</span><br><small style="color:var(--red);font-size:0.72rem">-0.25</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.46</span><br><small style="color:var(--green);font-size:0.72rem">+9.54</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.28</span><br><small style="color:var(--green);font-size:0.72rem">+18.39</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.65</span><br><small style="color:var(--green);font-size:0.72rem">+8.55</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.54</span><br><small style="color:var(--green);font-size:0.72rem">+4.87</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.34</span><br><small style="color:var(--green);font-size:0.72rem">+10.42</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£51.38</span><br><small style="color:var(--green);font-size:0.72rem">+19.82</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.66</span><br><small style="color:var(--red);font-size:0.72rem">-0.27</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.50</span><br><small style="color:var(--green);font-size:0.72rem">+9.58</small></span></div>
 
     </div>
 
@@ -428,8 +428,8 @@
 
     </div>
 
-    <div class="card full-width page-card" data-pages="finance">
-      <h2><span class="icon">📈</span> Profit/Loss Chart</h2>
+    <div class="card full-width page-card" data-pages="finance business">
+      <h2><span class="icon">📈</span> Profit/Loss Chart — US ($) + UK (£)</h2>
       <canvas id="plChart" height="80"></canvas>
     </div>
 
@@ -542,23 +542,37 @@
       data: {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [{
-          label: 'Profit ($)',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          backgroundColor: 'rgba(74, 222, 128, 0.1)',
+          label: 'US Profit ($)',
+          data: [0, 0, 0, 0, 66.1, 0, 0, 0, 0, 0, 0, 0],
+          yAxisID: 'yUS',
+          backgroundColor: 'rgba(74, 222, 128, 0.10)',
           borderColor: '#4ade80',
           borderWidth: 2,
           pointBackgroundColor: '#4ade80',
           pointRadius: 4,
           tension: 0.3,
           fill: true
+        }, {
+          label: 'UK Profit (£)',
+          data: [0, 0, 0, 0, 40.0, 0, 0, 0, 0, 0, 0, 0],
+          yAxisID: 'yUK',
+          backgroundColor: 'rgba(96, 165, 250, 0.08)',
+          borderColor: '#60a5fa',
+          borderWidth: 2,
+          pointBackgroundColor: '#60a5fa',
+          pointRadius: 4,
+          tension: 0.3,
+          fill: false
         }]
       },
       options: {
         responsive: true,
-        plugins: { legend: { display: false } },
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { display: true, labels: { color: '#94a3b8' } } },
         scales: {
           x: { ticks: { color: '#666' }, grid: { color: '#1a1a1a' } },
-          y: { ticks: { color: '#666', callback: v => '$' + v }, grid: { color: '#1a1a1a' } }
+          yUS: { type: 'linear', position: 'left', ticks: { color: '#4ade80', callback: v => '$' + v }, grid: { color: '#1a1a1a' } },
+          yUK: { type: 'linear', position: 'right', ticks: { color: '#60a5fa', callback: v => '£' + v }, grid: { drawOnChartArea: false } }
         }
       }
     });
