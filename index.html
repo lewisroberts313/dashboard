@@ -42,6 +42,42 @@
     .nav-tab.active { background: rgba(99,102,241,0.18); border-color: rgba(99,102,241,0.45); color: #fff; box-shadow: 0 0 18px rgba(99,102,241,0.12); }
     .page-card { display: none; }
     .page-card.active { display: block; }
+    body { overflow: hidden; }
+    .wrapper { height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+    header { margin-bottom: 10px; flex-shrink: 0; }
+    .nav-tabs { display: none; }
+    .control-room { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr minmax(360px, 460px) 1fr; grid-template-rows: 1fr 1fr 1fr; gap: 12px; align-items: stretch; }
+    .control-room .mission { grid-column: 2; grid-row: 1 / 4; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 0; }
+    .control-room .mission-top { grid-template-columns: 1fr; text-align: center; width: 100%; }
+    .control-room .mission-side { max-width: 330px; margin: 0 auto; width: 100%; }
+    .control-room .mission-title { font-size: clamp(2rem, 4vw, 3.5rem); }
+    .control-room .mission-metrics { grid-template-columns: repeat(3, 1fr); }
+    .control-room .card { min-height: 0; max-height: 100%; overflow: hidden; padding: 14px; transform-origin: center; transition: transform 0.22s ease, max-height 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, z-index 0s; }
+    .control-room .card:hover { transform: scale(1.18); overflow: auto; z-index: 20; border-color: rgba(99,102,241,0.42); box-shadow: 0 18px 80px rgba(0,0,0,0.42), 0 0 36px rgba(99,102,241,0.14); }
+    .control-room .card h2 { margin-bottom: 10px; }
+    .control-room .item, .control-room .email-item, .control-room .time-block { padding: 7px 0; font-size: 0.76rem; }
+    .control-room .stat-row { margin-bottom: 9px; gap: 6px; }
+    .control-room .stat { padding: 8px 6px; }
+    .control-room .stat .num { font-size: 1rem; }
+    .control-room .stat .lbl { font-size: 0.55rem; }
+    .control-room .page-card { display: block; }
+    .control-room .full-width { grid-column: auto; }
+    .control-room .mini-business { grid-column: 1; grid-row: 1; }
+    .control-room .mini-schedule { grid-column: 1; grid-row: 2; }
+    .control-room .mini-tasks { grid-column: 1; grid-row: 3; }
+    .control-room .mini-finance { grid-column: 3; grid-row: 1; }
+    .control-room .mini-taskforce { grid-column: 3; grid-row: 2; }
+    .control-room .mini-calendar { grid-column: 3; grid-row: 3; }
+    .control-room .mini-hidden { display: none; }
+    .control-room .agent-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .control-room .agent-card { min-height: 92px; padding: 8px 6px; }
+    .control-room .agent-avatar { width: 30px; height: 30px; font-size: 1rem; margin-bottom: 5px; }
+    .control-room .agent-desc { display: none; }
+    .control-room .agent-card:hover .agent-desc { display: block; }
+    .control-room .cal-grid { grid-template-columns: repeat(7, minmax(0,1fr)); gap: 4px; }
+    .control-room .cal-day { min-height: 64px; padding: 7px 5px; }
+    .control-room .cal-event { font-size: 0.58rem; padding: 2px 4px; }
+    @media (max-width: 1000px) { body { overflow: auto; } .wrapper { height: auto; overflow: visible; } .control-room { display: grid; grid-template-columns: 1fr; } .control-room .mission, .control-room .card { grid-column: auto !important; grid-row: auto !important; } .control-room .mini-hidden { display: block; } }
     .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.24); background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(7,7,16,0.72) 45%, rgba(74,222,128,0.06)); border-radius: 22px; padding: 22px; margin-bottom: 18px; box-shadow: 0 0 50px rgba(99,102,241,0.08); }
     .mission::after { content: ''; position: absolute; inset: -40% -10% auto auto; width: 360px; height: 360px; background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 62%); pointer-events: none; }
     .mission::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,0.018) 19px); opacity: 0.45; pointer-events: none; }
@@ -138,7 +174,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 12:38PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 12:42PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -146,6 +182,7 @@
       <div class="clock" id="clock"></div>
     </div>
   </header>
+  <div class="control-room">
   <section class="mission">
     <div class="mission-top">
       <div>
@@ -173,16 +210,7 @@
       </div>
     </div>
   </section>
-  <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('overview', this)">Overview</button>
-    <button class="nav-tab" onclick="showPage('business', this)">Business</button>
-    <button class="nav-tab" onclick="showPage('finance', this)">Finance</button>
-    <button class="nav-tab" onclick="showPage('taskforce', this)">Taskforce</button>
-    <button class="nav-tab" onclick="showPage('calendar', this)">Calendar</button>
-    <button class="nav-tab" onclick="showPage('all', this)">All</button>
-  </div>
-  <div class="grid">
-    <div class="card page-card active" data-pages="overview business">
+    <div class="card page-card active mini-business" data-pages="overview business">
       <h2><span class="icon">📦</span> US Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">3</div><div class="lbl">In Stock</div></div>
@@ -195,13 +223,13 @@
 <div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
 
     </div>
-    <div class="card page-card active" data-pages="overview calendar">
+    <div class="card page-card active mini-schedule" data-pages="overview calendar">
       <h2><span class="icon">📅</span> Today's Schedule</h2>
       <div class="time-block"><div class="time">9:00am–9:50am</div><div class="event">Mathematical thinking</div></div>
 <div class="time-block"><div class="time">2:30pm–2:45pm</div><div class="event">Odyssey annotations resolution</div></div>
 
     </div>
-    <div class="card page-card active" data-pages="overview">
+    <div class="card page-card active mini-tasks" data-pages="overview">
       <h2><span class="icon">✅</span> To-Do List</h2>
       <div class="email-item" id="task-Buy_stock_for_back_home">
   <label class="email-check">
@@ -260,7 +288,7 @@
 <div class="email-item" id="task-Plan_UK_stock_order_(1-2k"><label class="email-check"><input type="checkbox" onchange="dismissTask('Plan_UK_stock_order_(1-2k')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Plan UK stock order (1-2k Essentials)</div><div class="email-sender">For summer</div></div></div>
 
     </div>
-    <div class="card page-card active" data-pages="overview">
+    <div class="card page-card active mini-hidden" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
       <div class="email-item" id="email-Lyft_Receipts_Your_ride_with_Carlo">
   <label class="email-check">
@@ -330,7 +358,7 @@
 </div>
 
     </div>
-    <div class="card page-card" data-pages="business">
+    <div class="card page-card mini-hidden" data-pages="business">
       <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">20</div><div class="lbl">In Stock</div></div>
@@ -340,26 +368,26 @@
       <div class="item"><span class="label">Nike Air Force 1 — Various Various<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge green">×20</span></div>
 
     </div>
-    <div class="card page-card" data-pages="finance">
+    <div class="card page-card mini-finance" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212 — Live</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1322.19</div><div class="lbl">Total Value</div></div>
-        <div class="stat"><div class="num green">£102.22</div><div class="lbl">Unrealized</div></div>
+        <div class="stat"><div class="num">£1322.11</div><div class="lbl">Total Value</div></div>
+        <div class="stat"><div class="num green">£102.14</div><div class="lbl">Unrealized</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Available cash</span><span class="badge">£0.01</span></div>
       <div class="item"><span class="label">Realized P/L</span><span class="badge green">£3.21</span></div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.06</span><br><small style="color:var(--green);font-size:0.72rem">+18.17</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.63</span><br><small style="color:var(--green);font-size:0.72rem">+8.53</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.04</span><br><small style="color:var(--green);font-size:0.72rem">+18.15</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.69</span><br><small style="color:var(--green);font-size:0.72rem">+8.59</small></span></div>
 <div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.65</span><br><small style="color:var(--green);font-size:0.72rem">+4.98</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.57</span><br><small style="color:var(--green);font-size:0.72rem">+10.65</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.55</span><br><small style="color:var(--green);font-size:0.72rem">+18.99</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.32</span><br><small style="color:var(--red);font-size:0.72rem">-0.61</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.21</span><br><small style="color:var(--green);font-size:0.72rem">+9.29</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.51</span><br><small style="color:var(--green);font-size:0.72rem">+10.59</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.41</span><br><small style="color:var(--green);font-size:0.72rem">+18.85</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.27</span><br><small style="color:var(--red);font-size:0.72rem">-0.66</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.23</span><br><small style="color:var(--green);font-size:0.72rem">+9.31</small></span></div>
 
     </div>
-    <div class="card full-width page-card" data-pages="business">
+    <div class="card full-width page-card mini-hidden" data-pages="business">
       <h2><span class="icon">🇬🇧</span> Active eBay Listings — UK Stock</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">8</div><div class="lbl">Active</div></div>
@@ -376,7 +404,7 @@
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-8-5-Nike-Air-Force-1-White-/127855760157" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 8.5 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
 
     </div>
-    <div class="card page-card" data-pages="business">
+    <div class="card page-card mini-hidden" data-pages="business">
       <h2><span class="icon">💰</span> Sales Log (US)</h2>
       <div class="item">
   <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
@@ -408,12 +436,12 @@
 </div>
 
     </div>
-    <div class="card full-width page-card" data-pages="finance">
+    <div class="card full-width page-card mini-hidden" data-pages="finance">
       <h2><span class="icon">📈</span> P&L Chart — 2026</h2>
       <canvas id="plChart" height="80"></canvas>
     </div>
   </div>
-  <div class="card full-width page-card" data-pages="taskforce" style="margin-top:16px">
+  <div class="card full-width page-card mini-taskforce" data-pages="taskforce">
     <h2><span class="icon">🤖</span> Ultron Taskforce</h2>
     <div class="agent-grid">
       <div class="agent-card">
@@ -461,7 +489,7 @@
 
     </div>
   </div>
-  <div class="card full-width page-card" data-pages="calendar" style="margin-top:4px">
+  <div class="card full-width page-card mini-calendar" data-pages="calendar">
     <h2><span class="icon">🗓️</span> 7-Day Calendar</h2>
     <div class="cal-grid">
       <div class="cal-day today">
