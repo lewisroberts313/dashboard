@@ -37,6 +37,11 @@
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
     .grid .full-width { grid-column: 1 / -1; }
+
+    .business-four { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .business-four .card { min-width: 0; }
+    @media (max-width: 1200px) { .business-four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 700px) { .business-four { grid-template-columns: 1fr; } }
     .nav-tabs { display: flex; gap: 8px; margin: -16px 0 18px; flex-wrap: wrap; }
     .nav-tab { border: 1px solid var(--border); background: rgba(255,255,255,0.035); color: #94a3b8; border-radius: 999px; padding: 9px 14px; font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
     .nav-tab:hover { border-color: rgba(255,255,255,0.16); color: #fff; }
@@ -140,7 +145,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 3:08PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 3:11PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -180,7 +185,10 @@
   </div>
 
   <div class="grid">
-    <div class="card page-card active" data-pages="overview business">
+
+
+    <div class="business-four page-card active" data-pages="overview business">
+    <div class="card" data-pages="overview business">
       <h2><span class="icon">🇺🇸</span> US Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">3</div><div class="lbl">In Stock</div></div>
@@ -192,6 +200,65 @@
 <div class="item"><span class="label">Essentials shorts — Light Oatmeal M</span><span class="badge ">×1</span></div>
 <div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
 
+    </div>
+    <div class="card" data-pages="business">
+      <h2><span class="icon">💰</span> Sales Log (US)</h2>
+      <div class="item">
+  <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$14.20</span>
+  </span>
+</div>
+<div class="item">
+  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$14.20</span>
+  </span>
+</div>
+<div class="item">
+  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$21.70</span>
+  </span>
+</div>
+<div class="item">
+  <span class="label">Essentials hoodie Dark Oatmeal L<br><small style="color:#555">—</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
+    <span style="color:#4ade80;font-weight:600">$16.00</span>
+  </span>
+</div>
+
+    </div>
+    <div class="card" data-pages="business">
+      <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
+      <div class="stat-row">
+        <div class="stat"><div class="num">19</div><div class="lbl">In Stock</div></div>
+        <div class="stat"><div class="num">12</div><div class="lbl">Unlisted</div></div>
+        <div class="stat"><div class="num green">£760</div><div class="lbl">Potential</div></div>
+      </div>
+      <div class="item"><span class="label">Nike Air Force 1 — Black UK 8.5<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — Black UK 9<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×3</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — Black UK 10<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — White UK 8.5<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — White UK 9<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×1</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — White UK 10<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×3</span></div>
+
+    </div>
+    <div class="card" data-pages="business">
+      <h2><span class="icon">🇬🇧</span> Sales Log (UK)</h2>
+      <div class="item">
+  <span class="label">Nike Air Force 1 White UK 9<br><small style="color:#555">2026-05-13 · buyer rubed1 · awaiting payment</small></span>
+  <span style="display:flex;gap:8px;align-items:center">
+    <span class="badge yellow">pending</span>
+    <span style="color:#4ade80;font-weight:600">£40.00</span>
+  </span>
+</div>
+
+    </div>
     </div>
 
     <div class="card page-card active" data-pages="overview calendar">
@@ -332,21 +399,7 @@
 
     </div>
 
-    <div class="card page-card" data-pages="business">
-      <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
-      <div class="stat-row">
-        <div class="stat"><div class="num">19</div><div class="lbl">In Stock</div></div>
-        <div class="stat"><div class="num">12</div><div class="lbl">Unlisted</div></div>
-        <div class="stat"><div class="num green">£760</div><div class="lbl">Potential</div></div>
-      </div>
-      <div class="item"><span class="label">Nike Air Force 1 — Black UK 8.5<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — Black UK 9<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×3</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — Black UK 10<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — White UK 8.5<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — White UK 9<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×1</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — White UK 10<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×3</span></div>
 
-    </div>
 
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
@@ -356,13 +409,13 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.28</span><br><small style="color:var(--green);font-size:0.72rem">+18.39</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.65</span><br><small style="color:var(--green);font-size:0.72rem">+8.55</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.25</span><br><small style="color:var(--green);font-size:0.72rem">+18.36</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.63</span><br><small style="color:var(--green);font-size:0.72rem">+8.53</small></span></div>
 <div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.54</span><br><small style="color:var(--green);font-size:0.72rem">+4.87</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.34</span><br><small style="color:var(--green);font-size:0.72rem">+10.42</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£51.38</span><br><small style="color:var(--green);font-size:0.72rem">+19.82</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.66</span><br><small style="color:var(--red);font-size:0.72rem">-0.27</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.50</span><br><small style="color:var(--green);font-size:0.72rem">+9.58</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.43</span><br><small style="color:var(--green);font-size:0.72rem">+10.51</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£51.47</span><br><small style="color:var(--green);font-size:0.72rem">+19.91</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.68</span><br><small style="color:var(--red);font-size:0.72rem">-0.25</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.51</span><br><small style="color:var(--green);font-size:0.72rem">+9.59</small></span></div>
 
     </div>
 
@@ -383,50 +436,9 @@
 
     </div>
 
-    <div class="card page-card" data-pages="business">
-      <h2><span class="icon">💰</span> Sales Log (US)</h2>
-      <div class="item">
-  <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$14.20</span>
-  </span>
-</div>
-<div class="item">
-  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$14.20</span>
-  </span>
-</div>
-<div class="item">
-  <span class="label">Essentials shorts Black M<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$21.70</span>
-  </span>
-</div>
-<div class="item">
-  <span class="label">Essentials hoodie Dark Oatmeal L<br><small style="color:#555">—</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
-    <span style="color:#4ade80;font-weight:600">$16.00</span>
-  </span>
-</div>
 
-    </div>
 
-    <div class="card page-card" data-pages="business">
-      <h2><span class="icon">🇬🇧</span> Sales Log (UK)</h2>
-      <div class="item">
-  <span class="label">Nike Air Force 1 White UK 9<br><small style="color:#555">2026-05-13 · buyer rubed1 · awaiting payment</small></span>
-  <span style="display:flex;gap:8px;align-items:center">
-    <span class="badge yellow">pending</span>
-    <span style="color:#4ade80;font-weight:600">£40.00</span>
-  </span>
-</div>
 
-    </div>
 
     <div class="card full-width page-card" data-pages="finance business">
       <h2><span class="icon">📈</span> Profit/Loss Chart — US ($) + UK (£)</h2>
