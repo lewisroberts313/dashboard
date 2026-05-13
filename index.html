@@ -43,27 +43,6 @@
     .nav-tab.active { background: rgba(99,102,241,0.18); border-color: rgba(99,102,241,0.45); color: #fff; box-shadow: 0 0 18px rgba(99,102,241,0.12); }
     .page-card { display: none; }
     .page-card.active { display: block; }
-    .sketch-layout { display: grid; grid-template-columns: minmax(260px, 0.92fr) minmax(430px, 1.25fr) minmax(260px, 0.92fr); gap: 14px; align-items: stretch; height: calc(100vh - 104px); min-height: 720px; }
-    .dash-col { display: grid; gap: 14px; min-width: 0; min-height: 0; height: 100%; }
-    .dash-col.left, .dash-col.right { grid-template-rows: minmax(0, 0.82fr) minmax(0, 0.9fr) minmax(0, 1.18fr); }
-    .dash-col.center { grid-template-rows: minmax(0, 1.02fr) minmax(0, 1.22fr) minmax(0, 0.76fr); }
-    .dash-card { min-height: 0; max-height: 100%; overflow: hidden; }
-    .dash-card.primary { min-height: 0; }
-    .dash-card.mission-card { min-height: 0; }
-    .card-compact-scroll { max-height: calc(100% - 28px); overflow: hidden; padding-right: 2px; }
-    .dash-card:hover .card-compact-scroll { overflow: auto; }
-    .side-drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(360px, 86vw); background: rgba(8,8,19,0.96); border-right: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(20px); z-index: 50; transform: translateX(-105%); transition: transform 0.22s ease; padding: 22px; box-shadow: 24px 0 70px rgba(0,0,0,0.45); }
-    .side-drawer.open { transform: translateX(0); }
-    .drawer-title { color: #fff; font-weight: 800; font-size: 1.2rem; margin-bottom: 8px; }
-    .drawer-sub { color: #64748b; font-size: 0.82rem; margin-bottom: 18px; }
-    .drawer-link { display: flex; justify-content: space-between; align-items: center; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); padding: 12px 13px; border-radius: 12px; margin-bottom: 9px; cursor: pointer; }
-    .drawer-link:hover { border-color: rgba(99,102,241,0.35); color: #fff; }
-    .hamburger { border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: #fff; border-radius: 10px; width: 42px; height: 42px; font-size: 1.2rem; cursor: pointer; }
-    .section-pill { color: #818cf8; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; margin-left: auto; }
-    .stock-carousel-controls { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:8px; color:#64748b; font-size:0.75rem; }
-    .carousel-dot { width:6px; height:6px; border-radius:999px; background:rgba(255,255,255,0.18); }
-    .carousel-dot.active { background:#818cf8; box-shadow:0 0 8px #818cf8; }
-    @media (max-width: 1180px) { .sketch-layout { grid-template-columns: 1fr; height: auto; min-height: auto; } .dash-col.left, .dash-col.right, .dash-col.center { grid-template-rows: none; height:auto; } .dash-card { max-height: none; } }
     @media (max-width: 760px) { .wrapper { padding: 14px 12px; } header { align-items:flex-start; } .header-right { width:100%; justify-content:space-between; } }
     .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.24); background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(7,7,16,0.72) 45%, rgba(74,222,128,0.06)); border-radius: 22px; padding: 22px; margin-bottom: 18px; box-shadow: 0 0 50px rgba(99,102,241,0.08); }
     .mission::after { content: ''; position: absolute; inset: -40% -10% auto auto; width: 360px; height: 360px; background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 62%); pointer-events: none; }
@@ -93,8 +72,6 @@
     .status-dot.green { background: var(--green); color: var(--green); }
     .status-dot.yellow { background: var(--yellow); color: var(--yellow); }
     .status-dot.red { background: var(--red); color: var(--red); }
-    .agent-strip { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 6px; margin-top: 9px; }
-    .agent-strip span { border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.035); color: #94a3b8; border-radius: 999px; padding: 6px 7px; text-align: center; font-size: 0.66rem; font-weight: 700; }
     .card { background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.026)); border: 1px solid var(--border); border-radius: 16px; padding: 13px; backdrop-filter: blur(18px); transition: border-color 0.2s, transform 0.2s; box-shadow: 0 12px 40px rgba(0,0,0,0.14); }
     .card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-1px); }
     .card h2 { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.105em; color: #94a3b8; margin-bottom: 10px; display: flex; align-items: center; gap: 7px; white-space: nowrap; }
@@ -163,7 +140,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 1:37PM EST · side tab opens in-depth views</div>
+        <div class="header-sub">Lewis Roberts · May 13, 1:37PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -374,12 +351,12 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.15</span><br><small style="color:var(--green);font-size:0.72rem">+18.26</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.89</span><br><small style="color:var(--green);font-size:0.72rem">+8.79</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.16</span><br><small style="color:var(--green);font-size:0.72rem">+18.27</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.93</span><br><small style="color:var(--green);font-size:0.72rem">+8.83</small></span></div>
 <div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.34</span><br><small style="color:var(--green);font-size:0.72rem">+4.67</small></span></div>
 <div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.28</span><br><small style="color:var(--green);font-size:0.72rem">+10.36</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£51.14</span><br><small style="color:var(--green);font-size:0.72rem">+19.58</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.51</span><br><small style="color:var(--red);font-size:0.72rem">-0.42</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£51.18</span><br><small style="color:var(--green);font-size:0.72rem">+19.62</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.52</span><br><small style="color:var(--red);font-size:0.72rem">-0.41</small></span></div>
 <div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.42</span><br><small style="color:var(--green);font-size:0.72rem">+9.50</small></span></div>
 
     </div>
@@ -580,12 +557,6 @@
     }
     updateClock();
     setInterval(updateClock, 1000);
-
-    function toggleDrawer(force) {
-      const drawer = document.getElementById('sideDrawer');
-      const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
-      drawer.classList.toggle('open', open);
-    }
 
     function showPage(page, btn) {
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
