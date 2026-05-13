@@ -42,6 +42,25 @@
     .nav-tab.active { background: rgba(99,102,241,0.18); border-color: rgba(99,102,241,0.45); color: #fff; box-shadow: 0 0 18px rgba(99,102,241,0.12); }
     .page-card { display: none; }
     .page-card.active { display: block; }
+    .sketch-layout { display: grid; grid-template-columns: 0.9fr 1.25fr 0.9fr; gap: 16px; align-items: start; }
+    .dash-col { display: grid; gap: 16px; }
+    .dash-card { min-height: 0; }
+    .dash-card.primary { min-height: 260px; }
+    .dash-card.mission-card { min-height: 300px; }
+    .card-compact-scroll { max-height: 280px; overflow: auto; padding-right: 4px; }
+    .side-drawer { position: fixed; top: 0; left: 0; bottom: 0; width: min(360px, 86vw); background: rgba(8,8,19,0.96); border-right: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(20px); z-index: 50; transform: translateX(-105%); transition: transform 0.22s ease; padding: 22px; box-shadow: 24px 0 70px rgba(0,0,0,0.45); }
+    .side-drawer.open { transform: translateX(0); }
+    .drawer-title { color: #fff; font-weight: 800; font-size: 1.2rem; margin-bottom: 8px; }
+    .drawer-sub { color: #64748b; font-size: 0.82rem; margin-bottom: 18px; }
+    .drawer-link { display: flex; justify-content: space-between; align-items: center; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); padding: 12px 13px; border-radius: 12px; margin-bottom: 9px; cursor: pointer; }
+    .drawer-link:hover { border-color: rgba(99,102,241,0.35); color: #fff; }
+    .hamburger { border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: #fff; border-radius: 10px; width: 42px; height: 42px; font-size: 1.2rem; cursor: pointer; }
+    .section-pill { color: #818cf8; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; margin-left: auto; }
+    .stock-carousel-controls { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:10px; color:#64748b; font-size:0.75rem; }
+    .carousel-dot { width:6px; height:6px; border-radius:999px; background:rgba(255,255,255,0.18); }
+    .carousel-dot.active { background:#818cf8; box-shadow:0 0 8px #818cf8; }
+    @media (max-width: 1100px) { .sketch-layout { grid-template-columns: 1fr 1fr; } .dash-col.center { grid-column: 1 / -1; grid-row: 1; } }
+    @media (max-width: 760px) { .sketch-layout { grid-template-columns: 1fr; } .dash-col.center { grid-column:auto; } }
     .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.24); background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(7,7,16,0.72) 45%, rgba(74,222,128,0.06)); border-radius: 22px; padding: 22px; margin-bottom: 18px; box-shadow: 0 0 50px rgba(99,102,241,0.08); }
     .mission::after { content: ''; position: absolute; inset: -40% -10% auto auto; width: 360px; height: 360px; background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 62%); pointer-events: none; }
     .mission::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,0.018) 19px); opacity: 0.45; pointer-events: none; }
@@ -132,13 +151,23 @@
   </style>
 </head>
 <body>
+<div class="side-drawer" id="sideDrawer">
+  <div class="drawer-title">Deep View</div>
+  <div class="drawer-sub">Jump into a focused section. This is the base for full detail pages.</div>
+  <div class="drawer-link" onclick="showPage('overview'); toggleDrawer(false)">Overview <span>↗</span></div>
+  <div class="drawer-link" onclick="showPage('business'); toggleDrawer(false)">Business <span>↗</span></div>
+  <div class="drawer-link" onclick="showPage('finance'); toggleDrawer(false)">Finance <span>↗</span></div>
+  <div class="drawer-link" onclick="showPage('taskforce'); toggleDrawer(false)">Taskforce <span>↗</span></div>
+  <div class="drawer-link" onclick="showPage('calendar'); toggleDrawer(false)">Calendar <span>↗</span></div>
+</div>
 <div class="wrapper">
   <header>
     <div class="header-left">
+      <button class="hamburger" onclick="toggleDrawer()">☰</button>
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 12:46PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 12:56PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -173,37 +202,231 @@
       </div>
     </div>
   </section>
-  <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('overview', this)">Overview</button>
-    <button class="nav-tab" onclick="showPage('business', this)">Business</button>
-    <button class="nav-tab" onclick="showPage('finance', this)">Finance</button>
-    <button class="nav-tab" onclick="showPage('taskforce', this)">Taskforce</button>
-    <button class="nav-tab" onclick="showPage('calendar', this)">Calendar</button>
-    <button class="nav-tab" onclick="showPage('all', this)">All</button>
-  </div>
-  <div class="grid">
-    <div class="card page-card active" data-pages="overview business">
-      <h2><span class="icon">📦</span> US Inventory</h2>
-      <div class="stat-row">
-        <div class="stat"><div class="num">3</div><div class="lbl">In Stock</div></div>
-        <div class="stat"><div class="num green">$66.10</div><div class="lbl">Profit</div></div>
-        <div class="stat"><div class="num red">$-3.77</div><div class="lbl">Overall P&L</div></div>
-      </div>
-      <div class="item"><span class="label">Essentials shorts — Black M</span><span class="badge red">sold out</span></div>
-<div class="item"><span class="label">Essentials shorts — Dark Oatmeal M</span><span class="badge green">×2</span></div>
-<div class="item"><span class="label">Essentials shorts — Light Oatmeal M</span><span class="badge ">×1</span></div>
-<div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
-
-    </div>
-    <div class="card page-card active" data-pages="overview calendar">
-      <h2><span class="icon">📅</span> Today's Schedule</h2>
-      <div class="time-block"><div class="time">9:00am–9:50am</div><div class="event">Mathematical thinking</div></div>
+  <div class="sketch-layout">
+    <div class="dash-col left">
+      <div class="card dash-card page-card active" data-pages="overview calendar">
+        <h2><span class="icon">📅</span> Today's Schedule <span class="section-pill">Ops</span></h2>
+        <div class="card-compact-scroll"><div class="time-block"><div class="time">9:00am–9:50am</div><div class="event">Mathematical thinking</div></div>
 <div class="time-block"><div class="time">2:30pm–2:45pm</div><div class="event">Odyssey annotations resolution</div></div>
-
+</div>
+      </div>
+      <div class="card dash-card page-card active" data-pages="overview">
+        <h2><span class="icon">📧</span> Email <span class="section-pill">Inbox</span></h2>
+        <div class="card-compact-scroll"><div class="email-item" id="email-OpenClaw_Automation_Socie_OpenClaw_Automation_">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('OpenClaw_Automation_Socie_OpenClaw_Automation_')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">OpenClaw Automation Society membership approved</div>
+    <div class="email-sender">OpenClaw Automation Socie</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Skool_1973_is_your_Skool_v">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Skool_1973_is_your_Skool_v')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">1973 is your Skool verification code</div>
+    <div class="email-sender">Skool</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Lyft_Receipts_Your_ride_with_Carlo">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Lyft_Receipts_Your_ride_with_Carlo')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your ride with Carlos on May 12</div>
+    <div class="email-sender">Lyft Receipts</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Leah_Letchford_Get_started_with_you">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Leah_Letchford_Get_started_with_you')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Get started with your OCI Free Tier!</div>
+    <div class="email-sender">Leah Letchford</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Uber_Receipts_Your_Tuesday_evening">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Uber_Receipts_Your_Tuesday_evening')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your Tuesday evening trip with Uber</div>
+    <div class="email-sender">Uber Receipts</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Grammarly_Pro_for_only_$72_(th">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Grammarly_Pro_for_only_$72_(th')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Pro for only $72 (that’s 50% off)! 💸</div>
+    <div class="email-sender">Grammarly</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+</div>
+      </div>
+      <div class="card dash-card page-card active" data-pages="business">
+        <h2><span class="icon">🇬🇧</span> Active Listings <span class="section-pill">eBay</span></h2>
+        <div class="stat-row">
+          <div class="stat"><div class="num">8</div><div class="lbl">Active</div></div>
+          <div class="stat"><div class="num green">8</div><div class="lbl">Listed</div></div>
+          <div class="stat"><div class="num yellow">👀 15</div><div class="lbl">Watchers</div></div>
+        </div>
+        <div class="card-compact-scroll"><div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127850321164" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127850321625" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-1-Men-s-Triple-White-Brand-New-With-Box-Size-Uk-9-/127850323379" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One 1 Men’s Triple White Brand New With Box Size Uk 9</a><br><small style="color:#555">UK-AF1-WHITE-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 4</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-10-Nike-Air-Force-1-White-/127850327879" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 10 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 4</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/nike-air-force-one-black-uk-8-5-/127850331076" target="_blank" style="color:#cbd5e1;text-decoration:none">nike air force one black uk 8.5</a><br><small style="color:#555">UK-AF1-BLACK-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127850409346" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-002 · £38 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127854055011" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-002 · £35 · qty 1</small></span><span class="badge green">👀 3</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-8-5-Nike-Air-Force-1-White-/127855760157" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 8.5 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
+</div>
+      </div>
     </div>
-    <div class="card page-card active" data-pages="overview">
-      <h2><span class="icon">✅</span> To-Do List</h2>
-      <div class="email-item" id="task-Buy_stock_for_back_home">
+
+    <div class="dash-col center">
+      <div class="card dash-card primary page-card active" data-pages="calendar">
+        <h2><span class="icon">🗓️</span> Calendar <span class="section-pill">7 days</span></h2>
+        <div class="cal-grid"><div class="cal-day today">
+  <div class="cal-header">
+    <span class="cal-dow">Wed</span>
+    <span class="cal-date">13 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">2:30pm Odyssey annotations re</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Thu</span>
+    <span class="cal-date">14 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">1:00pm Modern European Histor</div><div class="cal-event">2:30pm American History Since</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Fri</span>
+    <span class="cal-date">15 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Sat</span>
+    <span class="cal-date">16 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-empty">—</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Sun</span>
+    <span class="cal-date">17 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-empty">—</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Mon</span>
+    <span class="cal-date">18 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">1:00pm Modern European Histor</div><div class="cal-event">2:30pm American History Since</div></div>
+</div>
+<div class="cal-day ">
+  <div class="cal-header">
+    <span class="cal-dow">Tue</span>
+    <span class="cal-date">19 May</span>
+  </div>
+  <div class="cal-events"><div class="cal-event">All day Final exam for America</div></div>
+</div>
+</div>
+      </div>
+      <div class="mission dash-card mission-card page-card active" data-pages="overview taskforce">
+        <div class="mission-top">
+          <div>
+            <div class="mission-kicker">Mission Control</div>
+            <div class="mission-title">Ultron systems online</div>
+            <div class="mission-sub">3 action(s) need attention · next event: 2:30pm · Odyssey annotations resolution</div>
+            <div class="mission-metrics">
+              <div class="mission-metric"><div class="big">3</div><div class="tiny">Actions</div></div>
+              <div class="mission-metric"><div class="big">6</div><div class="tiny">Agents</div></div>
+              <div class="mission-metric"><div class="big">2</div><div class="tiny">Events</div></div>
+            </div>
+          </div>
+          <div class="mission-side">
+            <div class="ultron-core">
+              <div class="core-ring"><div class="core-eye">🤖</div></div>
+              <div class="core-copy"><strong>Ultron Core</strong><span>All systems online</span></div>
+            </div>
+            <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>12 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>15 watcher(s) across UK listings</small></div></div></div>
+          </div>
+        </div>
+        <div class="agent-grid" style="margin-top:14px"><div class="agent-card">
+  <div class="agent-avatar">🛡️</div>
+  <div class="agent-name">Sentinel</div>
+  <div class="agent-role">Ops Agent</div>
+  <div class="agent-desc">Calendar, reminders, daily reports, dashboard checks</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">🏦</div>
+  <div class="agent-name">Vault</div>
+  <div class="agent-role">Inventory Agent</div>
+  <div class="agent-desc">US/UK stock, sales logs, listings, reorder flags</div>
+  <div class="agent-activity">Last: inventory audit today</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">📊</div>
+  <div class="agent-name">Ledger</div>
+  <div class="agent-role">Finance Agent</div>
+  <div class="agent-desc">Trading 212, Chase alerts, P/L watch, budgets</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">🛰️</div>
+  <div class="agent-name">Scout</div>
+  <div class="agent-role">Research Agent</div>
+  <div class="agent-desc">Web research, sourcing, scholarships, comparisons</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">✒️</div>
+  <div class="agent-name">Scribe</div>
+  <div class="agent-role">Writing Agent</div>
+  <div class="agent-desc">Emails, listings, essays, posts, human writing</div>
+  <div class="agent-activity">Last: ready</div>
+</div>
+<div class="agent-card">
+  <div class="agent-avatar">⚒️</div>
+  <div class="agent-name">Forge</div>
+  <div class="agent-role">Builder Agent</div>
+  <div class="agent-desc">Dashboard, code, automation, tooling fixes</div>
+  <div class="agent-activity">Last: dashboard check today</div>
+</div>
+</div>
+      </div>
+      <div class="card dash-card page-card active" data-pages="finance business">
+        <h2><span class="icon">📈</span> P/L Chart <span class="section-pill">2026</span></h2>
+        <canvas id="plChart" height="70"></canvas>
+      </div>
+    </div>
+
+    <div class="dash-col right">
+      <div class="card dash-card page-card active" data-pages="overview">
+        <h2><span class="icon">✅</span> To-do List <span class="section-pill">Tasks</span></h2>
+        <div class="card-compact-scroll"><div class="email-item" id="task-Buy_stock_for_back_home">
   <label class="email-check">
     <input type="checkbox" onchange="dismissTask('Buy_stock_for_back_home')">
     <span class="checkmark"></span>
@@ -258,127 +481,20 @@
 <div class="email-item" id="task-eBay_API_approval_-_check"><label class="email-check"><input type="checkbox" onchange="dismissTask('eBay_API_approval_-_check')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">eBay API approval - check tomorrow</div><div class="email-sender">Applied today</div></div></div>
 <div class="email-item" id="task-Wed_2:30pm_-_Andrew_Humph"><label class="email-check"><input type="checkbox" onchange="dismissTask('Wed_2:30pm_-_Andrew_Humph')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Wed 2:30pm - Andrew Humphries meeting</div><div class="email-sender">Odyssey annotations</div></div></div>
 <div class="email-item" id="task-Plan_UK_stock_order_(1-2k"><label class="email-check"><input type="checkbox" onchange="dismissTask('Plan_UK_stock_order_(1-2k')"><span class="checkmark"></span></label><div class="email-body"><div class="email-subject">Plan UK stock order (1-2k Essentials)</div><div class="email-sender">For summer</div></div></div>
-
-    </div>
-    <div class="card page-card active" data-pages="overview">
-      <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-Lyft_Receipts_Your_ride_with_Carlo">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Lyft_Receipts_Your_ride_with_Carlo')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Your ride with Carlos on May 12</div>
-    <div class="email-sender">Lyft Receipts</div>
-  </div>
-  <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-Leah_Letchford_Get_started_with_you">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Leah_Letchford_Get_started_with_you')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Get started with your OCI Free Tier!</div>
-    <div class="email-sender">Leah Letchford</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Uber_Receipts_Your_Tuesday_evening">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Uber_Receipts_Your_Tuesday_evening')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Your Tuesday evening trip with Uber</div>
-    <div class="email-sender">Uber Receipts</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Grammarly_Pro_for_only_$72_(th">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Grammarly_Pro_for_only_$72_(th')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Pro for only $72 (that’s 50% off)! 💸</div>
-    <div class="email-sender">Grammarly</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Chase_We_posted_a_new_noti">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Chase_We_posted_a_new_noti')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">We posted a new notice for your account</div>
-    <div class="email-sender">Chase</div>
-  </div>
-  
-</div>
-<div class="email-item" id="email-Uber_Receipts_Your_Tuesday_evening">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Uber_Receipts_Your_Tuesday_evening')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Your Tuesday evening trip with Uber</div>
-    <div class="email-sender">Uber Receipts</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-
-    </div>
-    <div class="card page-card" data-pages="business">
-      <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
-      <div class="stat-row">
-        <div class="stat"><div class="num">20</div><div class="lbl">In Stock</div></div>
-        <div class="stat"><div class="num green">£800.00</div><div class="lbl">Potential Rev</div></div>
-        <div class="stat"><div class="num green">£0.00</div><div class="lbl">Profit Made</div></div>
       </div>
-      <div class="item"><span class="label">Nike Air Force 1 — Various Various<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge green">×20</span></div>
-
-    </div>
-    <div class="card page-card" data-pages="finance">
-      <h2><span class="icon">📈</span> Trading 212 — Live</h2>
-      <div class="stat-row">
-        <div class="stat"><div class="num">£1322.49</div><div class="lbl">Total Value</div></div>
-        <div class="stat"><div class="num green">£102.52</div><div class="lbl">Unrealized</div></div>
-        <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
-      </div>
-      <div class="item"><span class="label">Available cash</span><span class="badge">£0.01</span></div>
-      <div class="item"><span class="label">Realized P/L</span><span class="badge green">£3.21</span></div>
-      <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.09</span><br><small style="color:var(--green);font-size:0.72rem">+18.20</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.70</span><br><small style="color:var(--green);font-size:0.72rem">+8.60</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.65</span><br><small style="color:var(--green);font-size:0.72rem">+4.98</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.43</span><br><small style="color:var(--green);font-size:0.72rem">+10.51</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.62</span><br><small style="color:var(--green);font-size:0.72rem">+19.06</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.25</span><br><small style="color:var(--red);font-size:0.72rem">-0.68</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.29</span><br><small style="color:var(--green);font-size:0.72rem">+9.37</small></span></div>
-
-    </div>
-    <div class="card full-width page-card" data-pages="business">
-      <h2><span class="icon">🇬🇧</span> Active eBay Listings — UK Stock</h2>
-      <div class="stat-row">
-        <div class="stat"><div class="num">8</div><div class="lbl">Active</div></div>
-        <div class="stat"><div class="num green">8</div><div class="lbl">Qty Listed</div></div>
-        <div class="stat"><div class="num yellow">👀 15</div><div class="lbl">Watchers</div></div>
-      </div>
-      <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127850321164" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127850321625" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-1-Men-s-Triple-White-Brand-New-With-Box-Size-Uk-9-/127850323379" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One 1 Men’s Triple White Brand New With Box Size Uk 9</a><br><small style="color:#555">UK-AF1-WHITE-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 4</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-10-Nike-Air-Force-1-White-/127850327879" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 10 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 4</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/nike-air-force-one-black-uk-8-5-/127850331076" target="_blank" style="color:#cbd5e1;text-decoration:none">nike air force one black uk 8.5</a><br><small style="color:#555">UK-AF1-BLACK-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127850409346" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-002 · £38 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127854055011" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-002 · £35 · qty 1</small></span><span class="badge green">👀 3</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-8-5-Nike-Air-Force-1-White-/127855760157" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 8.5 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
-
-    </div>
-    <div class="card page-card" data-pages="business">
-      <h2><span class="icon">💰</span> Sales Log (US)</h2>
-      <div class="item">
+      <div class="card dash-card page-card active" data-pages="business">
+        <h2><span class="icon">📦</span> Stock / Sales Log <span class="section-pill">Carousel</span></h2>
+        <div class="stat-row">
+          <div class="stat"><div class="num">3</div><div class="lbl">US Stock</div></div>
+          <div class="stat"><div class="num">20</div><div class="lbl">UK Stock</div></div>
+          <div class="stat"><div class="num green">$66</div><div class="lbl">Profit</div></div>
+        </div>
+        <div class="card-compact-scroll"><div class="item"><span class="label">Essentials shorts — Black M</span><span class="badge red">sold out</span></div>
+<div class="item"><span class="label">Essentials shorts — Dark Oatmeal M</span><span class="badge green">×2</span></div>
+<div class="item"><span class="label">Essentials shorts — Light Oatmeal M</span><span class="badge ">×1</span></div>
+<div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
+<div class="item">
   <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
   <span style="display:flex;gap:8px;align-items:center">
     <span style="color:#888;font-size:0.8rem;background:#1a1a1a;padding:2px 7px;border-radius:5px;color:#888">Other</span>
@@ -406,117 +522,28 @@
     <span style="color:#4ade80;font-weight:600">$16.00</span>
   </span>
 </div>
-
-    </div>
-    <div class="card full-width page-card" data-pages="finance">
-      <h2><span class="icon">📈</span> P&L Chart — 2026</h2>
-      <canvas id="plChart" height="80"></canvas>
-    </div>
-  </div>
-  <div class="card full-width page-card" data-pages="taskforce" style="margin-top:16px">
-    <h2><span class="icon">🤖</span> Ultron Taskforce</h2>
-    <div class="agent-grid">
-      <div class="agent-card">
-  <div class="agent-avatar">🛡️</div>
-  <div class="agent-name">Sentinel</div>
-  <div class="agent-role">Ops Agent</div>
-  <div class="agent-desc">Calendar, reminders, daily reports, dashboard checks</div>
-  <div class="agent-activity">Last: ready</div>
 </div>
-<div class="agent-card">
-  <div class="agent-avatar">🏦</div>
-  <div class="agent-name">Vault</div>
-  <div class="agent-role">Inventory Agent</div>
-  <div class="agent-desc">US/UK stock, sales logs, listings, reorder flags</div>
-  <div class="agent-activity">Last: inventory audit today</div>
+        <div class="stock-carousel-controls"><span>‹</span><span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span>›</span></div>
+      </div>
+      <div class="card dash-card page-card active" data-pages="finance">
+        <h2><span class="icon">📈</span> Trading 212 <span class="section-pill">Grouped</span></h2>
+        <div class="stat-row">
+          <div class="stat"><div class="num">£1324</div><div class="lbl">Value</div></div>
+          <div class="stat"><div class="num green">£104</div><div class="lbl">Unreal</div></div>
+          <div class="stat"><div class="num green">57</div><div class="lbl">Pos</div></div>
+        </div>
+        <div class="card-compact-scroll"><div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.43</span><br><small style="color:var(--green);font-size:0.72rem">+18.54</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.70</span><br><small style="color:var(--green);font-size:0.72rem">+8.60</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.63</span><br><small style="color:var(--green);font-size:0.72rem">+4.96</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.48</span><br><small style="color:var(--green);font-size:0.72rem">+10.56</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.92</span><br><small style="color:var(--green);font-size:0.72rem">+19.36</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.46</span><br><small style="color:var(--red);font-size:0.72rem">-0.47</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.34</span><br><small style="color:var(--green);font-size:0.72rem">+9.42</small></span></div>
 </div>
-<div class="agent-card">
-  <div class="agent-avatar">📊</div>
-  <div class="agent-name">Ledger</div>
-  <div class="agent-role">Finance Agent</div>
-  <div class="agent-desc">Trading 212, Chase alerts, P/L watch, budgets</div>
-  <div class="agent-activity">Last: ready</div>
-</div>
-<div class="agent-card">
-  <div class="agent-avatar">🛰️</div>
-  <div class="agent-name">Scout</div>
-  <div class="agent-role">Research Agent</div>
-  <div class="agent-desc">Web research, sourcing, scholarships, comparisons</div>
-  <div class="agent-activity">Last: ready</div>
-</div>
-<div class="agent-card">
-  <div class="agent-avatar">✒️</div>
-  <div class="agent-name">Scribe</div>
-  <div class="agent-role">Writing Agent</div>
-  <div class="agent-desc">Emails, listings, essays, posts, human writing</div>
-  <div class="agent-activity">Last: ready</div>
-</div>
-<div class="agent-card">
-  <div class="agent-avatar">⚒️</div>
-  <div class="agent-name">Forge</div>
-  <div class="agent-role">Builder Agent</div>
-  <div class="agent-desc">Dashboard, code, automation, tooling fixes</div>
-  <div class="agent-activity">Last: dashboard check today</div>
-</div>
-
+      </div>
     </div>
   </div>
-  <div class="card full-width page-card" data-pages="calendar" style="margin-top:4px">
-    <h2><span class="icon">🗓️</span> 7-Day Calendar</h2>
-    <div class="cal-grid">
-      <div class="cal-day today">
-  <div class="cal-header">
-    <span class="cal-dow">Wed</span>
-    <span class="cal-date">13 May</span>
-  </div>
-  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">2:30pm Odyssey annotations re</div></div>
-</div>
-<div class="cal-day ">
-  <div class="cal-header">
-    <span class="cal-dow">Thu</span>
-    <span class="cal-date">14 May</span>
-  </div>
-  <div class="cal-events"><div class="cal-event">1:00pm Modern European Histor</div><div class="cal-event">2:30pm American History Since</div></div>
-</div>
-<div class="cal-day ">
-  <div class="cal-header">
-    <span class="cal-dow">Fri</span>
-    <span class="cal-date">15 May</span>
-  </div>
-  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div></div>
-</div>
-<div class="cal-day ">
-  <div class="cal-header">
-    <span class="cal-dow">Sat</span>
-    <span class="cal-date">16 May</span>
-  </div>
-  <div class="cal-events"><div class="cal-empty">—</div></div>
-</div>
-<div class="cal-day ">
-  <div class="cal-header">
-    <span class="cal-dow">Sun</span>
-    <span class="cal-date">17 May</span>
-  </div>
-  <div class="cal-events"><div class="cal-empty">—</div></div>
-</div>
-<div class="cal-day ">
-  <div class="cal-header">
-    <span class="cal-dow">Mon</span>
-    <span class="cal-date">18 May</span>
-  </div>
-  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">1:00pm Modern European Histor</div><div class="cal-event">2:30pm American History Since</div></div>
-</div>
-<div class="cal-day ">
-  <div class="cal-header">
-    <span class="cal-dow">Tue</span>
-    <span class="cal-date">19 May</span>
-  </div>
-  <div class="cal-events"><div class="cal-event">All day Final exam for America</div></div>
-</div>
-
-    </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const ctx = document.getElementById('plChart').getContext('2d');
@@ -556,6 +583,12 @@
     }
     updateClock();
     setInterval(updateClock, 1000);
+
+    function toggleDrawer(force) {
+      const drawer = document.getElementById('sideDrawer');
+      const open = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
+      drawer.classList.toggle('open', open);
+    }
 
     function showPage(page, btn) {
       document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
