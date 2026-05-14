@@ -197,7 +197,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 14, 3:08PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 14, 3:14PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -482,13 +482,13 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£363.39</span><br><small style="color:var(--green);font-size:0.72rem">+34.29</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.26</span><br><small style="color:var(--green);font-size:0.72rem">+18.37</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.12</span><br><small style="color:var(--green);font-size:0.72rem">+9.02</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.78</span><br><small style="color:var(--green);font-size:0.72rem">+6.11</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.40</span><br><small style="color:var(--green);font-size:0.72rem">+13.48</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£54.55</span><br><small style="color:var(--green);font-size:0.72rem">+22.99</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.09</span><br><small style="color:var(--green);font-size:0.72rem">+0.16</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.64</span><br><small style="color:var(--green);font-size:0.72rem">+9.72</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.32</span><br><small style="color:var(--green);font-size:0.72rem">+18.43</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.14</span><br><small style="color:var(--green);font-size:0.72rem">+9.04</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.75</span><br><small style="color:var(--green);font-size:0.72rem">+6.08</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.31</span><br><small style="color:var(--green);font-size:0.72rem">+13.39</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£54.43</span><br><small style="color:var(--green);font-size:0.72rem">+22.87</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.05</span><br><small style="color:var(--green);font-size:0.72rem">+0.12</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.65</span><br><small style="color:var(--green);font-size:0.72rem">+9.73</small></span></div>
 
     </div>
 
@@ -964,17 +964,23 @@
         return;
       }
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
         audioChunks = [];
-        mediaRecorder = new MediaRecorder(stream);
+        const preferredTypes = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'];
+        const mimeType = preferredTypes.find(t => window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t)) || '';
+        mediaRecorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
         mediaRecorder.ondataavailable = event => { if (event.data && event.data.size) audioChunks.push(event.data); };
         mediaRecorder.onstop = () => {
           stream.getTracks().forEach(track => track.stop());
-          const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
-          clearVoiceListeningState('Audio captured. Sending…');
+          const blob = new Blob(audioChunks, { type: mediaRecorder.mimeType || mimeType || 'audio/webm' });
+          if (blob.size < 1500) {
+            clearVoiceListeningState('Recording was too small/empty. Try speaking closer to the mic.');
+            return;
+          }
+          clearVoiceListeningState('Audio captured (' + Math.round(blob.size / 1024) + 'KB). Sending…');
           sendVoiceAudio(blob);
         };
-        mediaRecorder.start();
+        mediaRecorder.start(1000);
         setVoiceListeningState('Recording audio… press Stop when done.');
         setTimeout(() => { try { if (mediaRecorder && mediaRecorder.state === 'recording') mediaRecorder.stop(); } catch (e) {} }, 30000);
       } catch (err) {
