@@ -109,6 +109,11 @@
     .status-dot.green { background: var(--green); color: var(--green); }
     .status-dot.yellow { background: var(--yellow); color: var(--yellow); }
     .status-dot.red { background: var(--red); color: var(--red); }
+    .focus-strip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .focus-card { border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.035); border-radius:14px; padding:12px 14px; min-height:86px; }
+    .focus-card small { display:block; color:#64748b; text-transform:uppercase; letter-spacing:.08em; font-size:.64rem; margin-bottom:7px; }
+    .focus-card strong { display:block; color:#f8fafc; font-size:.92rem; line-height:1.25; }
+    .focus-card span { display:block; color:#94a3b8; font-size:.76rem; line-height:1.35; margin-top:5px; }
     .card { background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.026)); border: 1px solid var(--border); border-radius: 16px; padding: 13px; backdrop-filter: blur(18px); transition: border-color 0.2s, transform 0.2s; box-shadow: 0 12px 40px rgba(0,0,0,0.14); }
     .card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-1px); }
     .card h2 { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.105em; color: #94a3b8; margin-bottom: 10px; display: flex; align-items: center; gap: 7px; white-space: nowrap; }
@@ -167,7 +172,7 @@
     .agent-role { position: relative; z-index: 1; color: #818cf8; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
     .agent-desc { position: relative; z-index: 1; color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
     .agent-activity { position: relative; z-index: 1; color: var(--green); font-size: 0.68rem; margin-top: 10px; }
-    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } }
+    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } .evo-agents { grid-template-columns:1fr; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
@@ -180,7 +185,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 14, 3:23PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 14, 4:02PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -208,7 +213,7 @@
           <div class="core-ring"><div class="core-eye">🤖</div></div>
           <div class="core-copy"><strong>Ultron Core</strong><span>All systems online</span></div>
         </div>
-        <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>4 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>9 watcher(s) across UK listings</small></div></div></div>
+        <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>2 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>9 watcher(s) across UK listings</small></div></div></div>
       </div>
     </div>
   </section>
@@ -224,6 +229,9 @@
 
   <div class="grid">
 
+    <div class="focus-strip page-card active" data-pages="overview">
+      <div class="focus-card"><small>next move</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="focus-card"><small>stock focus</small><strong>UK eBay coverage</strong><span>2 unlisted · 9 watcher(s)</span></div><div class="focus-card"><small>time focus</small><strong>Next calendar item</strong><span>No more events today</span></div>
+    </div>
 
     <div class="business-four page-card active" data-pages="overview business">
     <div class="card" data-pages="overview business">
@@ -275,15 +283,15 @@
       <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">17</div><div class="lbl">In Stock</div></div>
-        <div class="stat"><div class="num">4</div><div class="lbl">Unlisted</div></div>
+        <div class="stat"><div class="num">2</div><div class="lbl">Unlisted</div></div>
         <div class="stat"><div class="num green">£680</div><div class="lbl">Potential</div></div>
       </div>
-      <div class="item"><span class="label">Nike Air Force 1 — Black UK 8.5<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — Black UK 9<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×3</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — Black UK 10<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×3</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — White UK 8.5<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×4</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — White UK 9<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge red">sold out</span></div>
-<div class="item"><span class="label">Nike Air Force 1 — White UK 10<br><small style="color:#555">Cost: £0.00 · List: £40.00 · Profit/unit: £40.00</small></span><span class="badge yellow">×3</span></div>
+      <div class="item"><span class="label">Nike Air Force 1 — Black UK 8.5<br><small style="color:#64748b">Listed: 3 · Unlisted: 1 · List: £40</small></span><span class="badge yellow">×4</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — Black UK 9<br><small style="color:#64748b">Listed: 2 · Unlisted: 1 · List: £40</small></span><span class="badge yellow">×3</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — Black UK 10<br><small style="color:#64748b">Listed: 3 · Unlisted: 0 · List: £40</small></span><span class="badge yellow">×3</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — White UK 8.5<br><small style="color:#64748b">Listed: 3 · Unlisted: 1 · List: £40</small></span><span class="badge yellow">×4</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — White UK 9<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £40</small></span><span class="badge red">sold out</span></div>
+<div class="item"><span class="label">Nike Air Force 1 — White UK 10<br><small style="color:#64748b">Listed: 2 · Unlisted: 1 · List: £40</small></span><span class="badge yellow">×3</span></div>
 
     </div>
     <div class="card" data-pages="business">
@@ -385,7 +393,18 @@
 
     <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-PizzaExpress_The_weekend_is_calli">
+      <div class="email-item" id="email-eBay_🏷️_Nike_Air_Force_1.">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('eBay_🏷️_Nike_Air_Force_1.')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">🏷️ Nike Air Force 1... has been listed</div>
+    <div class="email-sender">eBay</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-PizzaExpress_The_weekend_is_calli">
   <label class="email-check">
     <input type="checkbox" onchange="dismissEmail('PizzaExpress_The_weekend_is_calli')">
     <span class="checkmark"></span>
@@ -440,17 +459,6 @@
   </div>
   <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-Grammarly_Clear,_confident_wri">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Grammarly_Clear,_confident_wri')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Clear, confident writing for $72 a year 🪄</div>
-    <div class="email-sender">Grammarly</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
 
     </div>
 
@@ -459,26 +467,26 @@
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1347</div><div class="lbl">Value</div></div>
-        <div class="stat"><div class="num green">£127</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num">£1346</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num green">£126</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£363.39</span><br><small style="color:var(--green);font-size:0.72rem">+34.29</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.44</span><br><small style="color:var(--green);font-size:0.72rem">+18.55</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.19</span><br><small style="color:var(--green);font-size:0.72rem">+9.09</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.81</span><br><small style="color:var(--green);font-size:0.72rem">+6.14</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.32</span><br><small style="color:var(--green);font-size:0.72rem">+13.40</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£54.67</span><br><small style="color:var(--green);font-size:0.72rem">+23.11</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.09</span><br><small style="color:var(--green);font-size:0.72rem">+0.16</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.70</span><br><small style="color:var(--green);font-size:0.72rem">+9.78</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.18</span><br><small style="color:var(--green);font-size:0.72rem">+18.29</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.03</span><br><small style="color:var(--green);font-size:0.72rem">+8.93</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.77</span><br><small style="color:var(--green);font-size:0.72rem">+6.10</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.40</span><br><small style="color:var(--green);font-size:0.72rem">+13.48</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£53.56</span><br><small style="color:var(--green);font-size:0.72rem">+22.00</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.17</span><br><small style="color:var(--green);font-size:0.72rem">+0.24</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.73</span><br><small style="color:var(--green);font-size:0.72rem">+9.81</small></span></div>
 
     </div>
 
     <div class="card full-width page-card" data-pages="business">
       <h2><span class="icon">📦</span> Active eBay Listings</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">13</div><div class="lbl">Active</div></div>
-        <div class="stat"><div class="num green">13</div><div class="lbl">Listed Qty</div></div>
+        <div class="stat"><div class="num">15</div><div class="lbl">Active</div></div>
+        <div class="stat"><div class="num green">15</div><div class="lbl">Listed Qty</div></div>
         <div class="stat"><div class="num yellow">👀 9</div><div class="lbl">Watchers</div></div>
       </div>
       <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127854055011" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-001 · £35 · qty 1</small></span><span class="badge green">👀 4</span></div>
@@ -494,6 +502,8 @@
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-8-5-New-In-Box-/127865040757" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 8.5 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-8-5-003 · £35 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-White-Trainers-UK-8-5-New-In-Box-/127865042668" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 White Trainers UK 8.5 New In Box</a><br><small style="color:#555">UK-AF1-WHITE-8-5-003 · £40 · BIN £40 · qty 1</small></span><span class="badge ">👀 0</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-10-New-In-Box-/127865042746" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-003 · £40 · BIN £40 · qty 1</small></span><span class="badge ">👀 0</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-9-New-In-Box-/127865158304" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 9 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-9-003 · £40 · BIN £40 · qty 1</small></span><span class="badge ">👀 0</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-White-Trainers-UK-10-New-In-Box-/127865168008" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 White Trainers UK 10 New In Box</a><br><small style="color:#555">UK-AF1-WHITE-10-003 · £40 · BIN £40 · qty 1</small></span><span class="badge ">👀 0</span></div>
 
     </div>
 
@@ -610,7 +620,7 @@
     <span class="cal-dow">Fri</span>
     <span class="cal-date">15 May</span>
   </div>
-  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div></div>
+  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">3:00pm EKG appointment</div></div>
 </div>
 <div class="cal-day ">
   <div class="cal-header">
