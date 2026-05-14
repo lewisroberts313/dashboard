@@ -92,18 +92,6 @@
     .evo-upgrades { margin-top:14px; padding:12px 14px; border-radius:12px; background:rgba(0,0,0,.16); border:1px solid rgba(255,255,255,.055); }
     .evo-upgrades ul { margin:8px 0 0 18px; color:#94a3b8; font-size:.78rem; line-height:1.45; }
     .evo-next { color:#818cf8; font-size:.78rem; margin-top:10px; }
-    .brain-wrap { display:grid; grid-template-columns:minmax(320px,1.15fr) minmax(260px,.85fr); gap:16px; align-items:stretch; }
-    .brain-map { min-height:430px; border:1px solid rgba(255,255,255,.07); border-radius:16px; background:radial-gradient(circle at 50% 45%, rgba(99,102,241,.14), transparent 34%), rgba(0,0,0,.18); overflow:hidden; }
-    .brain-map svg { width:100%; height:430px; display:block; }
-    .brain-map line { stroke:rgba(148,163,184,.26); stroke-width:1.4; }
-    .brain-node circle { fill:#111827; stroke:#818cf8; stroke-width:2; filter:drop-shadow(0 0 10px rgba(129,140,248,.32)); }
-    .brain-node.person circle { stroke:#60a5fa; } .brain-node.business circle { stroke:#4ade80; } .brain-node.ops circle { stroke:#fbbf24; } .brain-node.school circle { stroke:#f472b6; } .brain-node.finance circle { stroke:#22c55e; } .brain-node.build circle { stroke:#a78bfa; }
-    .brain-node text { fill:#cbd5e1; font-size:10px; text-anchor:middle; paint-order:stroke; stroke:#050711; stroke-width:3px; stroke-linejoin:round; }
-    .brain-side { display:grid; gap:12px; }
-    .brain-card { border:1px solid rgba(255,255,255,.065); border-radius:12px; background:rgba(255,255,255,.032); padding:11px 12px; }
-    .brain-card small { display:block; color:#64748b; text-transform:uppercase; letter-spacing:.08em; font-size:.62rem; margin-bottom:4px; }
-    .brain-card strong { color:#fff; font-size:.86rem; } .brain-card span { display:block; color:#94a3b8; font-size:.74rem; line-height:1.35; margin-top:4px; }
-    .brain-recent { margin-top:12px; color:#94a3b8; font-size:.78rem; line-height:1.45; padding-left:18px; }
     .mission-actions { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; }
     .mission-side { display: grid; gap: 12px; }
     .ultron-core { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.18); border: 1px solid rgba(99,102,241,0.18); border-radius: 14px; padding: 10px; }
@@ -184,7 +172,7 @@
     .agent-role { position: relative; z-index: 1; color: #818cf8; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
     .agent-desc { position: relative; z-index: 1; color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
     .agent-activity { position: relative; z-index: 1; color: var(--green); font-size: 0.68rem; margin-top: 10px; }
-    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid, .brain-wrap { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
+    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } .evo-agents { grid-template-columns:1fr; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
@@ -197,7 +185,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 14, 4:22PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 14, 6:39PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -235,7 +223,6 @@
     <button class="nav-tab" onclick="showPage('business', this)">Business</button>
     <button class="nav-tab" onclick="showPage('finance', this)">Finance</button>
     <button class="nav-tab" onclick="showPage('taskforce', this)">Taskforce</button>
-    <button class="nav-tab" onclick="showPage('brain', this)">Brain</button>
     <button class="nav-tab" onclick="showPage('calendar', this)">Calendar</button>
     <button class="nav-tab" onclick="showPage('all', this)">All</button>
   </div>
@@ -406,47 +393,47 @@
 
     <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-eBay_🏷️_Nike_Air_Force_1.">
+      <div class="email-item" id="email-Adventure_Island_💦_Ready_to_Splash_Ba">
   <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('eBay_🏷️_Nike_Air_Force_1.')">
+    <input type="checkbox" onchange="dismissEmail('Adventure_Island_💦_Ready_to_Splash_Ba')">
     <span class="checkmark"></span>
   </label>
   <div class="email-body">
-    <div class="email-subject">🏷️ Nike Air Force 1... has been listed</div>
-    <div class="email-sender">eBay</div>
+    <div class="email-subject">💦 Ready to Splash Back into Fun?</div>
+    <div class="email-sender">Adventure Island</div>
   </div>
   <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-eBay_🏷️_Nike_Air_Force_1.">
+<div class="email-item" id="email-The_Candle_Pour_Appointment_Confirma">
   <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('eBay_🏷️_Nike_Air_Force_1.')">
+    <input type="checkbox" onchange="dismissEmail('The_Candle_Pour_Appointment_Confirma')">
     <span class="checkmark"></span>
   </label>
   <div class="email-body">
-    <div class="email-subject">🏷️ Nike Air Force 1... has been listed</div>
-    <div class="email-sender">eBay</div>
+    <div class="email-subject">Appointment Confirmation!</div>
+    <div class="email-sender">The Candle Pour</div>
   </div>
   <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-eBay_🏷️_Nike_Air_Force_1.">
+<div class="email-item" id="email-Chase_Message_for_Lewis:_H">
   <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('eBay_🏷️_Nike_Air_Force_1.')">
+    <input type="checkbox" onchange="dismissEmail('Chase_Message_for_Lewis:_H')">
     <span class="checkmark"></span>
   </label>
   <div class="email-body">
-    <div class="email-subject">🏷️ Nike Air Force 1... has been listed</div>
-    <div class="email-sender">eBay</div>
+    <div class="email-subject">Message for Lewis: Here's important information on how </div>
+    <div class="email-sender">Chase</div>
   </div>
   <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-PizzaExpress_The_weekend_is_calli">
+<div class="email-item" id="email-Uber_Shop_fresh_and_get_2">
   <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('PizzaExpress_The_weekend_is_calli')">
+    <input type="checkbox" onchange="dismissEmail('Uber_Shop_fresh_and_get_2')">
     <span class="checkmark"></span>
   </label>
   <div class="email-body">
-    <div class="email-subject">The weekend is calling. Answer with Bottomless Bubbles.</div>
-    <div class="email-sender">PizzaExpress</div>
+    <div class="email-subject">Shop fresh and get 20% off on your next grocery order</div>
+    <div class="email-sender">Uber</div>
   </div>
   <span class="badge">unread</span>
 </div>
@@ -480,18 +467,18 @@
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1345</div><div class="lbl">Value</div></div>
-        <div class="stat"><div class="num green">£125</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num">£1346</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num green">£126</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£363.39</span><br><small style="color:var(--green);font-size:0.72rem">+34.29</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.22</span><br><small style="color:var(--green);font-size:0.72rem">+18.33</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.98</span><br><small style="color:var(--green);font-size:0.72rem">+8.88</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.56</span><br><small style="color:var(--green);font-size:0.72rem">+5.89</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.18</span><br><small style="color:var(--green);font-size:0.72rem">+13.26</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£53.50</span><br><small style="color:var(--green);font-size:0.72rem">+21.94</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.04</span><br><small style="color:var(--green);font-size:0.72rem">+0.11</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.71</span><br><small style="color:var(--green);font-size:0.72rem">+9.79</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.09</span><br><small style="color:var(--green);font-size:0.72rem">+18.20</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.06</span><br><small style="color:var(--green);font-size:0.72rem">+8.96</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.61</span><br><small style="color:var(--green);font-size:0.72rem">+5.94</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.49</span><br><small style="color:var(--green);font-size:0.72rem">+13.57</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£53.59</span><br><small style="color:var(--green);font-size:0.72rem">+22.03</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.12</span><br><small style="color:var(--green);font-size:0.72rem">+0.19</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.69</span><br><small style="color:var(--green);font-size:0.72rem">+9.77</small></span></div>
 
     </div>
 
@@ -620,17 +607,6 @@
 </div>
     </div>
 
-    <div class="card full-width page-card" data-pages="brain" style="margin-top:16px">
-      <h2><span class="icon">🧠</span> Memory Brain</h2>
-      <div class="brain-wrap">
-        <div>
-          <div class="brain-map"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><g><line x1="50%" y1="50%" x2="50%" y2="18%" /><line x1="50%" y1="50%" x2="25%" y2="38%" /><line x1="50%" y1="50%" x2="75%" y2="35%" /><line x1="50%" y1="50%" x2="72%" y2="70%" /><line x1="50%" y1="50%" x2="50%" y2="88%" /><line x1="25%" y1="38%" x2="18%" y2="68%" /><line x1="18%" y1="68%" x2="35%" y2="82%" /><line x1="25%" y1="38%" x2="35%" y2="82%" /><line x1="72%" y1="70%" x2="18%" y2="68%" /><line x1="72%" y1="70%" x2="82%" y2="56%" /><line x1="72%" y1="70%" x2="20%" y2="20%" /><line x1="50%" y1="88%" x2="25%" y2="38%" /><line x1="50%" y1="88%" x2="72%" y2="70%" /><line x1="50%" y1="18%" x2="75%" y2="35%" /><line x1="50%" y1="18%" x2="82%" y2="56%" /><line x1="20%" y1="20%" x2="50%" y2="18%" /></g><g><g class="brain-node system" tabindex="0"><circle cx="50%" cy="50%" r="9"></circle><text x="50%" y="64%">Ultron Core</text><title>Identity, operating style, long-term memory</title></g><g class="brain-node person" tabindex="0"><circle cx="50%" cy="18%" r="9"></circle><text x="50%" y="32%">Lewis</text><title>Preferences, school, soccer, finances</title></g><g class="brain-node business" tabindex="0"><circle cx="25%" cy="38%" r="9"></circle><text x="25%" y="52%">Resell Business</text><title>eBay, Depop, Vinted, UK handler</title></g><g class="brain-node business" tabindex="0"><circle cx="18%" cy="68%" r="9"></circle><text x="18%" y="82%">Inventory</text><title>US/UK stock, listings, sold logs</title></g><g class="brain-node ops" tabindex="0"><circle cx="35%" cy="82%" r="9"></circle><text x="35%" y="96%">Shipping QR</text><title>InPost QR extraction and handler context</title></g><g class="brain-node school" tabindex="0"><circle cx="75%" cy="35%" r="9"></circle><text x="75%" y="49%">School Writing</text><title>History reviews, writing profile, rubric memory</title></g><g class="brain-node build" tabindex="0"><circle cx="72%" cy="70%" r="9"></circle><text x="72%" y="84%">Dashboard</text><title>Mission Control, live business/finance/calendar view</title></g><g class="brain-node system" tabindex="0"><circle cx="50%" cy="88%" r="9"></circle><text x="50%" y="102%">Taskforce</text><title>Sentinel, Vault, Ledger, Scout, Scribe, Forge</title></g><g class="brain-node finance" tabindex="0"><circle cx="82%" cy="56%" r="9"></circle><text x="82%" y="70%">Finance</text><title>Trading 212, college money, alerts</title></g><g class="brain-node ops" tabindex="0"><circle cx="20%" cy="20%" r="9"></circle><text x="20%" y="34%">Calendar + Email</text><title>Briefings, urgent emails, daily schedule</title></g></g></svg></div>
-          <ul class="brain-recent"><li>Voice system removed after reliability issues — text-first dashboard preferred.</li><li>Shipping QR workflow now sends handler-ready QR/context after paid sales.</li><li>School writing profile created for natural, third-person analytical reviews.</li><li>eBay listing workflow: 10-minute spacing and 30-minute duplicate cooldown.</li><li>Team Evolution dashboard direction validated by Lewis.</li></ul>
-        </div>
-        <div class="brain-side"><div class="brain-card"><small>System</small><strong>Ultron Core</strong><span>Identity, operating style, long-term memory</span></div><div class="brain-card"><small>Person</small><strong>Lewis</strong><span>Preferences, school, soccer, finances</span></div><div class="brain-card"><small>Business</small><strong>Resell Business</strong><span>eBay, Depop, Vinted, UK handler</span></div><div class="brain-card"><small>Business</small><strong>Inventory</strong><span>US/UK stock, listings, sold logs</span></div><div class="brain-card"><small>Ops</small><strong>Shipping QR</strong><span>InPost QR extraction and handler context</span></div><div class="brain-card"><small>School</small><strong>School Writing</strong><span>History reviews, writing profile, rubric memory</span></div><div class="brain-card"><small>Build</small><strong>Dashboard</strong><span>Mission Control, live business/finance/calendar view</span></div><div class="brain-card"><small>System</small><strong>Taskforce</strong><span>Sentinel, Vault, Ledger, Scout, Scribe, Forge</span></div><div class="brain-card"><small>Finance</small><strong>Finance</strong><span>Trading 212, college money, alerts</span></div><div class="brain-card"><small>Ops</small><strong>Calendar + Email</strong><span>Briefings, urgent emails, daily schedule</span></div></div>
-      </div>
-    </div>
-
     <div class="card full-width page-card" data-pages="calendar" style="margin-top:4px">
       <h2><span class="icon">🗓️</span> Calendar — Next 7 Days</h2>
       <div class="cal-grid"><div class="cal-day today">
@@ -645,7 +621,7 @@
     <span class="cal-dow">Fri</span>
     <span class="cal-date">15 May</span>
   </div>
-  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">3:00pm EKG appointment</div></div>
+  <div class="cal-events"><div class="cal-event">9:00am Mathematical thinking</div><div class="cal-event">12:00pm Custom Scent Experienc</div><div class="cal-event">3:00pm EKG appointment</div></div>
 </div>
 <div class="cal-day ">
   <div class="cal-header">
