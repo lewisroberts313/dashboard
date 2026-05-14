@@ -197,7 +197,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 13, 8:54PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 13, 8:59PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -467,18 +467,18 @@
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1326</div><div class="lbl">Value</div></div>
-        <div class="stat"><div class="num green">£106</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num">£1327</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num green">£107</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£359.12</span><br><small style="color:var(--green);font-size:0.72rem">+30.02</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.55</span><br><small style="color:var(--green);font-size:0.72rem">+18.66</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.44</span><br><small style="color:var(--green);font-size:0.72rem">+8.34</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.36</span><br><small style="color:var(--green);font-size:0.72rem">+4.69</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.90</span><br><small style="color:var(--green);font-size:0.72rem">+10.98</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.07</span><br><small style="color:var(--green);font-size:0.72rem">+18.51</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.62</span><br><small style="color:var(--red);font-size:0.72rem">-0.31</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.74</span><br><small style="color:var(--green);font-size:0.72rem">+9.82</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.60</span><br><small style="color:var(--green);font-size:0.72rem">+18.71</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.49</span><br><small style="color:var(--green);font-size:0.72rem">+8.39</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£64.39</span><br><small style="color:var(--green);font-size:0.72rem">+4.72</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£60.91</span><br><small style="color:var(--green);font-size:0.72rem">+10.99</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£50.11</span><br><small style="color:var(--green);font-size:0.72rem">+18.55</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.65</span><br><small style="color:var(--red);font-size:0.72rem">-0.28</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.78</span><br><small style="color:var(--green);font-size:0.72rem">+9.86</small></span></div>
 
     </div>
 
@@ -846,15 +846,36 @@
       }
     }
 
+    function setVoiceListeningState(text) {
+      if (!voiceTalkBtn || !voiceStatus || !voiceTranscript) return;
+      voiceTalkBtn.classList.add('listening');
+      voiceTalkBtn.textContent = 'Listening…';
+      voiceStatus.textContent = text || 'Listening… speak now.';
+      voiceTranscript.textContent = 'Listening… speak now.';
+    }
+
+    function clearVoiceListeningState(label) {
+      if (!voiceTalkBtn || !voiceStatus) return;
+      voiceTalkBtn.classList.remove('listening');
+      voiceTalkBtn.textContent = 'Hold / Tap to Talk';
+      if (label) voiceStatus.textContent = label;
+    }
+
     function startVoiceRecognition() {
+      setVoiceListeningState('Opening microphone…');
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) { voiceStatus.textContent = 'Speech recognition is not supported in this browser.'; return; }
+      if (!SpeechRecognition) {
+        clearVoiceListeningState('Speech recognition is not supported in this browser. Try Chrome on desktop/Android, or Safari with dictation support.');
+        voiceTranscript.textContent = 'Speech recognition unavailable in this browser.';
+        return;
+      }
+      try { if (recognition) recognition.abort(); } catch (e) {}
       recognition = new SpeechRecognition();
       recognition.lang = 'en-US';
       recognition.interimResults = true;
       recognition.continuous = false;
       let finalText = '';
-      recognition.onstart = () => { voiceTalkBtn.classList.add('listening'); voiceStatus.textContent = 'Listening…'; };
+      recognition.onstart = () => setVoiceListeningState('Listening… speak now.');
       recognition.onresult = event => {
         let interim = '';
         for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -862,17 +883,33 @@
           if (event.results[i].isFinal) finalText += text;
           else interim += text;
         }
-        voiceTranscript.textContent = (finalText || interim || '').trim() || 'Listening…';
+        voiceTranscript.textContent = (finalText || interim || '').trim() || 'Listening… speak now.';
+        voiceStatus.textContent = finalText ? 'Transcript captured.' : 'Listening…';
       };
-      recognition.onerror = event => { voiceStatus.textContent = 'Mic error: ' + event.error; };
+      recognition.onerror = event => {
+        clearVoiceListeningState('Mic error: ' + event.error);
+        if (event.error === 'not-allowed') voiceTranscript.textContent = 'Microphone permission was blocked. Allow mic access and try again.';
+      };
       recognition.onend = () => {
-        voiceTalkBtn.classList.remove('listening');
-        voiceStatus.textContent = voiceTranscript.textContent && voiceTranscript.textContent !== 'Listening…' ? 'Transcript ready.' : 'Listening stopped.';
+        const transcript = (voiceTranscript.textContent || '').trim();
+        const hasTranscript = transcript && transcript !== 'Listening… speak now.' && transcript !== 'Opening microphone…';
+        clearVoiceListeningState(hasTranscript ? 'Transcript ready. Press Send.' : 'Listening stopped — no speech captured.');
       };
-      recognition.start();
+      try {
+        recognition.start();
+      } catch (err) {
+        clearVoiceListeningState('Could not start microphone: ' + err.message);
+      }
     }
 
-    if (voiceTalkBtn) voiceTalkBtn.addEventListener('click', startVoiceRecognition);
+    if (voiceTalkBtn) {
+      voiceTalkBtn.addEventListener('pointerdown', () => {
+        voiceTalkBtn.classList.add('listening');
+        voiceTalkBtn.textContent = 'Opening mic…';
+        if (voiceStatus) voiceStatus.textContent = 'Opening microphone…';
+      });
+      voiceTalkBtn.addEventListener('click', startVoiceRecognition);
+    }
     if (voiceSendBtn) voiceSendBtn.addEventListener('click', sendVoiceMessage);
     if (voiceSpeakBtn) voiceSpeakBtn.addEventListener('click', () => speakVoice(lastVoiceReply || voiceReply.textContent));
     if (voiceSettingsBtn) voiceSettingsBtn.addEventListener('click', () => voiceSettings.classList.toggle('active'));
