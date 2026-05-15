@@ -93,9 +93,9 @@
     .evo-upgrades ul { margin:8px 0 0 18px; color:#94a3b8; font-size:.78rem; line-height:1.45; }
     .evo-next { color:#818cf8; font-size:.78rem; margin-top:10px; }
     .mission-brain-free { position:relative; height:260px; margin-top:14px; border-radius:22px; overflow:visible; background: radial-gradient(circle at 50% 50%, rgba(0,213,255,.13), transparent 42%); }
-    .mission-brain-free::before { content:''; position:absolute; inset:8px 0; border-radius:50%; background: radial-gradient(circle, rgba(0,213,255,.10), transparent 58%); filter: blur(2px); pointer-events:none; animation: brainGlow 2.8s ease-in-out infinite; }
+    .mission-brain-free::before { content:''; position:absolute; inset:8px 0; border-radius:50%; background: radial-gradient(circle, rgba(0,213,255,.12), transparent 58%); filter: blur(2px); pointer-events:none; animation: brainHeartbeat 2.2s cubic-bezier(.4,0,.2,1) infinite; }
     #missionBrainGraph { position:relative; z-index:1; width:100%; height:100%; display:block; }
-    @keyframes brainGlow { 0%,100% { opacity:.62; transform:scale(.98); } 50% { opacity:1; transform:scale(1.03); } }
+    @keyframes brainHeartbeat { 0%, 100% { opacity:.42; transform:scale(.96); } 12% { opacity:1; transform:scale(1.035); } 20% { opacity:.58; transform:scale(.985); } 32% { opacity:.88; transform:scale(1.018); } 46% { opacity:.48; transform:scale(.98); } }
     .mission-actions { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; }
     .mission-side { display: grid; gap: 12px; }
     .ultron-core { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.18); border: 1px solid rgba(99,102,241,0.18); border-radius: 14px; padding: 10px; }
@@ -189,7 +189,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 15, 12:05AM EST</div>
+        <div class="header-sub">Lewis Roberts · May 15, 12:09AM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -490,11 +490,11 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£363.39</span><br><small style="color:var(--green);font-size:0.72rem">+34.29</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.01</span><br><small style="color:var(--green);font-size:0.72rem">+18.12</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.31</span><br><small style="color:var(--green);font-size:0.72rem">+9.21</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.63</span><br><small style="color:var(--green);font-size:0.72rem">+5.96</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.55</span><br><small style="color:var(--green);font-size:0.72rem">+13.63</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£52.55</span><br><small style="color:var(--green);font-size:0.72rem">+20.99</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.00</span><br><small style="color:var(--green);font-size:0.72rem">+18.11</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.29</span><br><small style="color:var(--green);font-size:0.72rem">+9.19</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.62</span><br><small style="color:var(--green);font-size:0.72rem">+5.95</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.52</span><br><small style="color:var(--green);font-size:0.72rem">+13.60</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£52.44</span><br><small style="color:var(--green);font-size:0.72rem">+20.88</small></span></div>
 <div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.04</span><br><small style="color:var(--green);font-size:0.72rem">+0.11</small></span></div>
 <div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.52</span><br><small style="color:var(--green);font-size:0.72rem">+9.60</small></span></div>
 
@@ -810,23 +810,26 @@
       function frame(t) {
         ctx.clearRect(0,0,w,h);
         ctx.save();
-        const pulse = .5 + Math.sin(t/520)*.5;
-        ctx.strokeStyle = `rgba(103,232,249,${.10 + pulse*.12})`; ctx.lineWidth = 1;
-        for (let rr=radius*.30; rr<radius+18; rr+=20) { ctx.beginPath(); ctx.arc(cx,cy,rr,0,Math.PI*2); ctx.stroke(); }
+        const beatRaw = Math.sin((t/2200) * Math.PI * 2);
+        const beat = Math.pow(Math.max(0, beatRaw), 5);
+        const echo = Math.pow(Math.max(0, Math.sin((t/2200) * Math.PI * 2 - .72)), 7);
+        const pulse = Math.min(1, beat + echo * .72);
+        ctx.strokeStyle = `rgba(103,232,249,${.10 + pulse*.34})`; ctx.lineWidth = 1 + pulse * 1.15;
+        for (let rr=radius*.30; rr<radius+18; rr+=20) { ctx.beginPath(); ctx.arc(cx,cy,rr + pulse*5,0,Math.PI*2); ctx.stroke(); }
         const pos = nodes.map(n => {
-          const a = n.a + t*n.spin;
+          const a = n.a;
           return {x: cx + Math.cos(a)*n.r, y: cy + Math.sin(a)*n.r, c: folderColors[n.folder] || '#00d5ff'};
         });
         ctx.globalCompositeOperation='lighter';
         for (const [a,b] of links.slice(0,180)) {
           const p=pos[a], q=pos[b]; if(!p||!q) continue;
           const dist=Math.hypot(p.x-q.x,p.y-q.y); if(dist>radius*1.3) continue;
-          ctx.strokeStyle='rgba(103,232,249,.12)'; ctx.lineWidth=.65; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+          ctx.strokeStyle=`rgba(103,232,249,${.10 + pulse*.18})`; ctx.lineWidth=.55 + pulse*.7; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
         }
         for (let i=0;i<pos.length;i++) {
           const p=pos[i], n=nodes[i];
           const real = !String(n.id).startsWith('_Dashboard Mirror Stress Test');
-          ctx.fillStyle=p.c; ctx.shadowColor=p.c; ctx.shadowBlur=real?12:7; ctx.beginPath(); ctx.arc(p.x,p.y,real?3.5:2.1,0,Math.PI*2); ctx.fill();
+          ctx.fillStyle=p.c; ctx.shadowColor=p.c; ctx.shadowBlur=(real?12:7) + pulse*18; ctx.beginPath(); ctx.arc(p.x,p.y,(real?3.5:2.1) + pulse*(real?1.5:.8),0,Math.PI*2); ctx.fill();
           if (real || i % 9 === 0) {
             ctx.shadowBlur=0; ctx.font = real ? '700 11px Inter' : '9px Inter'; ctx.textAlign='center'; ctx.fillStyle = real ? '#eaffff' : 'rgba(216,247,255,.62)';
             const label = n.label.length > 18 ? n.label.slice(0,17)+'…' : n.label;
