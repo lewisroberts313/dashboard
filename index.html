@@ -92,17 +92,16 @@
     .evo-upgrades { margin-top:14px; padding:12px 14px; border-radius:12px; background:rgba(0,0,0,.16); border:1px solid rgba(255,255,255,.055); }
     .evo-upgrades ul { margin:8px 0 0 18px; color:#94a3b8; font-size:.78rem; line-height:1.45; }
     .evo-next { color:#818cf8; font-size:.78rem; margin-top:10px; }
-    .obsidian-card { background: radial-gradient(circle at 50% 45%, rgba(0,213,255,.10), transparent 34%), linear-gradient(135deg, rgba(0,213,255,.06), rgba(15,23,42,.72)); border-color: rgba(0,213,255,.20); }
-    .obsidian-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; margin-bottom:12px; }
-    .obsidian-head p { color:#94a3b8; font-size:.82rem; margin-top:4px; }
-    .brain-stat { color:#67e8f9; font-size:.78rem; text-align:right; white-space:nowrap; }
-    .brain-shell { position:relative; min-height:620px; border:1px solid rgba(0,213,255,.13); border-radius:18px; overflow:hidden; background: radial-gradient(circle at center, rgba(0,213,255,.11), rgba(3,7,18,.22) 38%, rgba(0,0,0,.24)), repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 28px), repeating-linear-gradient(90deg, rgba(255,255,255,.014) 0 1px, transparent 1px 28px); }
-    #obsidianGraph { width:100%; height:620px; display:block; }
-    .brain-tooltip { position:absolute; pointer-events:none; opacity:0; transform:translate(-50%, -120%); background:rgba(3,7,18,.92); border:1px solid rgba(0,213,255,.28); color:#d8f7ff; border-radius:10px; padding:8px 10px; font-size:.72rem; box-shadow:0 0 28px rgba(0,213,255,.16); transition:opacity .12s; }
-    .brain-legend { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-    .brain-legend-pill { color:#94a3b8; font-size:.72rem; border:1px solid rgba(255,255,255,.07); border-radius:999px; padding:5px 8px; background:rgba(255,255,255,.028); }
-    .brain-legend-pill i { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; background:#00d5ff; box-shadow:0 0 10px currentColor; }
-    .folder-business { background:#4ade80!important; } .folder-school { background:#f472b6!important; } .folder-systems { background:#22d3ee!important; } .folder-projects { background:#f59e0b!important; } .folder-daily { background:#94a3b8!important; } .folder-core { background:#818cf8!important; }
+    .mission-brain { display:flex; align-items:center; gap:12px; background: radial-gradient(circle at 54px 50%, rgba(0,213,255,.18), transparent 72px), rgba(0,0,0,.20); border:1px solid rgba(0,213,255,.22); border-radius:16px; padding:10px; box-shadow:0 0 28px rgba(0,213,255,.08), inset 0 0 24px rgba(0,213,255,.035); overflow:hidden; }
+    .mission-brain-orb { position:relative; width:78px; height:78px; flex:0 0 78px; border-radius:50%; overflow:hidden; background: radial-gradient(circle, rgba(0,213,255,.15), rgba(3,7,18,.86) 62%); border:1px solid rgba(103,232,249,.45); box-shadow:0 0 18px rgba(0,213,255,.34), inset 0 0 24px rgba(0,213,255,.20); animation: brainGlow 2.4s ease-in-out infinite; }
+    .mission-brain-orb::before { content:''; position:absolute; inset:7px; border-radius:50%; border:1px solid rgba(103,232,249,.28); box-shadow: inset 0 0 14px rgba(103,232,249,.14); pointer-events:none; }
+    .mission-brain-orb::after { content:''; position:absolute; inset:-30%; background: conic-gradient(from 0deg, transparent, rgba(103,232,249,.18), transparent, rgba(74,222,128,.14), transparent); animation: spinCore 8s linear infinite; pointer-events:none; }
+    #missionBrainGraph { position:relative; z-index:1; width:100%; height:100%; display:block; border-radius:50%; }
+    .brain-core-pulse { position:absolute; left:50%; top:50%; width:12px; height:12px; transform:translate(-50%,-50%); border-radius:50%; background:#d8fbff; box-shadow:0 0 14px #00d5ff, 0 0 30px rgba(0,213,255,.7); z-index:2; animation: corePulse 1.6s ease-in-out infinite; }
+    .mission-brain-copy strong { display:block; color:#eaffff; font-size:.9rem; text-shadow:0 0 12px rgba(0,213,255,.34); }
+    .mission-brain-copy span { display:block; color:#67e8f9; font-size:.68rem; line-height:1.35; margin-top:3px; }
+    @keyframes brainGlow { 0%,100% { box-shadow:0 0 18px rgba(0,213,255,.30), inset 0 0 24px rgba(0,213,255,.18); } 50% { box-shadow:0 0 34px rgba(0,213,255,.58), inset 0 0 30px rgba(0,213,255,.28); } }
+    @keyframes corePulse { 0%,100% { opacity:.72; transform:translate(-50%,-50%) scale(.9); } 50% { opacity:1; transform:translate(-50%,-50%) scale(1.25); } }
     .mission-actions { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; }
     .mission-side { display: grid; gap: 12px; }
     .ultron-core { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.18); border: 1px solid rgba(99,102,241,0.18); border-radius: 14px; padding: 10px; }
@@ -183,7 +182,7 @@
     .agent-role { position: relative; z-index: 1; color: #818cf8; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
     .agent-desc { position: relative; z-index: 1; color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
     .agent-activity { position: relative; z-index: 1; color: var(--green); font-size: 0.68rem; margin-top: 10px; }
-    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } .brain-shell { min-height:520px; } #obsidianGraph { height:520px; } }
+    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } .evo-agents { grid-template-columns:1fr; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
@@ -196,7 +195,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 14, 11:50PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 14, 11:54PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -224,6 +223,10 @@
           <div class="core-ring"><div class="core-eye">🤖</div></div>
           <div class="core-copy"><strong>Ultron Core</strong><span>All systems online</span></div>
         </div>
+        <div class="mission-brain">
+          <div class="mission-brain-orb"><canvas id="missionBrainGraph"></canvas><div class="brain-core-pulse"></div></div>
+          <div class="mission-brain-copy"><strong>Memory Brain</strong><span>107 notes · 871 links · 7 clusters</span></div>
+        </div>
         <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>1 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>9 watcher(s) across UK listings</small></div></div></div>
       </div>
     </div>
@@ -234,7 +237,6 @@
     <button class="nav-tab" onclick="showPage('business', this)">Business</button>
     <button class="nav-tab" onclick="showPage('finance', this)">Finance</button>
     <button class="nav-tab" onclick="showPage('taskforce', this)">Taskforce</button>
-    <button class="nav-tab" onclick="showPage('brain', this)">Brain</button>
     <button class="nav-tab" onclick="showPage('calendar', this)">Calendar</button>
     <button class="nav-tab" onclick="showPage('all', this)">All</button>
   </div>
@@ -496,11 +498,11 @@
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£363.39</span><br><small style="color:var(--green);font-size:0.72rem">+34.29</small></span></div>
 <div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.05</span><br><small style="color:var(--green);font-size:0.72rem">+18.16</small></span></div>
 <div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.33</span><br><small style="color:var(--green);font-size:0.72rem">+9.23</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.60</span><br><small style="color:var(--green);font-size:0.72rem">+5.93</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.53</span><br><small style="color:var(--green);font-size:0.72rem">+13.61</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£52.71</span><br><small style="color:var(--green);font-size:0.72rem">+21.15</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.61</span><br><small style="color:var(--green);font-size:0.72rem">+5.94</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.50</span><br><small style="color:var(--green);font-size:0.72rem">+13.58</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£52.56</span><br><small style="color:var(--green);font-size:0.72rem">+21.00</small></span></div>
 <div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.06</span><br><small style="color:var(--green);font-size:0.72rem">+0.13</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.51</span><br><small style="color:var(--green);font-size:0.72rem">+9.59</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.52</span><br><small style="color:var(--green);font-size:0.72rem">+9.60</small></span></div>
 
     </div>
 
@@ -629,21 +631,6 @@
 </div>
     </div>
 
-    <div class="card full-width page-card obsidian-card" data-pages="brain" style="margin-top:16px">
-      <div class="obsidian-head">
-        <div>
-          <h2><span class="icon">🕸️</span> Obsidian Brain Graph</h2>
-          <p>Live mirror of the private <strong>ultron-brain</strong> vault. Built from real markdown links.</p>
-        </div>
-        <div class="brain-stat">107 notes · 871 links · 7 clusters</div>
-      </div>
-      <div class="brain-shell">
-        <canvas id="obsidianGraph"></canvas>
-        <div class="brain-tooltip" id="brainTooltip"></div>
-      </div>
-      <div class="brain-legend"><span class="brain-legend-pill"><i class="folder-business"></i>Business · 3</span><span class="brain-legend-pill"><i class="folder-core"></i>Core · 3</span><span class="brain-legend-pill"><i class="folder-daily"></i>Daily · 4</span><span class="brain-legend-pill"><i class="folder-projects"></i>Projects · 2</span><span class="brain-legend-pill"><i class="folder-school"></i>School · 1</span><span class="brain-legend-pill"><i class="folder-systems"></i>Systems · 2</span><span class="brain-legend-pill"><i class="folder-_dashboard-mirror-stress-test"></i>_Dashboard Mirror Stress Test · 92</span></div>
-    </div>
-
     <div class="card full-width page-card" data-pages="calendar" style="margin-top:4px">
       <h2><span class="icon">🗓️</span> Calendar — Next 7 Days</h2>
       <div class="cal-grid"><div class="cal-day today">
@@ -760,7 +747,7 @@
         card.classList.toggle('active', page === 'all' || pages.includes(page));
       });
       localStorage.setItem('dashboardPage', page);
-      setTimeout(() => { if (window.plChart) window.plChart.resize(); if (page === 'brain' || page === 'all') drawObsidianGraph(); }, 80);
+      setTimeout(() => { if (window.plChart) window.plChart.resize(); }, 80);
     }
 
     const savedPage = localStorage.getItem('dashboardPage');
@@ -813,81 +800,43 @@
     const folderColors = {
       Core:'#818cf8', Business:'#4ade80', School:'#f472b6', Systems:'#22d3ee', Projects:'#f59e0b', Daily:'#94a3b8'
     };
-    let graphAnimationStarted = false;
-    function drawObsidianGraph() {
-      const canvas = document.getElementById('obsidianGraph');
-      if (!canvas || graphAnimationStarted) return;
-      graphAnimationStarted = true;
-      const shell = canvas.parentElement;
-      const tooltip = document.getElementById('brainTooltip');
+    function drawMissionBrain() {
+      const canvas = document.getElementById('missionBrainGraph');
+      if (!canvas || canvas.dataset.running) return;
+      canvas.dataset.running = '1';
       const ctx = canvas.getContext('2d');
       const dpr = window.devicePixelRatio || 1;
-      const rect = shell.getBoundingClientRect();
-      canvas.width = Math.max(320, rect.width) * dpr;
-      canvas.height = Math.max(420, rect.height) * dpr;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr; canvas.height = rect.height * dpr;
       ctx.setTransform(dpr,0,0,dpr,0,0);
-      const width = canvas.width / dpr;
-      const height = canvas.height / dpr;
-      const nodes = obsidianGraphData.nodes.map((n, i) => ({...n, x: width/2 + Math.cos(i)*40, y: height/2 + Math.sin(i)*40, vx:0, vy:0}));
-      const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
-      const links = obsidianGraphData.links.map(l => ({source: byId[l.source], target: byId[l.target]})).filter(l => l.source && l.target);
-      const clusters = [...new Set(nodes.map(n => n.folder))];
-      const centers = Object.fromEntries(clusters.map((f,i) => [f, {x: width*(0.25 + (i%3)*0.25), y: height*(0.28 + Math.floor(i/3)*0.28)}]));
-      nodes.forEach((n,i) => { const c = centers[n.folder] || {x:width/2,y:height/2}; n.x = c.x + (Math.random()-.5)*120; n.y = c.y + (Math.random()-.5)*120; });
-      let hover = null;
-      canvas.addEventListener('mousemove', e => {
-        const r = canvas.getBoundingClientRect(); const mx = e.clientX-r.left, my=e.clientY-r.top;
-        hover = nodes.find(n => Math.hypot(n.x-mx,n.y-my) < (n.id==='Memory'||n.id==='Lewis'?14:9));
-        if (hover && tooltip) { tooltip.style.opacity=1; tooltip.style.left=mx+'px'; tooltip.style.top=my+'px'; tooltip.innerHTML='<strong>'+hover.label+'</strong><br>'+hover.folder; }
-        else if (tooltip) tooltip.style.opacity=0;
-      });
-      function step() {
-        for (const n of nodes) {
-          const c = centers[n.folder] || {x:width/2,y:height/2};
-          n.vx += (c.x - n.x) * 0.0009;
-          n.vy += (c.y - n.y) * 0.0009;
-          n.vx += (width/2 - n.x) * 0.00012;
-          n.vy += (height/2 - n.y) * 0.00012;
+      const w = rect.width, h = rect.height, cx = w/2, cy = h/2, radius = Math.min(w,h)*0.39;
+      const nodes = obsidianGraphData.nodes.map((n,i) => ({...n, a:(i/obsidianGraphData.nodes.length)*Math.PI*2, r: radius*(.36 + ((i*17)%48)/100), spin: .0018 + ((i%7)*.00028)}));
+      const idIndex = Object.fromEntries(nodes.map((n,i)=>[n.id,i]));
+      const links = obsidianGraphData.links.map(l => [idIndex[l.source], idIndex[l.target]]).filter(x => x[0] !== undefined && x[1] !== undefined);
+      function frame(t) {
+        ctx.clearRect(0,0,w,h);
+        ctx.save(); ctx.beginPath(); ctx.arc(cx,cy,radius+7,0,Math.PI*2); ctx.clip();
+        const pulse = .5 + Math.sin(t/520)*.5;
+        ctx.strokeStyle = `rgba(103,232,249,${.12 + pulse*.12})`; ctx.lineWidth = 1;
+        for (let rr=radius*.34; rr<radius+8; rr+=13) { ctx.beginPath(); ctx.arc(cx,cy,rr,0,Math.PI*2); ctx.stroke(); }
+        const pos = nodes.map(n => {
+          const a = n.a + t*n.spin;
+          return {x: cx + Math.cos(a)*n.r, y: cy + Math.sin(a)*n.r, c: folderColors[n.folder] || '#00d5ff'};
+        });
+        ctx.globalCompositeOperation='lighter';
+        for (const [a,b] of links.slice(0,180)) {
+          const p=pos[a], q=pos[b]; if(!p||!q) continue;
+          const dist=Math.hypot(p.x-q.x,p.y-q.y); if(dist>radius*1.3) continue;
+          ctx.strokeStyle='rgba(103,232,249,.12)'; ctx.lineWidth=.65; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
         }
-        for (const l of links) {
-          const dx=l.target.x-l.source.x, dy=l.target.y-l.source.y, dist=Math.max(1, Math.hypot(dx,dy));
-          const force=(dist-115)*0.0009; const fx=dx/dist*force, fy=dy/dist*force;
-          l.source.vx += fx; l.source.vy += fy; l.target.vx -= fx; l.target.vy -= fy;
-        }
-        for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++) {
-          const a=nodes[i], b=nodes[j]; const dx=b.x-a.x, dy=b.y-a.y; const d2=Math.max(36, dx*dx+dy*dy);
-          const f=42/d2; a.vx-=dx*f; a.vy-=dy*f; b.vx+=dx*f; b.vy+=dy*f;
-        }
-        for (const n of nodes) { n.vx*=0.88; n.vy*=0.88; n.x+=n.vx; n.y+=n.vy; n.x=Math.max(24,Math.min(width-24,n.x)); n.y=Math.max(24,Math.min(height-24,n.y)); }
-      }
-      function render() {
-        for (let i=0;i<2;i++) step();
-        ctx.clearRect(0,0,width,height);
-        ctx.save();
-        ctx.globalAlpha=.18; ctx.strokeStyle='#00d5ff'; ctx.lineWidth=1;
-        for (let x=0;x<width;x+=34) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,height); ctx.stroke(); }
-        for (let y=0;y<height;y+=34) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(width,y); ctx.stroke(); }
+        for (const p of pos) { ctx.fillStyle=p.c; ctx.shadowColor=p.c; ctx.shadowBlur=8; ctx.beginPath(); ctx.arc(p.x,p.y,1.9,0,Math.PI*2); ctx.fill(); }
         ctx.restore();
-        for (const l of links) {
-          const grad=ctx.createLinearGradient(l.source.x,l.source.y,l.target.x,l.target.y);
-          grad.addColorStop(0,(folderColors[l.source.folder]||'#00d5ff')+'66'); grad.addColorStop(1,(folderColors[l.target.folder]||'#00d5ff')+'44');
-          ctx.strokeStyle=grad; ctx.lineWidth=1.2; ctx.beginPath(); ctx.moveTo(l.source.x,l.source.y); ctx.lineTo(l.target.x,l.target.y); ctx.stroke();
-        }
-        for (const n of nodes) {
-          const important = ['Memory','Lewis','Home','Dashboard'].includes(n.label);
-          const r = important ? 8.5 : 5.5;
-          const color = folderColors[n.folder] || '#00d5ff';
-          ctx.shadowBlur = n===hover ? 24 : 13; ctx.shadowColor = color;
-          ctx.fillStyle = color; ctx.beginPath(); ctx.arc(n.x,n.y,n===hover?r+3:r,0,Math.PI*2); ctx.fill();
-          ctx.shadowBlur = 0; ctx.fillStyle = n===hover || important ? '#eaffff' : 'rgba(216,247,255,.72)';
-          ctx.font = (important ? '700 12px Inter' : '10px Inter'); ctx.textAlign='center';
-          if (important || n===hover || n.folder !== 'Daily') ctx.fillText(n.label, n.x, n.y + r + 13);
-        }
-        requestAnimationFrame(render);
+        requestAnimationFrame(frame);
       }
-      render();
+      requestAnimationFrame(frame);
     }
-    window.addEventListener('resize', () => { graphAnimationStarted=false; drawObsidianGraph(); });
+    drawMissionBrain();
+    window.addEventListener('resize', () => { const c=document.getElementById('missionBrainGraph'); if(c) { c.dataset.running=''; drawMissionBrain(); } });
 
   </script>
 </body>
