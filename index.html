@@ -92,6 +92,17 @@
     .evo-upgrades { margin-top:14px; padding:12px 14px; border-radius:12px; background:rgba(0,0,0,.16); border:1px solid rgba(255,255,255,.055); }
     .evo-upgrades ul { margin:8px 0 0 18px; color:#94a3b8; font-size:.78rem; line-height:1.45; }
     .evo-next { color:#818cf8; font-size:.78rem; margin-top:10px; }
+    .obsidian-card { background: radial-gradient(circle at 50% 45%, rgba(0,213,255,.10), transparent 34%), linear-gradient(135deg, rgba(0,213,255,.06), rgba(15,23,42,.72)); border-color: rgba(0,213,255,.20); }
+    .obsidian-head { display:flex; justify-content:space-between; gap:14px; align-items:flex-start; margin-bottom:12px; }
+    .obsidian-head p { color:#94a3b8; font-size:.82rem; margin-top:4px; }
+    .brain-stat { color:#67e8f9; font-size:.78rem; text-align:right; white-space:nowrap; }
+    .brain-shell { position:relative; min-height:620px; border:1px solid rgba(0,213,255,.13); border-radius:18px; overflow:hidden; background: radial-gradient(circle at center, rgba(0,213,255,.11), rgba(3,7,18,.22) 38%, rgba(0,0,0,.24)), repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 28px), repeating-linear-gradient(90deg, rgba(255,255,255,.014) 0 1px, transparent 1px 28px); }
+    #obsidianGraph { width:100%; height:620px; display:block; }
+    .brain-tooltip { position:absolute; pointer-events:none; opacity:0; transform:translate(-50%, -120%); background:rgba(3,7,18,.92); border:1px solid rgba(0,213,255,.28); color:#d8f7ff; border-radius:10px; padding:8px 10px; font-size:.72rem; box-shadow:0 0 28px rgba(0,213,255,.16); transition:opacity .12s; }
+    .brain-legend { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .brain-legend-pill { color:#94a3b8; font-size:.72rem; border:1px solid rgba(255,255,255,.07); border-radius:999px; padding:5px 8px; background:rgba(255,255,255,.028); }
+    .brain-legend-pill i { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; background:#00d5ff; box-shadow:0 0 10px currentColor; }
+    .folder-business { background:#4ade80!important; } .folder-school { background:#f472b6!important; } .folder-systems { background:#22d3ee!important; } .folder-projects { background:#f59e0b!important; } .folder-daily { background:#94a3b8!important; } .folder-core { background:#818cf8!important; }
     .mission-actions { background: rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 14px; }
     .mission-side { display: grid; gap: 12px; }
     .ultron-core { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.18); border: 1px solid rgba(99,102,241,0.18); border-radius: 14px; padding: 10px; }
@@ -172,7 +183,7 @@
     .agent-role { position: relative; z-index: 1; color: #818cf8; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
     .agent-desc { position: relative; z-index: 1; color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
     .agent-activity { position: relative; z-index: 1; color: var(--green); font-size: 0.68rem; margin-top: 10px; }
-    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
+    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } .brain-shell { min-height:520px; } #obsidianGraph { height:520px; } }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } .evo-agents { grid-template-columns:1fr; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
@@ -185,7 +196,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 14, 7:20PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 14, 11:45PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -213,7 +224,7 @@
           <div class="core-ring"><div class="core-eye">🤖</div></div>
           <div class="core-copy"><strong>Ultron Core</strong><span>All systems online</span></div>
         </div>
-        <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>1 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>10 watcher(s) across UK listings</small></div></div></div>
+        <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>1 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>9 watcher(s) across UK listings</small></div></div></div>
       </div>
     </div>
   </section>
@@ -223,6 +234,7 @@
     <button class="nav-tab" onclick="showPage('business', this)">Business</button>
     <button class="nav-tab" onclick="showPage('finance', this)">Finance</button>
     <button class="nav-tab" onclick="showPage('taskforce', this)">Taskforce</button>
+    <button class="nav-tab" onclick="showPage('brain', this)">Brain</button>
     <button class="nav-tab" onclick="showPage('calendar', this)">Calendar</button>
     <button class="nav-tab" onclick="showPage('all', this)">All</button>
   </div>
@@ -230,7 +242,7 @@
   <div class="grid">
 
     <div class="focus-strip page-card active" data-pages="overview">
-      <div class="focus-card"><small>next move</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="focus-card"><small>stock focus</small><strong>UK eBay coverage</strong><span>1 unlisted · 10 watcher(s)</span></div><div class="focus-card"><small>time focus</small><strong>Next calendar item</strong><span>No more events today</span></div>
+      <div class="focus-card"><small>next move</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="focus-card"><small>stock focus</small><strong>UK eBay coverage</strong><span>1 unlisted · 9 watcher(s)</span></div><div class="focus-card"><small>time focus</small><strong>Next calendar item</strong><span>No more events today</span></div>
     </div>
 
     <div class="business-four page-card active" data-pages="overview business">
@@ -403,7 +415,18 @@
 
     <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-Spline_Team_👀_Check_out_these_tu">
+      <div class="email-item" id="email-Team_Snapchat_Lois_and_Cai💯_sent_y">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Team_Snapchat_Lois_and_Cai💯_sent_y')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Lois and Cai💯 sent you new messages</div>
+    <div class="email-sender">Team Snapchat</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Spline_Team_👀_Check_out_these_tu">
   <label class="email-check">
     <input type="checkbox" onchange="dismissEmail('Spline_Team_👀_Check_out_these_tu')">
     <span class="checkmark"></span>
@@ -458,17 +481,6 @@
   </div>
   <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-Uber_Shop_fresh_and_get_2">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Uber_Shop_fresh_and_get_2')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Shop fresh and get 20% off on your next grocery order</div>
-    <div class="email-sender">Uber</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
 
     </div>
 
@@ -477,18 +489,18 @@
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1347</div><div class="lbl">Value</div></div>
-        <div class="stat"><div class="num green">£127</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num">£1345</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num green">£125</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 2.60493527</small></span><span style="text-align:right"><span class="badge">£363.39</span><br><small style="color:var(--green);font-size:0.72rem">+34.29</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.31</span><br><small style="color:var(--green);font-size:0.72rem">+18.42</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.11</span><br><small style="color:var(--green);font-size:0.72rem">+9.01</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.68</span><br><small style="color:var(--green);font-size:0.72rem">+6.01</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.69</span><br><small style="color:var(--green);font-size:0.72rem">+13.77</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£53.52</span><br><small style="color:var(--green);font-size:0.72rem">+21.96</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.18</span><br><small style="color:var(--green);font-size:0.72rem">+0.25</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.73</span><br><small style="color:var(--green);font-size:0.72rem">+9.81</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£88.04</span><br><small style="color:var(--green);font-size:0.72rem">+18.15</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.34</span><br><small style="color:var(--green);font-size:0.72rem">+9.24</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£65.61</span><br><small style="color:var(--green);font-size:0.72rem">+5.94</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£63.47</span><br><small style="color:var(--green);font-size:0.72rem">+13.55</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.32338319</small></span><span style="text-align:right"><span class="badge">£52.73</span><br><small style="color:var(--green);font-size:0.72rem">+21.17</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£48.05</span><br><small style="color:var(--green);font-size:0.72rem">+0.12</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.50</span><br><small style="color:var(--green);font-size:0.72rem">+9.58</small></span></div>
 
     </div>
 
@@ -497,14 +509,14 @@
       <div class="stat-row">
         <div class="stat"><div class="num">16</div><div class="lbl">Active</div></div>
         <div class="stat"><div class="num green">16</div><div class="lbl">Listed Qty</div></div>
-        <div class="stat"><div class="num yellow">👀 10</div><div class="lbl">Watchers</div></div>
+        <div class="stat"><div class="num yellow">👀 9</div><div class="lbl">Watchers</div></div>
       </div>
       <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127854055011" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-001 · £35 · qty 1</small></span><span class="badge green">👀 4</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-8-5-Nike-Air-Force-1-White-/127855760157" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 8.5 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127863244329" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-002 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127863244949" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-10-Nike-Air-Force-1-White-/127863250768" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 10 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/nike-air-force-one-black-uk-8-5-/127863254050" target="_blank" style="color:#cbd5e1;text-decoration:none">nike air force one black uk 8.5</a><br><small style="color:#555">UK-AF1-BLACK-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 2</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/nike-air-force-one-black-uk-8-5-/127863254050" target="_blank" style="color:#cbd5e1;text-decoration:none">nike air force one black uk 8.5</a><br><small style="color:#555">UK-AF1-BLACK-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-8-5-New-In-Box-/127863558273" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 8.5 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-8-5-002 · £35 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 2</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-White-Trainers-UK-8-5-New-In-Box-/127863581010" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 White Trainers UK 8.5 New In Box</a><br><small style="color:#555">UK-AF1-WHITE-8-5-002 · £35 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-10-New-In-Box-/127863606079" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-002 · £35 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
@@ -615,6 +627,21 @@
   <div class="agent-activity">Last: dashboard check today</div>
 </div>
 </div>
+    </div>
+
+    <div class="card full-width page-card obsidian-card" data-pages="brain" style="margin-top:16px">
+      <div class="obsidian-head">
+        <div>
+          <h2><span class="icon">🕸️</span> Obsidian Brain Graph</h2>
+          <p>Live mirror of the private <strong>ultron-brain</strong> vault. Built from real markdown links.</p>
+        </div>
+        <div class="brain-stat">15 notes · 23 links · 6 clusters</div>
+      </div>
+      <div class="brain-shell">
+        <canvas id="obsidianGraph"></canvas>
+        <div class="brain-tooltip" id="brainTooltip"></div>
+      </div>
+      <div class="brain-legend"><span class="brain-legend-pill"><i class="folder-business"></i>Business · 3</span><span class="brain-legend-pill"><i class="folder-core"></i>Core · 3</span><span class="brain-legend-pill"><i class="folder-daily"></i>Daily · 4</span><span class="brain-legend-pill"><i class="folder-projects"></i>Projects · 2</span><span class="brain-legend-pill"><i class="folder-school"></i>School · 1</span><span class="brain-legend-pill"><i class="folder-systems"></i>Systems · 2</span></div>
     </div>
 
     <div class="card full-width page-card" data-pages="calendar" style="margin-top:4px">
@@ -733,7 +760,7 @@
         card.classList.toggle('active', page === 'all' || pages.includes(page));
       });
       localStorage.setItem('dashboardPage', page);
-      setTimeout(() => { if (window.plChart) window.plChart.resize(); }, 50);
+      setTimeout(() => { if (window.plChart) window.plChart.resize(); if (page === 'brain' || page === 'all') drawObsidianGraph(); }, 80);
     }
 
     const savedPage = localStorage.getItem('dashboardPage');
@@ -782,6 +809,85 @@
       }, 400);
     }
 
+    const obsidianGraphData = {"nodes": [{"id": "Business/Inventory", "label": "Inventory", "folder": "Business"}, {"id": "Business/Resell Business", "label": "Resell Business", "folder": "Business"}, {"id": "Business/eBay Workflow", "label": "eBay Workflow", "folder": "Business"}, {"id": "Daily/2026-05-11", "label": "2026-05-11", "folder": "Daily"}, {"id": "Daily/2026-05-12", "label": "2026-05-12", "folder": "Daily"}, {"id": "Daily/2026-05-13", "label": "2026-05-13", "folder": "Daily"}, {"id": "Daily/2026-05-14", "label": "2026-05-14", "folder": "Daily"}, {"id": "Home", "label": "Home", "folder": "Core"}, {"id": "Lewis", "label": "Lewis", "folder": "Core"}, {"id": "Memory", "label": "Memory", "folder": "Core"}, {"id": "Projects/Dashboard", "label": "Dashboard", "folder": "Projects"}, {"id": "Projects/Obsidian Sync Plan", "label": "Obsidian Sync Plan", "folder": "Projects"}, {"id": "School/Lewis Writing Profile", "label": "Lewis Writing Profile", "folder": "School"}, {"id": "Systems/Taskforce", "label": "Taskforce", "folder": "Systems"}, {"id": "Systems/Ultron Identity", "label": "Ultron Identity", "folder": "Systems"}], "links": [{"source": "Home", "target": "Lewis"}, {"source": "Home", "target": "Memory"}, {"source": "Home", "target": "Systems/Ultron Identity"}, {"source": "Home", "target": "Systems/Taskforce"}, {"source": "Home", "target": "Business/Resell Business"}, {"source": "Home", "target": "Business/Inventory"}, {"source": "Home", "target": "Business/eBay Workflow"}, {"source": "Home", "target": "School/Lewis Writing Profile"}, {"source": "Home", "target": "Projects/Dashboard"}, {"source": "Home", "target": "Projects/Obsidian Sync Plan"}, {"source": "Business/eBay Workflow", "target": "Business/Resell Business"}, {"source": "Business/eBay Workflow", "target": "Business/Inventory"}, {"source": "Business/Inventory", "target": "Business/Resell Business"}, {"source": "Business/Inventory", "target": "Business/eBay Workflow"}, {"source": "Business/Inventory", "target": "Projects/Dashboard"}, {"source": "Business/Resell Business", "target": "Lewis"}, {"source": "Business/Resell Business", "target": "Memory"}, {"source": "Business/Resell Business", "target": "Business/Inventory"}, {"source": "Business/Resell Business", "target": "Business/eBay Workflow"}, {"source": "Projects/Dashboard", "target": "Memory"}, {"source": "Projects/Dashboard", "target": "Systems/Taskforce"}, {"source": "Projects/Dashboard", "target": "Business/Resell Business"}, {"source": "Projects/Dashboard", "target": "Business/Inventory"}]};
+    const folderColors = {
+      Core:'#818cf8', Business:'#4ade80', School:'#f472b6', Systems:'#22d3ee', Projects:'#f59e0b', Daily:'#94a3b8'
+    };
+    let graphAnimationStarted = false;
+    function drawObsidianGraph() {
+      const canvas = document.getElementById('obsidianGraph');
+      if (!canvas || graphAnimationStarted) return;
+      graphAnimationStarted = true;
+      const shell = canvas.parentElement;
+      const tooltip = document.getElementById('brainTooltip');
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const rect = shell.getBoundingClientRect();
+      canvas.width = Math.max(320, rect.width) * dpr;
+      canvas.height = Math.max(420, rect.height) * dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      const width = canvas.width / dpr;
+      const height = canvas.height / dpr;
+      const nodes = obsidianGraphData.nodes.map((n, i) => ({...n, x: width/2 + Math.cos(i)*40, y: height/2 + Math.sin(i)*40, vx:0, vy:0}));
+      const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
+      const links = obsidianGraphData.links.map(l => ({source: byId[l.source], target: byId[l.target]})).filter(l => l.source && l.target);
+      const clusters = [...new Set(nodes.map(n => n.folder))];
+      const centers = Object.fromEntries(clusters.map((f,i) => [f, {x: width*(0.25 + (i%3)*0.25), y: height*(0.28 + Math.floor(i/3)*0.28)}]));
+      nodes.forEach((n,i) => { const c = centers[n.folder] || {x:width/2,y:height/2}; n.x = c.x + (Math.random()-.5)*120; n.y = c.y + (Math.random()-.5)*120; });
+      let hover = null;
+      canvas.addEventListener('mousemove', e => {
+        const r = canvas.getBoundingClientRect(); const mx = e.clientX-r.left, my=e.clientY-r.top;
+        hover = nodes.find(n => Math.hypot(n.x-mx,n.y-my) < (n.id==='Memory'||n.id==='Lewis'?14:9));
+        if (hover && tooltip) { tooltip.style.opacity=1; tooltip.style.left=mx+'px'; tooltip.style.top=my+'px'; tooltip.innerHTML='<strong>'+hover.label+'</strong><br>'+hover.folder; }
+        else if (tooltip) tooltip.style.opacity=0;
+      });
+      function step() {
+        for (const n of nodes) {
+          const c = centers[n.folder] || {x:width/2,y:height/2};
+          n.vx += (c.x - n.x) * 0.0009;
+          n.vy += (c.y - n.y) * 0.0009;
+          n.vx += (width/2 - n.x) * 0.00012;
+          n.vy += (height/2 - n.y) * 0.00012;
+        }
+        for (const l of links) {
+          const dx=l.target.x-l.source.x, dy=l.target.y-l.source.y, dist=Math.max(1, Math.hypot(dx,dy));
+          const force=(dist-115)*0.0009; const fx=dx/dist*force, fy=dy/dist*force;
+          l.source.vx += fx; l.source.vy += fy; l.target.vx -= fx; l.target.vy -= fy;
+        }
+        for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++) {
+          const a=nodes[i], b=nodes[j]; const dx=b.x-a.x, dy=b.y-a.y; const d2=Math.max(36, dx*dx+dy*dy);
+          const f=42/d2; a.vx-=dx*f; a.vy-=dy*f; b.vx+=dx*f; b.vy+=dy*f;
+        }
+        for (const n of nodes) { n.vx*=0.88; n.vy*=0.88; n.x+=n.vx; n.y+=n.vy; n.x=Math.max(24,Math.min(width-24,n.x)); n.y=Math.max(24,Math.min(height-24,n.y)); }
+      }
+      function render() {
+        for (let i=0;i<2;i++) step();
+        ctx.clearRect(0,0,width,height);
+        ctx.save();
+        ctx.globalAlpha=.18; ctx.strokeStyle='#00d5ff'; ctx.lineWidth=1;
+        for (let x=0;x<width;x+=34) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,height); ctx.stroke(); }
+        for (let y=0;y<height;y+=34) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(width,y); ctx.stroke(); }
+        ctx.restore();
+        for (const l of links) {
+          const grad=ctx.createLinearGradient(l.source.x,l.source.y,l.target.x,l.target.y);
+          grad.addColorStop(0,(folderColors[l.source.folder]||'#00d5ff')+'66'); grad.addColorStop(1,(folderColors[l.target.folder]||'#00d5ff')+'44');
+          ctx.strokeStyle=grad; ctx.lineWidth=1.2; ctx.beginPath(); ctx.moveTo(l.source.x,l.source.y); ctx.lineTo(l.target.x,l.target.y); ctx.stroke();
+        }
+        for (const n of nodes) {
+          const important = ['Memory','Lewis','Home','Dashboard'].includes(n.label);
+          const r = important ? 8.5 : 5.5;
+          const color = folderColors[n.folder] || '#00d5ff';
+          ctx.shadowBlur = n===hover ? 24 : 13; ctx.shadowColor = color;
+          ctx.fillStyle = color; ctx.beginPath(); ctx.arc(n.x,n.y,n===hover?r+3:r,0,Math.PI*2); ctx.fill();
+          ctx.shadowBlur = 0; ctx.fillStyle = n===hover || important ? '#eaffff' : 'rgba(216,247,255,.72)';
+          ctx.font = (important ? '700 12px Inter' : '10px Inter'); ctx.textAlign='center';
+          if (important || n===hover || n.folder !== 'Daily') ctx.fillText(n.label, n.x, n.y + r + 13);
+        }
+        requestAnimationFrame(render);
+      }
+      render();
+    }
+    window.addEventListener('resize', () => { graphAnimationStarted=false; drawObsidianGraph(); });
 
   </script>
 </body>
