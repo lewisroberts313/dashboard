@@ -170,6 +170,9 @@
     .agent-card { position: relative; overflow: hidden; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 16px 12px; text-align: center; min-height: 172px; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
     .agent-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(99,102,241,0.08), transparent); transform: translateX(-120%); animation: agentSweep 6s ease-in-out infinite; }
     .agent-card:hover { transform: translateY(-4px); border-color: rgba(99,102,241,0.38); box-shadow: 0 12px 40px rgba(0,0,0,0.22), 0 0 24px rgba(99,102,241,0.1); }
+    .agent-card.working { border-color: rgba(74,222,128,0.42); box-shadow: 0 0 0 1px rgba(74,222,128,0.16), 0 0 30px rgba(74,222,128,0.14), inset 0 0 22px rgba(74,222,128,0.045); }
+    .agent-card.working::after { content: ''; position: absolute; inset: 7px; border-radius: 12px; border: 1px solid rgba(74,222,128,0.75); box-shadow: 0 0 18px rgba(74,222,128,0.5), 0 0 42px rgba(74,222,128,0.18); animation: workingRing 2.4s ease-in-out infinite; pointer-events: none; }
+    @keyframes workingRing { 0%,100% { opacity: 0.55; transform: scale(0.985); } 50% { opacity: 1; transform: scale(1); } }
     @keyframes agentSweep { 0%, 55% { transform: translateX(-120%); } 75%, 100% { transform: translateX(120%); } }
     .agent-avatar { position: relative; z-index: 1; width: 46px; height: 46px; margin: 0 auto 10px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.55rem; background: linear-gradient(135deg, rgba(99,102,241,0.18), rgba(74,222,128,0.08)); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 0 18px rgba(99,102,241,0.12); animation: avatarPulse 3.8s ease-in-out infinite; }
     @keyframes avatarPulse { 0%,100% { box-shadow: 0 0 18px rgba(99,102,241,0.12); } 50% { box-shadow: 0 0 28px rgba(74,222,128,0.16); } }
@@ -190,7 +193,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 16, 10:15PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 16, 10:17PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -390,7 +393,18 @@
 
     <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-eBay_🏷️_Nike_Air_Force_1.">
+      <div class="email-item" id="email-Uber_Receipts_Your_Saturday_evenin">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Uber_Receipts_Your_Saturday_evenin')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Your Saturday evening trip with Uber</div>
+    <div class="email-sender">Uber Receipts</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-eBay_🏷️_Nike_Air_Force_1.">
   <label class="email-check">
     <input type="checkbox" onchange="dismissEmail('eBay_🏷️_Nike_Air_Force_1.')">
     <span class="checkmark"></span>
@@ -442,17 +456,6 @@
   <div class="email-body">
     <div class="email-subject">Your Saturday afternoon trip with Uber</div>
     <div class="email-sender">Uber Receipts</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Adventure_Island_🌊_AquaGlow_Starts_Ne">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Adventure_Island_🌊_AquaGlow_Starts_Ne')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">🌊 AquaGlow Starts Next Weekend</div>
-    <div class="email-sender">Adventure Island</div>
   </div>
   <span class="badge">unread</span>
 </div>
@@ -571,21 +574,21 @@
 
     <div class="card full-width page-card" data-pages="taskforce" style="margin-top:16px">
       <h2><span class="icon">🧠</span> Taskforce</h2>
-      <div class="agent-grid"><div class="agent-card">
+      <div class="agent-grid"><div class="agent-card working">
   <div class="agent-avatar">🛡️</div>
   <div class="agent-name">Sentinel</div>
   <div class="agent-role">Ops Agent</div>
   <div class="agent-desc">Calendar, reminders, daily reports, dashboard checks</div>
   <div class="agent-activity"><strong>monitoring</strong><br>eBay active-listing monitor, dispatch/payment alerts, dashboard heartbeat checks</div>
 </div>
-<div class="agent-card">
+<div class="agent-card working">
   <div class="agent-avatar">🏦</div>
   <div class="agent-name">Vault</div>
   <div class="agent-role">Inventory Agent</div>
   <div class="agent-desc">US/UK stock, sales logs, listings, reorder flags</div>
   <div class="agent-activity"><strong>watching inventory</strong><br>UK AF1 listing gaps + Essentials stock plan tracking</div>
 </div>
-<div class="agent-card">
+<div class="agent-card working">
   <div class="agent-avatar">📊</div>
   <div class="agent-name">Ledger</div>
   <div class="agent-role">Finance Agent</div>
@@ -606,7 +609,7 @@
   <div class="agent-desc">Emails, listings, essays, posts, human writing</div>
   <div class="agent-activity"><strong>standby</strong><br>Ready for listing copy, supplier messages, school writing</div>
 </div>
-<div class="agent-card">
+<div class="agent-card working">
   <div class="agent-avatar">⚒️</div>
   <div class="agent-name">Forge</div>
   <div class="agent-role">Builder Agent</div>
