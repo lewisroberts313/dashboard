@@ -47,7 +47,8 @@
     .business-card .item:first-of-type, .business-card .email-item:first-of-type { margin-top: 2px; }
     .business-card .item, .business-card .email-item { padding: 7px 0; }
     .business-card .label, .business-card .email-subject { font-size: .8rem; }
-    .business-listings { position: relative; overflow: hidden; }
+    .business-listings { position: relative; max-height: 430px; overflow: auto; scrollbar-width: none; }
+    .business-listings::-webkit-scrollbar { width: 0; height: 0; }
     .business-listings::before { content:''; position:absolute; inset:0 0 auto 0; height:1px; background:linear-gradient(90deg, transparent, rgba(74,222,128,.5), transparent); }
     .business-listings .stat-row { max-width: 620px; }
     .business-listings .item { padding: 9px 0; }
@@ -211,7 +212,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 18, 11:55AM EST</div>
+        <div class="header-sub">Lewis Roberts · May 18, 12:02PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -262,6 +263,8 @@
     <div class="focus-strip page-card active" data-pages="overview">
       <div class="focus-card"><small>next move</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="focus-card"><small>stock focus</small><strong>UK eBay coverage</strong><span>3 unlisted · 17 watcher(s)</span></div><div class="focus-card"><small>time focus</small><strong>Next calendar item</strong><span>No more events today</span></div>
     </div>
+
+
 
     <div class="pl-row page-card business-pl" data-pages="business">
       <div class="card">
@@ -486,18 +489,18 @@
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1329</div><div class="lbl">Value</div></div>
-        <div class="stat"><div class="num green">£101</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num">£1328</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num green">£99</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£258.73</span><br><small style="color:var(--green);font-size:0.72rem">+21.31</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£146.49</span><br><small style="color:var(--green);font-size:0.72rem">+15.03</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.67</span><br><small style="color:var(--green);font-size:0.72rem">+17.78</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£67.11</span><br><small style="color:var(--green);font-size:0.72rem">+7.44</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.47</span><br><small style="color:var(--green);font-size:0.72rem">+8.37</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.80</span><br><small style="color:var(--green);font-size:0.72rem">+9.88</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.25</span><br><small style="color:var(--red);font-size:0.72rem">-0.68</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.75</span><br><small style="color:var(--green);font-size:0.72rem">+9.83</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£145.29</span><br><small style="color:var(--green);font-size:0.72rem">+13.83</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.48</span><br><small style="color:var(--green);font-size:0.72rem">+17.59</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£67.15</span><br><small style="color:var(--green);font-size:0.72rem">+7.48</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.40</span><br><small style="color:var(--green);font-size:0.72rem">+8.30</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.56</span><br><small style="color:var(--green);font-size:0.72rem">+9.64</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.23</span><br><small style="color:var(--red);font-size:0.72rem">-0.70</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.66</span><br><small style="color:var(--green);font-size:0.72rem">+9.74</small></span></div>
 
     </div>
 
