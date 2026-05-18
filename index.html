@@ -38,8 +38,24 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
     .grid .full-width { grid-column: 1 / -1; }
 
-    .business-four { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-    .business-four .card { min-width: 0; }
+    .business-four { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: start; }
+    .business-four .card { min-width: 0; max-height: 430px; overflow: auto; scrollbar-width: none; }
+    .business-four .card::-webkit-scrollbar { width: 0; height: 0; }
+    .business-card { position: relative; }
+    .business-card::before { content:''; position:absolute; top:0; left:14px; right:14px; height:1px; background:linear-gradient(90deg, transparent, rgba(99,102,241,.55), transparent); }
+    .business-card .stat-row { padding: 8px; border-radius: 14px; background: rgba(0,0,0,.12); border: 1px solid rgba(255,255,255,.045); }
+    .business-card .item:first-of-type, .business-card .email-item:first-of-type { margin-top: 2px; }
+    .business-card .item, .business-card .email-item { padding: 7px 0; }
+    .business-card .label, .business-card .email-subject { font-size: .8rem; }
+    .business-listings { position: relative; overflow: hidden; }
+    .business-listings::before { content:''; position:absolute; inset:0 0 auto 0; height:1px; background:linear-gradient(90deg, transparent, rgba(74,222,128,.5), transparent); }
+    .business-listings .stat-row { max-width: 620px; }
+    .business-listings .item { padding: 9px 0; }
+    .business-pl { order: -1; }
+    .business-pl .card { background: linear-gradient(180deg, rgba(99,102,241,.07), rgba(255,255,255,.026)); }
+    .business-pl .summary-line { padding: 9px 0; }
+    .business-pl canvas { max-height: 230px; }
+    @media (max-width: 700px) { .business-pl .card { padding: 14px; } .business-pl canvas { max-height: 190px; } }
     @media (max-width: 1200px) { .business-four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 700px) { .business-four { grid-template-columns: 1fr; } }
     .nav-tabs { display: flex; gap: 8px; margin: -16px 0 18px; flex-wrap: wrap; }
@@ -57,7 +73,7 @@
     .summary-line span { color: #64748b; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
     .summary-line strong { color: #fff; font-size: 1rem; }
     @media (max-width: 900px) { .pl-row { grid-template-columns: 1fr; } }
-    @media (max-width: 760px) { .wrapper { padding: 14px 12px; } header { align-items:flex-start; } .header-right { width:100%; justify-content:space-between; } }
+    @media (max-width: 760px) { .wrapper { padding: 14px 12px; } header { align-items:flex-start; } .header-right { width:100%; justify-content:space-between; gap:10px; } .clock { font-size:.98rem; letter-spacing:-.03em; } }
     .mission { position: relative; overflow: hidden; border: 1px solid rgba(99,102,241,0.24); background: linear-gradient(135deg, rgba(99,102,241,0.14), rgba(7,7,16,0.72) 45%, rgba(74,222,128,0.06)); border-radius: 22px; padding: 22px; margin-bottom: 18px; box-shadow: 0 0 50px rgba(99,102,241,0.08); }
     .mission::after { content: ''; position: absolute; inset: -40% -10% auto auto; width: 360px; height: 360px; background: radial-gradient(circle, rgba(99,102,241,0.18), transparent 62%); pointer-events: none; }
     .mission::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 18px, rgba(255,255,255,0.018) 19px); opacity: 0.45; pointer-events: none; }
@@ -195,7 +211,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 18, 11:46AM EST</div>
+        <div class="header-sub">Lewis Roberts · May 18, 11:55AM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -247,8 +263,26 @@
       <div class="focus-card"><small>next move</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="focus-card"><small>stock focus</small><strong>UK eBay coverage</strong><span>3 unlisted · 17 watcher(s)</span></div><div class="focus-card"><small>time focus</small><strong>Next calendar item</strong><span>No more events today</span></div>
     </div>
 
+    <div class="pl-row page-card business-pl" data-pages="business">
+      <div class="card">
+        <h2><span class="icon">🧾</span> Combined Totals</h2>
+        <div class="summary-list">
+          <div class="summary-line"><span>US Costs</span><strong>$184</strong></div>
+          <div class="summary-line"><span>US Revenue</span><strong>$180</strong></div>
+          <div class="summary-line"><span>US Profit</span><strong class="green">$38</strong></div>
+          <div class="summary-line"><span>UK Costs</span><strong>£439</strong></div>
+          <div class="summary-line"><span>UK Revenue</span><strong>£78</strong></div>
+          <div class="summary-line"><span>UK Profit</span><strong class="green">£78</strong></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2><span class="icon">📈</span> Profit/Loss Chart — US ($) + UK (£)</h2>
+        <canvas id="plChart" height="80"></canvas>
+      </div>
+    </div>
+
     <div class="business-four page-card active" data-pages="overview business">
-    <div class="card" data-pages="overview business">
+    <div class="card business-card" data-pages="overview business">
       <h2><span class="icon">🇺🇸</span> US Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">3</div><div class="lbl">In Stock</div></div>
@@ -261,7 +295,7 @@
 <div class="item"><span class="label">Essentials hoodie — Dark Oatmeal L</span><span class="badge red">sold out</span></div>
 
     </div>
-    <div class="card" data-pages="business">
+    <div class="card business-card" data-pages="business">
       <h2><span class="icon">💰</span> Sales Log (US)</h2>
       <div class="item">
   <span class="label">Essentials shorts Light Oatmeal M<br><small style="color:#555">—</small></span>
@@ -293,7 +327,7 @@
 </div>
 
     </div>
-    <div class="card" data-pages="business">
+    <div class="card business-card" data-pages="business">
       <h2><span class="icon">🇬🇧</span> UK Inventory</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">17</div><div class="lbl">In Stock</div></div>
@@ -311,7 +345,7 @@
 <div class="item"><span class="label">Essentials Shorts — Light Oatmeal inbound<br><small style="color:#64748b">Inbound sizes: S×3 · M×4 · L×3 · List: £35 · Cost: £14.59-£14.68 · ETA: 2026-05-29 to 2026-06-07</small></span><span class="badges"><span class="badge badge-order">inbound ×10</span></span></div>
 
     </div>
-    <div class="card" data-pages="business">
+    <div class="card business-card" data-pages="business">
       <h2><span class="icon">🇬🇧</span> Sales Log (UK)</h2>
       <div class="item">
   <span class="label">Nike Air Force 1 White UK 9<br><small style="color:#555">2026-05-13 · paid/shipped</small></span>
@@ -378,7 +412,18 @@
 
     <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-Lyft_Receipts_Your_ride_with_Lesni">
+      <div class="email-item" id="email-58deal_NEW_DROP_LIVE_NOW!">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('58deal_NEW_DROP_LIVE_NOW!')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">NEW DROP LIVE NOW!</div>
+    <div class="email-sender">58deal</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Lyft_Receipts_Your_ride_with_Lesni">
   <label class="email-check">
     <input type="checkbox" onchange="dismissEmail('Lyft_Receipts_Your_ride_with_Lesni')">
     <span class="checkmark"></span>
@@ -433,17 +478,6 @@
   </div>
   <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-Hostinger_What_if_you_had_an_e">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Hostinger_What_if_you_had_an_e')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">What if you had an expert?</div>
-    <div class="email-sender">Hostinger</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
 
     </div>
 
@@ -457,18 +491,18 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£258.73</span><br><small style="color:var(--green);font-size:0.72rem">+21.31</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£146.31</span><br><small style="color:var(--green);font-size:0.72rem">+14.85</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.62</span><br><small style="color:var(--green);font-size:0.72rem">+17.73</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£67.05</span><br><small style="color:var(--green);font-size:0.72rem">+7.38</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.46</span><br><small style="color:var(--green);font-size:0.72rem">+8.36</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.70</span><br><small style="color:var(--green);font-size:0.72rem">+9.78</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.34</span><br><small style="color:var(--red);font-size:0.72rem">-0.59</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.84</span><br><small style="color:var(--green);font-size:0.72rem">+9.92</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£146.49</span><br><small style="color:var(--green);font-size:0.72rem">+15.03</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.67</span><br><small style="color:var(--green);font-size:0.72rem">+17.78</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£67.11</span><br><small style="color:var(--green);font-size:0.72rem">+7.44</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.47</span><br><small style="color:var(--green);font-size:0.72rem">+8.37</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.80</span><br><small style="color:var(--green);font-size:0.72rem">+9.88</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.25</span><br><small style="color:var(--red);font-size:0.72rem">-0.68</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.75</span><br><small style="color:var(--green);font-size:0.72rem">+9.83</small></span></div>
 
     </div>
 
 
-    <div class="card full-width page-card" data-pages="business">
+    <div class="card full-width page-card business-listings" data-pages="business">
       <h2><span class="icon">📦</span> Active eBay Listings</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">14</div><div class="lbl">Active</div></div>
@@ -496,23 +530,7 @@
 
 
 
-    <div class="pl-row page-card" data-pages="business">
-      <div class="card">
-        <h2><span class="icon">🧾</span> Combined Totals</h2>
-        <div class="summary-list">
-          <div class="summary-line"><span>US Costs</span><strong>$184</strong></div>
-          <div class="summary-line"><span>US Revenue</span><strong>$180</strong></div>
-          <div class="summary-line"><span>US Profit</span><strong class="green">$38</strong></div>
-          <div class="summary-line"><span>UK Costs</span><strong>£439</strong></div>
-          <div class="summary-line"><span>UK Revenue</span><strong>£78</strong></div>
-          <div class="summary-line"><span>UK Profit</span><strong class="green">£78</strong></div>
-        </div>
-      </div>
-      <div class="card">
-        <h2><span class="icon">📈</span> Profit/Loss Chart — US ($) + UK (£)</h2>
-        <canvas id="plChart" height="80"></canvas>
-      </div>
-    </div>
+
 
     <div class="card full-width page-card active evo-card" data-pages="overview taskforce" style="margin-top:16px">
       <div class="evo-head">
