@@ -130,21 +130,6 @@
     .status-dot.green { background: var(--green); color: var(--green); }
     .status-dot.yellow { background: var(--yellow); color: var(--yellow); }
     .status-dot.red { background: var(--red); color: var(--red); }
-    .living-room { position: relative; overflow: hidden; margin: 0 0 18px; padding: 16px; border-radius: 22px; border: 1px solid rgba(99,102,241,.18); background: linear-gradient(135deg, rgba(15,23,42,.74), rgba(7,7,16,.92)); box-shadow: inset 0 0 80px rgba(99,102,241,.035), 0 18px 55px rgba(0,0,0,.16); }
-    .living-room::before { content:''; position:absolute; inset:0; background: radial-gradient(circle at 50% 0%, rgba(0,213,255,.10), transparent 38%), linear-gradient(90deg, transparent 0 49%, rgba(99,102,241,.08) 50%, transparent 51%); pointer-events:none; }
-    .room-head { position:relative; z-index:1; display:flex; justify-content:space-between; gap:14px; align-items:flex-end; margin-bottom:14px; }
-    .room-head small { display:block; color:#67e8f9; text-transform:uppercase; letter-spacing:.16em; font-size:.66rem; font-weight:800; }
-    .room-head strong { display:block; color:#fff; font-size:1.05rem; margin-top:4px; }
-    .room-head span { color:#64748b; font-size:.76rem; }
-    .room-grid { position:relative; z-index:1; display:grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap:12px; }
-    .room-node { min-height:108px; border-radius:16px; padding:13px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.032); box-shadow: inset 0 0 28px rgba(255,255,255,.015); }
-    .room-node small { display:block; color:#64748b; text-transform:uppercase; letter-spacing:.1em; font-size:.62rem; margin-bottom:8px; }
-    .room-node strong { display:block; color:#f8fafc; font-size:.95rem; line-height:1.2; }
-    .room-node span { display:block; color:#94a3b8; font-size:.74rem; line-height:1.35; margin-top:7px; }
-    .room-node.command { background:linear-gradient(135deg, rgba(99,102,241,.14), rgba(255,255,255,.026)); border-color:rgba(129,140,248,.24); }
-    .room-node.taskforce-node { border-color:rgba(74,222,128,.2); }
-    .room-node.resell-node { border-color:rgba(251,191,36,.22); }
-    .room-node.memory-node { border-color:rgba(103,232,249,.22); }
     .focus-strip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
     .focus-card { border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.035); border-radius:14px; padding:12px 14px; min-height:86px; }
     .focus-card small { display:block; color:#64748b; text-transform:uppercase; letter-spacing:.08em; font-size:.64rem; margin-bottom:7px; }
@@ -214,9 +199,8 @@
     .agent-desc { position: relative; z-index: 1; color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
     .agent-activity { position: relative; z-index: 1; color: var(--green); font-size: 0.68rem; margin-top: 10px; }
     .agent-activity strong { color:#e2e8f0; text-transform:uppercase; letter-spacing:.08em; font-size:.62rem; }
-    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } .room-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } .evo-agents { grid-template-columns:1fr; } }
-    @media (max-width: 700px) { .room-head { display:block; } .room-grid { grid-template-columns:1fr; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
     @media (max-width: 650px) { .room { min-height: 920px; } .station { width: calc(100% - 48px); } .memory-wall { bottom:306px; } .task-desk { left:24px; right:auto; bottom:196px; } .business-corner { bottom:86px; } .comms-panel { bottom:-24px; } }
   </style>
@@ -228,7 +212,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 18, 7:50PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 18, 8:03PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -263,14 +247,6 @@
         <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>2 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>19 watcher(s) across UK listings</small></div></div></div>
       </div>
     </div>
-  </section>
-
-  <section class="living-room page-card active" data-pages="overview agents">
-    <div class="room-head">
-      <div><small>Hybrid Ultron Environment</small><strong>Living command space</strong></div>
-      <span>Dashboard objects now mirror real systems: command, taskforce, resell, memory.</span>
-    </div>
-    <div class="room-grid"><div class="room-node command"><small>Command</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="room-node taskforce-node"><small>Taskforce</small><strong>0 active · 6 standing by</strong><span>Ledger · Sentinel · Vault · Scout · Scribe · Forge</span></div><div class="room-node resell-node"><small>Resell Ops</small><strong>2 unlisted · 19 watcher(s) · 14 active listings</strong><span>Next money move stays visible here.</span></div><div class="room-node memory-node"><small>Memory</small><strong>22 notes linked</strong><span>22 notes · 42 links · 8 clusters</span></div></div>
   </section>
 
   <div class="nav-tabs">
@@ -525,13 +501,13 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£258.73</span><br><small style="color:var(--green);font-size:0.72rem">+21.31</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£148.19</span><br><small style="color:var(--green);font-size:0.72rem">+16.73</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.22</span><br><small style="color:var(--green);font-size:0.72rem">+17.33</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£147.70</span><br><small style="color:var(--green);font-size:0.72rem">+16.24</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.18</span><br><small style="color:var(--green);font-size:0.72rem">+17.29</small></span></div>
 <div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£67.84</span><br><small style="color:var(--green);font-size:0.72rem">+8.17</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.70</span><br><small style="color:var(--green);font-size:0.72rem">+8.60</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.78</span><br><small style="color:var(--green);font-size:0.72rem">+9.86</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.71</span><br><small style="color:var(--green);font-size:0.72rem">+8.61</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.77</span><br><small style="color:var(--green);font-size:0.72rem">+9.85</small></span></div>
 <div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.47</span><br><small style="color:var(--red);font-size:0.72rem">-0.46</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.38</span><br><small style="color:var(--green);font-size:0.72rem">+9.46</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.50</span><br><small style="color:var(--green);font-size:0.72rem">+9.58</small></span></div>
 
     </div>
 
