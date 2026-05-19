@@ -57,12 +57,24 @@
     .business-pl canvas { max-height: 230px; }
     .stock-pipeline-card { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(59,130,246,.08), rgba(15,23,42,.55)); }
     .stock-pipeline { display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap:10px; }
-    .pipe-stage { position:relative; display:flex; gap:10px; align-items:flex-start; min-height:92px; padding:12px; border:1px solid rgba(255,255,255,.065); border-radius:14px; background:rgba(0,0,0,.15); overflow:hidden; }
+    .pipe-stage { position:relative; min-height:220px; padding:12px; border:1px solid rgba(255,255,255,.065); border-radius:14px; background:rgba(0,0,0,.15); overflow:hidden; }
     .pipe-stage:not(:last-child)::after { content:'→'; position:absolute; right:8px; top:10px; color:rgba(96,165,250,.55); font-weight:900; }
+    .pipe-head { display:flex; gap:10px; align-items:flex-start; padding-bottom:10px; margin-bottom:8px; border-bottom:1px solid rgba(255,255,255,.055); }
     .pipe-step { width:24px; height:24px; flex-shrink:0; display:grid; place-items:center; border-radius:999px; background:rgba(96,165,250,.14); color:#93c5fd; border:1px solid rgba(96,165,250,.26); font-weight:900; font-size:.72rem; }
     .pipe-stage strong { display:block; color:#e2e8f0; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; }
     .pipe-stage span { display:block; color:#fff; font-size:1.45rem; font-weight:900; letter-spacing:-.04em; margin-top:5px; }
     .pipe-stage small { display:block; color:#64748b; font-size:.68rem; line-height:1.3; margin-top:3px; padding-right:10px; }
+    .pipe-body { display:grid; gap:7px; max-height:185px; overflow:auto; scrollbar-width:none; }
+    .pipe-body::-webkit-scrollbar { width:0; height:0; }
+    .pipe-line { border:1px solid rgba(255,255,255,.055); border-radius:10px; padding:8px; background:rgba(255,255,255,.025); }
+    .pipe-line b { display:block; color:#dbeafe; font-size:.72rem; line-height:1.25; font-weight:750; }
+    .pipe-line span { display:inline-block; color:#fff; font-size:.95rem; font-weight:900; margin-top:4px; }
+    .pipe-line em { display:block; color:#94a3b8; font-style:normal; font-size:.68rem; line-height:1.25; margin-top:2px; }
+    .pipe-empty { color:#64748b; font-size:.72rem; padding:10px 8px; border:1px dashed rgba(255,255,255,.07); border-radius:10px; }
+    .pipe-chips { display:flex; flex-wrap:wrap; gap:5px; margin-top:6px; }
+    .pipe-chip { display:inline-flex; border-radius:999px; padding:3px 7px; font-size:.62rem; font-weight:850; }
+    .pipe-chip.listed { color:#4ade80; background:rgba(74,222,128,.14); border:1px solid rgba(74,222,128,.25); box-shadow:0 0 14px rgba(74,222,128,.08); }
+    .pipe-chip.unlisted { color:#64748b; background:rgba(148,163,184,.08); border:1px solid rgba(148,163,184,.12); }
     @media (max-width: 700px) { .business-pl .card { padding: 14px; } .business-pl canvas { max-height: 190px; } }
     @media (max-width: 1200px) { .business-four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 1100px) { .stock-pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -223,7 +235,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 19, 4:19PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 19, 4:33PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -388,7 +400,7 @@
 
     <div class="card stock-pipeline-card page-card active" data-pages="overview business">
       <h2><span class="icon">🌊</span> Stock Pipeline — FlowOPS</h2>
-      <div class="stock-pipeline"><div class="pipe-stage"><div class="pipe-step">1</div><div><strong>Ordered / Shipping</strong><span>30</span><small>Inbound potential £611 · £20.37/unit</small></div></div><div class="pipe-stage"><div class="pipe-step">2</div><div><strong>In stock</strong><span>16</span><small>1 unlisted gap(s)</small></div></div><div class="pipe-stage"><div class="pipe-step">3</div><div><strong>Listed</strong><span>15</span><small>Active eBay units</small></div></div><div class="pipe-stage"><div class="pipe-step">4</div><div><strong>Watchers</strong><span>21</span><small>Buyer interest across listings</small></div></div><div class="pipe-stage"><div class="pipe-step">5</div><div><strong>Sold / Shipping</strong><span>3</span><small>0 pending shipment</small></div></div></div>
+      <div class="stock-pipeline"><div class="pipe-stage"><div class="pipe-head"><div class="pipe-step">1</div><div><strong>Ordered / Shipping</strong><span>30</span><small>Potential £611 · £20.37/unit</small></div></div><div class="pipe-body"><div class="pipe-line"><b>Essentials Shorts — Black</b><span>11</span><em>S×2 · M×4 · L×4 · XL×1</em><small>ETA 2026-05-29–2026-06-07</small></div><div class="pipe-line"><b>Essentials Shorts — Dark Oatmeal</b><span>9</span><em>S×3 · M×4 · L×1 · XL×1</em><small>ETA 2026-05-29–2026-06-07</small></div><div class="pipe-line"><b>Essentials Shorts — Light Oatmeal</b><span>10</span><em>S×3 · M×4 · L×3</em><small>ETA 2026-05-29–2026-06-07</small></div></div></div><div class="pipe-stage"><div class="pipe-head"><div class="pipe-step">2</div><div><strong>In stock</strong><span>16</span><small>Green = listed · grey = not listed</small></div></div><div class="pipe-body"><div class="pipe-line"><b>Nike Air Force 1 — Black UK 8.5</b><span>4</span><div class="pipe-chips"><span class="pipe-chip listed">listed ×3</span><span class="pipe-chip unlisted">unlisted ×1</span></div></div><div class="pipe-line"><b>Nike Air Force 1 — Black UK 9</b><span>3</span><div class="pipe-chips"><span class="pipe-chip listed">listed ×2</span><span class="pipe-chip unlisted">unlisted ×1</span></div></div><div class="pipe-line"><b>Nike Air Force 1 — Black UK 10</b><span>3</span><div class="pipe-chips"><span class="pipe-chip listed">listed ×3</span></div></div><div class="pipe-line"><b>Nike Air Force 1 — White UK 8.5</b><span>4</span><div class="pipe-chips"><span class="pipe-chip listed">listed ×3</span><span class="pipe-chip unlisted">unlisted ×1</span></div></div><div class="pipe-line"><b>Nike Air Force 1 — White UK 10</b><span>2</span><div class="pipe-chips"><span class="pipe-chip listed">listed ×2</span></div></div></div></div><div class="pipe-stage"><div class="pipe-head"><div class="pipe-step">3</div><div><strong>To ship</strong><span>1</span><small>Paid / dispatch needed</small></div></div><div class="pipe-body"><div class="pipe-line"><b>Nike Air Force 1 — Black UK 10</b><span>£38</span><em>jwoodsy69</em><small>2026-05-18</small></div></div></div><div class="pipe-stage"><div class="pipe-head"><div class="pipe-step">4</div><div><strong>Shipped / Being delivered</strong><span>2</span><small>On the way to buyer</small></div></div><div class="pipe-body"><div class="pipe-line"><b>Nike Air Force 1 — White UK 9</b><span>£40</span><em>rubed1</em><small>2026-05-15</small></div><div class="pipe-line"><b>Nike Air Force 1 — White UK 10</b><span>£40</span><em>johnutd21</em><small>87RKL6219451A035</small></div></div></div><div class="pipe-stage"><div class="pipe-head"><div class="pipe-step">5</div><div><strong>Delivered / Sold</strong><span>0</span><small>Completed sales</small></div></div><div class="pipe-body"><div class="pipe-empty">Nothing marked delivered yet</div></div></div></div>
     </div>
 
     <div class="card page-card active" data-pages="overview calendar">
@@ -504,17 +516,17 @@
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
         <div class="stat"><div class="num">£1324</div><div class="lbl">Value</div></div>
-        <div class="stat"><div class="num green">£96</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num green">£95</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£257.34</span><br><small style="color:var(--green);font-size:0.72rem">+19.92</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£146.09</span><br><small style="color:var(--green);font-size:0.72rem">+14.63</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£85.56</span><br><small style="color:var(--green);font-size:0.72rem">+15.67</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£145.95</span><br><small style="color:var(--green);font-size:0.72rem">+14.49</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£85.53</span><br><small style="color:var(--green);font-size:0.72rem">+15.64</small></span></div>
 <div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.12</span><br><small style="color:var(--green);font-size:0.72rem">+9.02</small></span></div>
 <div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£66.91</span><br><small style="color:var(--green);font-size:0.72rem">+7.24</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.44</span><br><small style="color:var(--green);font-size:0.72rem">+9.52</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£46.94</span><br><small style="color:var(--red);font-size:0.72rem">-0.99</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.35</span><br><small style="color:var(--green);font-size:0.72rem">+8.43</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.50</span><br><small style="color:var(--green);font-size:0.72rem">+9.58</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£46.93</span><br><small style="color:var(--red);font-size:0.72rem">-1.00</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.28</span><br><small style="color:var(--green);font-size:0.72rem">+8.36</small></span></div>
 
     </div>
 
