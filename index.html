@@ -47,6 +47,16 @@
     .business-card .item:first-of-type, .business-card .email-item:first-of-type { margin-top: 2px; }
     .business-card .item, .business-card .email-item { padding: 7px 0; }
     .business-card .label, .business-card .email-subject { font-size: .8rem; }
+    .stock-pipeline { grid-column: 1 / -1; }
+    .pipeline-flow { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 10px; align-items: stretch; }
+    .pipeline-stage { border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:12px 10px; background:rgba(0,0,0,.16); min-width:0; }
+    .pipeline-value { font-size:1.35rem; font-weight:900; color:#fff; line-height:1; }
+    .pipeline-value.green { color:var(--green); }
+    .pipeline-value.yellow { color:var(--yellow); }
+    .pipeline-value.blue { color:#60a5fa; }
+    .pipeline-label { margin-top:7px; color:#e2e8f0; font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; }
+    .pipeline-sub { margin-top:4px; color:#64748b; font-size:.72rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .pipeline-arrow { align-self:center; justify-self:center; margin-left:-19px; margin-right:-19px; z-index:2; color:#64748b; font-weight:900; }
     .business-listings { position: relative; max-height: 430px; overflow: auto; scrollbar-width: none; }
     .business-listings::-webkit-scrollbar { width: 0; height: 0; }
     .business-listings::before { content:''; position:absolute; inset:0 0 auto 0; height:1px; background:linear-gradient(90deg, transparent, rgba(74,222,128,.5), transparent); }
@@ -55,9 +65,19 @@
     .business-pl .card { background: linear-gradient(180deg, rgba(99,102,241,.07), rgba(255,255,255,.026)); }
     .business-pl .summary-line { padding: 9px 0; }
     .business-pl canvas { max-height: 230px; }
+    .stock-pipeline-card { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(59,130,246,.08), rgba(15,23,42,.55)); }
+    .stock-pipeline { display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap:10px; }
+    .pipe-stage { position:relative; display:flex; gap:10px; align-items:flex-start; min-height:92px; padding:12px; border:1px solid rgba(255,255,255,.065); border-radius:14px; background:rgba(0,0,0,.15); overflow:hidden; }
+    .pipe-stage:not(:last-child)::after { content:'→'; position:absolute; right:8px; top:10px; color:rgba(96,165,250,.55); font-weight:900; }
+    .pipe-step { width:24px; height:24px; flex-shrink:0; display:grid; place-items:center; border-radius:999px; background:rgba(96,165,250,.14); color:#93c5fd; border:1px solid rgba(96,165,250,.26); font-weight:900; font-size:.72rem; }
+    .pipe-stage strong { display:block; color:#e2e8f0; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; }
+    .pipe-stage span { display:block; color:#fff; font-size:1.45rem; font-weight:900; letter-spacing:-.04em; margin-top:5px; }
+    .pipe-stage small { display:block; color:#64748b; font-size:.68rem; line-height:1.3; margin-top:3px; padding-right:10px; }
     @media (max-width: 700px) { .business-pl .card { padding: 14px; } .business-pl canvas { max-height: 190px; } }
     @media (max-width: 1200px) { .business-four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 700px) { .business-four { grid-template-columns: 1fr; } }
+    @media (max-width: 1100px) { .stock-pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 700px) { .business-four { grid-template-columns: 1fr; } .pipeline-flow { grid-template-columns: 1fr; } .pipeline-arrow { display:none; } }
+    @media (max-width: 700px) { .stock-pipeline { grid-template-columns: 1fr; } .pipe-stage:not(:last-child)::after { content:''; } }
     .nav-tabs { display: flex; gap: 8px; margin: -16px 0 18px; flex-wrap: wrap; }
     .nav-tab { border: 1px solid var(--border); background: rgba(255,255,255,0.035); color: #94a3b8; border-radius: 999px; padding: 9px 14px; font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
     .nav-tab:hover { border-color: rgba(255,255,255,0.16); color: #fff; }
@@ -214,7 +234,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 19, 10:36AM EST</div>
+        <div class="header-sub">Lewis Roberts · May 19, 4:17PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -246,7 +266,7 @@
           <div class="core-ring"><div class="core-eye">🤖</div></div>
           <div class="core-copy"><strong>Ultron Core</strong><span>All systems online</span></div>
         </div>
-        <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>1 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>19 watcher(s) across UK listings</small></div></div></div>
+        <div class="mission-actions"><h3>Needs attention</h3><div class="mission-action"><span class="status-dot red"></span><div><strong>Restock review</strong><br><small>2 US SKU(s) sold out</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>Low stock</strong><br><small>1 US SKU(s) down to one</small></div></div><div class="mission-action"><span class="status-dot yellow"></span><div><strong>UK listing gap</strong><br><small>1 unit(s) not listed on eBay</small></div></div><div class="mission-action"><span class="status-dot green"></span><div><strong>Buyer interest</strong><br><small>21 watcher(s) across UK listings</small></div></div></div>
       </div>
     </div>
   </section>
@@ -263,7 +283,7 @@
   <div class="grid">
 
     <div class="focus-strip page-card active" data-pages="overview business">
-      <div class="focus-card"><small>next move</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="focus-card"><small>stock focus</small><strong>UK eBay coverage</strong><span>1 unlisted · 19 watcher(s)</span></div><div class="focus-card"><small>time focus</small><strong>Next calendar item</strong><span>No more events today</span></div>
+      <div class="focus-card"><small>next move</small><strong>Restock review</strong><span>2 US SKU(s) sold out</span></div><div class="focus-card"><small>stock focus</small><strong>UK eBay coverage</strong><span>1 unlisted · 21 watcher(s)</span></div><div class="focus-card"><small>time focus</small><strong>Next calendar item</strong><span>No more events today</span></div>
     </div>
 
 
@@ -283,6 +303,38 @@
       <div class="card">
         <h2><span class="icon">📈</span> Profit/Loss Chart — US ($) + UK (£)</h2>
         <canvas id="plChart" height="80"></canvas>
+      </div>
+    </div>
+
+    <div class="card page-card active stock-pipeline" data-pages="overview business">
+      <h2><span class="icon">🌊</span> Stock Pipeline</h2>
+      <div class="pipeline-flow">
+        <div class="pipeline-stage">
+          <div class="pipeline-value blue">30</div>
+          <div class="pipeline-label">Ordered / Shipping</div>
+          <div class="pipeline-sub">shipped inbound to uk</div>
+        </div><span class="pipeline-arrow">→</span>
+<div class="pipeline-stage">
+          <div class="pipeline-value green">16</div>
+          <div class="pipeline-label">In Stock</div>
+          <div class="pipeline-sub">3 to list</div>
+        </div><span class="pipeline-arrow">→</span>
+<div class="pipeline-stage">
+          <div class="pipeline-value yellow">15</div>
+          <div class="pipeline-label">Listed</div>
+          <div class="pipeline-sub">3 unlisted</div>
+        </div><span class="pipeline-arrow">→</span>
+<div class="pipeline-stage">
+          <div class="pipeline-value green">21</div>
+          <div class="pipeline-label">Watchers</div>
+          <div class="pipeline-sub">interest live</div>
+        </div><span class="pipeline-arrow">→</span>
+<div class="pipeline-stage">
+          <div class="pipeline-value green">3</div>
+          <div class="pipeline-label">Sold / Shipping</div>
+          <div class="pipeline-sub">shipped/paid clear</div>
+        </div>
+
       </div>
     </div>
 
@@ -345,31 +397,9 @@
 <div class="item"><span class="label">Nike Air Force 1 — White UK 8.5<br><small style="color:#64748b">Listed: 3 · Unlisted: 1 · List: £40</small></span><span class="badges"><span class="badge yellow">×4</span></span></div>
 <div class="item"><span class="label">Nike Air Force 1 — White UK 9<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £40</small></span><span class="badges"><span class="badge red">sold out</span></span></div>
 <div class="item"><span class="label">Nike Air Force 1 — White UK 10<br><small style="color:#64748b">Listed: 2 · Unlisted: 0 · List: £40</small></span><span class="badges"><span class="badge yellow">×2</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">2</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black L<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal L<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal XL<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black L<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">2</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black XL<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">2</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal L<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Black L<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Light Oatmeal L<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">2</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal S<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">1</span></span></div>
-<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal M<br><small style="color:#64748b">Listed: 0 · Unlisted: 0 · List: £35</small></span><span class="badges"><span class="badge red">sold out</span><span class="badge badge-order">2</span></span></div>
+<div class="item"><span class="label">Essentials Shorts — Black inbound<br><small style="color:#64748b">Inbound sizes: S×2 · M×4 · L×4 · XL×1 · List: £35 · Cost: £14.59-£14.68 · ETA: 2026-05-29 to 2026-06-07</small></span><span class="badges"><span class="badge badge-order">inbound ×11</span></span></div>
+<div class="item"><span class="label">Essentials Shorts — Dark Oatmeal inbound<br><small style="color:#64748b">Inbound sizes: S×3 · M×4 · L×1 · XL×1 · List: £35 · Cost: £14.59-£14.68 · ETA: 2026-05-29 to 2026-06-07</small></span><span class="badges"><span class="badge badge-order">inbound ×9</span></span></div>
+<div class="item"><span class="label">Essentials Shorts — Light Oatmeal inbound<br><small style="color:#64748b">Inbound sizes: S×3 · M×4 · L×3 · List: £35 · Cost: £14.59-£14.68 · ETA: 2026-05-29 to 2026-06-07</small></span><span class="badges"><span class="badge badge-order">inbound ×10</span></span></div>
 
     </div>
     <div class="card business-card" data-pages="business">
@@ -399,6 +429,11 @@
     </div>
     </div>
 
+    <div class="card stock-pipeline-card page-card active" data-pages="overview business">
+      <h2><span class="icon">🌊</span> Stock Pipeline — FlowOPS</h2>
+      <div class="stock-pipeline"><div class="pipe-stage"><div class="pipe-step">1</div><div><strong>Shipping</strong><span>30</span><small>Potential £611 · £20.37/unit</small></div></div><div class="pipe-stage"><div class="pipe-step">2</div><div><strong>In stock</strong><span>16</span><small>1 unlisted gap(s)</small></div></div><div class="pipe-stage"><div class="pipe-step">3</div><div><strong>Listed</strong><span>15</span><small>Active eBay units</small></div></div><div class="pipe-stage"><div class="pipe-step">4</div><div><strong>Demand</strong><span>21</span><small>Total watchers</small></div></div><div class="pipe-stage"><div class="pipe-step">5</div><div><strong>Sold</strong><span>3</span><small>Recorded UK sales</small></div></div></div>
+    </div>
+
     <div class="card page-card active" data-pages="overview calendar">
       <h2><span class="icon">📅</span> Today's Schedule</h2>
       <div class="time-block"><div class="time">2026-05-19–2026-05-20</div><div class="event">Final exam for American History (Basically just deadline for final paper)</div></div>
@@ -407,37 +442,7 @@
 
     <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">✅</span> To-Do List</h2>
-      <div class="email-item" id="task-Complete_academic_integri">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Complete_academic_integri')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Complete academic integrity course</div>
-  </div>
-  <span class="badge yellow">due May 22</span>
-</div>
-<div class="email-item" id="task-Add_academic_integrity_ca">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Add_academic_integrity_ca')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Add academic integrity canvas course</div>
-  </div>
-  <span class="badge yellow">due May 19</span>
-</div>
-<div class="email-item" id="task-Pick_up_candle_from_candl">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissTask('Pick_up_candle_from_candl')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Pick up candle from candle pour sarasota</div>
-  </div>
-  
-</div>
-<div class="email-item" id="task-Schedule_quiz_2_at_testin">
+      <div class="email-item" id="task-Schedule_quiz_2_at_testin">
   <label class="email-check">
     <input type="checkbox" onchange="dismissTask('Schedule_quiz_2_at_testin')">
     <span class="checkmark"></span>
@@ -467,7 +472,40 @@
 
     <div class="card page-card active" data-pages="overview">
       <h2><span class="icon">📧</span> Recent Emails</h2>
-      <div class="email-item" id="email-Uber_Receipts_Your_Monday_evening_">
+      <div class="email-item" id="email-Fleek_🎥_LIVE_WEBINAR:_Sour">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Fleek_🎥_LIVE_WEBINAR:_Sour')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">🎥 LIVE WEBINAR: Sourcing, Pricing & Profitability w/ @b</div>
+    <div class="email-sender">Fleek</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Chess.com_lewisroberts31,_Get_">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Chess.com_lewisroberts31,_Get_')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">lewisroberts31, Get 50% Off Premium! 🥳</div>
+    <div class="email-sender">Chess.com</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Disney_Debit_Save_over_60%_on_the">
+  <label class="email-check">
+    <input type="checkbox" onchange="dismissEmail('Disney_Debit_Save_over_60%_on_the')">
+    <span class="checkmark"></span>
+  </label>
+  <div class="email-body">
+    <div class="email-subject">Save over 60% on the Disney+, Hulu bundle for 3 months.</div>
+    <div class="email-sender">Disney Debit</div>
+  </div>
+  <span class="badge">unread</span>
+</div>
+<div class="email-item" id="email-Uber_Receipts_Your_Monday_evening_">
   <label class="email-check">
     <input type="checkbox" onchange="dismissEmail('Uber_Receipts_Your_Monday_evening_')">
     <span class="checkmark"></span>
@@ -500,39 +538,6 @@
   </div>
   <span class="badge">unread</span>
 </div>
-<div class="email-item" id="email-service@paypal.co.uk_Important_informatio">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('service@paypal.co.uk_Important_informatio')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">Important information about your PayPal Pay in 3 accoun</div>
-    <div class="email-sender">service@paypal.co.uk</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Trading_212_🧾_Account_Activity_s">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Trading_212_🧾_Account_Activity_s')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">🧾 Account Activity statement for 18.05.2026</div>
-    <div class="email-sender">Trading 212</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
-<div class="email-item" id="email-Grammarly_50%_off_Pro,_real-ti">
-  <label class="email-check">
-    <input type="checkbox" onchange="dismissEmail('Grammarly_50%_off_Pro,_real-ti')">
-    <span class="checkmark"></span>
-  </label>
-  <div class="email-body">
-    <div class="email-subject">50% off Pro, real-time help wherever you write ⚡</div>
-    <div class="email-sender">Grammarly</div>
-  </div>
-  <span class="badge">unread</span>
-</div>
 
     </div>
 
@@ -541,18 +546,18 @@
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1319</div><div class="lbl">Value</div></div>
-        <div class="stat"><div class="num green">£91</div><div class="lbl">Unreal</div></div>
+        <div class="stat"><div class="num">£1324</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num green">£96</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
-      <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£257.35</span><br><small style="color:var(--green);font-size:0.72rem">+19.93</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£138.01</span><br><small style="color:var(--green);font-size:0.72rem">+6.55</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£84.90</span><br><small style="color:var(--green);font-size:0.72rem">+15.01</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£68.46</span><br><small style="color:var(--green);font-size:0.72rem">+8.79</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.80</span><br><small style="color:var(--green);font-size:0.72rem">+8.70</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£58.88</span><br><small style="color:var(--green);font-size:0.72rem">+8.96</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.41</span><br><small style="color:var(--red);font-size:0.72rem">-0.52</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.69</span><br><small style="color:var(--green);font-size:0.72rem">+8.77</small></span></div>
+      <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£257.34</span><br><small style="color:var(--green);font-size:0.72rem">+19.92</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£146.46</span><br><small style="color:var(--green);font-size:0.72rem">+15.00</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£85.49</span><br><small style="color:var(--green);font-size:0.72rem">+15.60</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.12</span><br><small style="color:var(--green);font-size:0.72rem">+9.02</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£66.91</span><br><small style="color:var(--green);font-size:0.72rem">+7.24</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.48</span><br><small style="color:var(--green);font-size:0.72rem">+9.56</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£46.96</span><br><small style="color:var(--red);font-size:0.72rem">-0.97</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.34</span><br><small style="color:var(--green);font-size:0.72rem">+8.42</small></span></div>
 
     </div>
 
@@ -562,15 +567,15 @@
       <div class="stat-row">
         <div class="stat"><div class="num">15</div><div class="lbl">Active</div></div>
         <div class="stat"><div class="num green">15</div><div class="lbl">Listed Qty</div></div>
-        <div class="stat"><div class="num yellow">👀 19</div><div class="lbl">Watchers</div></div>
+        <div class="stat"><div class="num yellow">👀 21</div><div class="lbl">Watchers</div></div>
       </div>
       <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-9-Nike-Air-Force-1-07-Black-/127863244329" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 9 - Nike Air Force 1 &#x27;07 Black</a><br><small style="color:#555">UK-AF1-BLACK-9-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-One-Men-s-Black-Trainers-Size-10-New-In-Box-/127863244949" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force One Men’s Black Trainers Size 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-10-Nike-Air-Force-1-White-/127863250768" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 10 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 4</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Size-10-Nike-Air-Force-1-White-/127863250768" target="_blank" style="color:#cbd5e1;text-decoration:none">Size 10 - Nike Air Force 1 White</a><br><small style="color:#555">UK-AF1-WHITE-10-001 · £40 · BIN £60 · qty 1</small></span><span class="badge green">👀 5</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/nike-air-force-one-black-uk-8-5-/127863254050" target="_blank" style="color:#cbd5e1;text-decoration:none">nike air force one black uk 8.5</a><br><small style="color:#555">UK-AF1-BLACK-8-5-001 · £40 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-8-5-New-In-Box-/127863558273" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 8.5 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-8-5-002 · £35 · BIN £60 · qty 1</small></span><span class="badge green">👀 3</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-White-Trainers-UK-8-5-New-In-Box-/127863581010" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 White Trainers UK 8.5 New In Box</a><br><small style="color:#555">UK-AF1-WHITE-8-5-001 · £35 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
-<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-10-New-In-Box-/127863606079" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-002 · £35 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
+<div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-10-New-In-Box-/127863606079" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 10 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-10-002 · £35 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 2</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-White-Trainers-UK-10-New-In-Box-/127863620823" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 White Trainers UK 10 New In Box</a><br><small style="color:#555">UK-AF1-WHITE-10-002 · £35 · BIN £60 · qty 1</small></span><span class="badge green">👀 5</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-8-5-New-In-Box-/127865040757" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 8.5 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-8-5-003 · £35 · BIN £60 · qty 1</small></span><span class="badge yellow">👀 1</span></div>
 <div class="item"><span class="label"><a href="https://www.ebay.co.uk/itm/Nike-Air-Force-1-Black-Trainers-UK-9-New-In-Box-/127868862616" target="_blank" style="color:#cbd5e1;text-decoration:none">Nike Air Force 1 Black Trainers UK 9 New In Box</a><br><small style="color:#555">UK-AF1-BLACK-9-002 · £35 · BIN £60 · qty 1</small></span><span class="badge ">👀 0</span></div>
@@ -697,7 +702,7 @@
     <span class="cal-dow">Wed</span>
     <span class="cal-date">20 May</span>
   </div>
-  <div class="cal-events"><div class="cal-event">All day Micro-wrestling show w</div><div class="cal-event">All day Busch Gardens with Cla</div></div>
+  <div class="cal-events"><div class="cal-event">All day Micro-wrestling show w</div></div>
 </div>
 <div class="cal-day ">
   <div class="cal-header">
