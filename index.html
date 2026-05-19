@@ -184,21 +184,23 @@
     .cal-day.today .cal-date { color: #6366f1; }
     .cal-event { font-size: 0.62rem; color: #94a3b8; background: rgba(99,102,241,0.1); border-radius: 4px; padding: 2px 4px; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .cal-empty { color: rgba(255,255,255,0.1); font-size: 0.75rem; }
-    .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-    .agent-card { position: relative; overflow: hidden; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 16px 12px; text-align: center; min-height: 194px; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
-    .agent-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(99,102,241,0.08), transparent); transform: translateX(-120%); animation: agentSweep 6s ease-in-out infinite; }
-    .agent-card:hover { transform: translateY(-4px); border-color: rgba(99,102,241,0.38); box-shadow: 0 12px 40px rgba(0,0,0,0.22), 0 0 24px rgba(99,102,241,0.1); }
+    .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+    .agent-card { position: relative; overflow: hidden; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 13px; text-align: left; min-height: 238px; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
+    .agent-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent, rgba(99,102,241,0.06), transparent); transform: translateX(-120%); animation: agentSweep 7s ease-in-out infinite; }
+    .agent-card:hover { transform: translateY(-2px); border-color: rgba(99,102,241,0.3); box-shadow: 0 12px 36px rgba(0,0,0,0.2), 0 0 20px rgba(99,102,241,0.08); }
     .agent-card.working { border-color: rgba(74,222,128,0.42); box-shadow: 0 0 0 1px rgba(74,222,128,0.16), 0 0 30px rgba(74,222,128,0.14), inset 0 0 22px rgba(74,222,128,0.045); }
     .agent-card.working::after { content: ''; position: absolute; inset: 7px; border-radius: 12px; border: 1px solid rgba(74,222,128,0.75); box-shadow: 0 0 18px rgba(74,222,128,0.5), 0 0 42px rgba(74,222,128,0.18); animation: workingRing 2.4s ease-in-out infinite; pointer-events: none; }
     @keyframes workingRing { 0%,100% { opacity: 0.55; transform: scale(0.985); } 50% { opacity: 1; transform: scale(1); } }
-    @keyframes agentSweep { 0%, 55% { transform: translateX(-120%); } 75%, 100% { transform: translateX(120%); } }
-    .agent-avatar { position: relative; z-index: 1; width: 46px; height: 46px; margin: 0 auto 10px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.55rem; background: linear-gradient(135deg, rgba(99,102,241,0.18), rgba(74,222,128,0.08)); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 0 18px rgba(99,102,241,0.12); animation: avatarPulse 3.8s ease-in-out infinite; }
-    @keyframes avatarPulse { 0%,100% { box-shadow: 0 0 18px rgba(99,102,241,0.12); } 50% { box-shadow: 0 0 28px rgba(74,222,128,0.16); } }
-    .agent-name { position: relative; z-index: 1; color: #fff; font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; }
+    @keyframes agentSweep { 0%, 60% { transform: translateX(-120%); } 78%, 100% { transform: translateX(120%); } }
+    .agent-topline { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }
+    .agent-avatar { width: 42px; height: 42px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.45rem; background: linear-gradient(135deg, rgba(99,102,241,0.18), rgba(74,222,128,0.08)); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 0 18px rgba(99,102,241,0.12); }
+    .agent-status { border:1px solid rgba(74,222,128,.24); background:rgba(74,222,128,.09); color:var(--green); border-radius:999px; padding:4px 8px; font-size:.58rem; text-transform:uppercase; letter-spacing:.08em; font-weight:800; }
+    .agent-name { position: relative; z-index: 1; color: #fff; font-weight: 800; font-size: 0.98rem; letter-spacing: -0.01em; }
     .agent-role { position: relative; z-index: 1; color: #818cf8; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
-    .agent-desc { position: relative; z-index: 1; color: #94a3b8; font-size: 0.76rem; line-height: 1.35; margin-top: 9px; }
-    .agent-activity { position: relative; z-index: 1; color: var(--green); font-size: 0.68rem; margin-top: 10px; }
-    .agent-activity strong { color:#e2e8f0; text-transform:uppercase; letter-spacing:.08em; font-size:.62rem; }
+    .agent-ops { position:relative; z-index:1; display:grid; gap:8px; margin-top:11px; }
+    .agent-ops div { border-top:1px solid rgba(255,255,255,.045); padding-top:8px; }
+    .agent-ops small { display:block; color:#64748b; text-transform:uppercase; letter-spacing:.08em; font-size:.58rem; font-weight:800; margin-bottom:3px; }
+    .agent-ops span { display:block; color:#cbd5e1; font-size:.72rem; line-height:1.3; }
     @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } .evo-agents { grid-template-columns:1fr; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
@@ -212,7 +214,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 18, 8:03PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 18, 8:10PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -496,18 +498,18 @@
     <div class="card page-card" data-pages="finance">
       <h2><span class="icon">📈</span> Trading 212</h2>
       <div class="stat-row">
-        <div class="stat"><div class="num">£1332</div><div class="lbl">Value</div></div>
+        <div class="stat"><div class="num">£1333</div><div class="lbl">Value</div></div>
         <div class="stat"><div class="num green">£104</div><div class="lbl">Unreal</div></div>
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£258.73</span><br><small style="color:var(--green);font-size:0.72rem">+21.31</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£147.70</span><br><small style="color:var(--green);font-size:0.72rem">+16.24</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.18</span><br><small style="color:var(--green);font-size:0.72rem">+17.29</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£67.84</span><br><small style="color:var(--green);font-size:0.72rem">+8.17</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.71</span><br><small style="color:var(--green);font-size:0.72rem">+8.61</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.77</span><br><small style="color:var(--green);font-size:0.72rem">+9.85</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.47</span><br><small style="color:var(--red);font-size:0.72rem">-0.46</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.50</span><br><small style="color:var(--green);font-size:0.72rem">+9.58</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£147.82</span><br><small style="color:var(--green);font-size:0.72rem">+16.36</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£87.23</span><br><small style="color:var(--green);font-size:0.72rem">+17.34</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£67.90</span><br><small style="color:var(--green);font-size:0.72rem">+8.23</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£66.72</span><br><small style="color:var(--green);font-size:0.72rem">+8.62</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.76</span><br><small style="color:var(--green);font-size:0.72rem">+9.84</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£47.46</span><br><small style="color:var(--red);font-size:0.72rem">-0.47</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£41.65</span><br><small style="color:var(--green);font-size:0.72rem">+9.73</small></span></div>
 
     </div>
 
@@ -575,46 +577,64 @@
     <div class="card full-width page-card" data-pages="taskforce" style="margin-top:16px">
       <h2><span class="icon">🧠</span> Taskforce</h2>
       <div class="agent-grid"><div class="agent-card">
-  <div class="agent-avatar">🛡️</div>
+  <div class="agent-topline"><div class="agent-avatar">🛡️</div><span class="agent-status">ready</span></div>
   <div class="agent-name">Sentinel</div>
   <div class="agent-role">Ops Agent</div>
-  <div class="agent-desc">Calendar, reminders, daily reports, dashboard checks</div>
-  <div class="agent-activity"><strong>ready</strong><br>eBay/dispatch monitor ready · 19 watcher(s)</div>
+  <div class="agent-ops">
+    <div><small>Mission</small><span>Watch sales, dispatch, alerts, and calendar pressure</span></div>
+    <div><small>Last</small><span>Checked eBay/listing monitor state</span></div>
+    <div><small>Next</small><span>Alert Lewis if payment, dispatch, or listing issue appears</span></div>
+  </div>
 </div>
 <div class="agent-card">
-  <div class="agent-avatar">🏦</div>
+  <div class="agent-topline"><div class="agent-avatar">🏦</div><span class="agent-status">ready</span></div>
   <div class="agent-name">Vault</div>
   <div class="agent-role">Inventory Agent</div>
-  <div class="agent-desc">US/UK stock, sales logs, listings, reorder flags</div>
-  <div class="agent-activity"><strong>ready</strong><br>UK stock tracked · 2 unlisted · 30 inbound shorts</div>
+  <div class="agent-ops">
+    <div><small>Mission</small><span>Keep US/UK stock accurate and find listing gaps</span></div>
+    <div><small>Last</small><span>Updated shipped AF1 orders and stock state</span></div>
+    <div><small>Next</small><span>Flag 2 unlisted UK unit(s) and reorder gaps</span></div>
+  </div>
 </div>
 <div class="agent-card">
-  <div class="agent-avatar">📊</div>
+  <div class="agent-topline"><div class="agent-avatar">📊</div><span class="agent-status">scheduled</span></div>
   <div class="agent-name">Ledger</div>
   <div class="agent-role">Finance Agent</div>
-  <div class="agent-desc">Trading 212, Chase alerts, P/L watch, budgets</div>
-  <div class="agent-activity"><strong>ready</strong><br>finance snapshot cached · Trading 212 watch scheduled</div>
+  <div class="agent-ops">
+    <div><small>Mission</small><span>Track Trading 212, money risk, and daily P/L</span></div>
+    <div><small>Last</small><span>4pm Trading 212 report configured</span></div>
+    <div><small>Next</small><span>Send daily 4pm report, even if insignificant</span></div>
+  </div>
 </div>
 <div class="agent-card">
-  <div class="agent-avatar">🛰️</div>
+  <div class="agent-topline"><div class="agent-avatar">🛰️</div><span class="agent-status">standby</span></div>
   <div class="agent-name">Scout</div>
   <div class="agent-role">Research Agent</div>
-  <div class="agent-desc">Web research, sourcing, scholarships, comparisons</div>
-  <div class="agent-activity"><strong>standby</strong><br>awaiting hoodie/supplier prices and comps</div>
+  <div class="agent-ops">
+    <div><small>Mission</small><span>Find stock opportunities, comps, and supplier angles</span></div>
+    <div><small>Last</small><span>Essentials buying plan saved</span></div>
+    <div><small>Next</small><span>Research supplier prices/profit margins when asked</span></div>
+  </div>
 </div>
 <div class="agent-card">
-  <div class="agent-avatar">✒️</div>
+  <div class="agent-topline"><div class="agent-avatar">✒️</div><span class="agent-status">standby</span></div>
   <div class="agent-name">Scribe</div>
   <div class="agent-role">Writing Agent</div>
-  <div class="agent-desc">Emails, listings, essays, posts, human writing</div>
-  <div class="agent-activity"><strong>standby</strong><br>ready for listing copy, messages, or school writing</div>
+  <div class="agent-ops">
+    <div><small>Mission</small><span>Draft listings, messages, essays, and human-sounding copy</span></div>
+    <div><small>Last</small><span>History final paper supported</span></div>
+    <div><small>Next</small><span>Polish copy when needed with full context</span></div>
+  </div>
 </div>
 <div class="agent-card">
-  <div class="agent-avatar">⚒️</div>
+  <div class="agent-topline"><div class="agent-avatar">⚒️</div><span class="agent-status">ready</span></div>
   <div class="agent-name">Forge</div>
   <div class="agent-role">Builder Agent</div>
-  <div class="agent-desc">Dashboard, code, automation, tooling fixes</div>
-  <div class="agent-activity"><strong>ready</strong><br>ready for dashboard/code fixes</div>
+  <div class="agent-ops">
+    <div><small>Mission</small><span>Build dashboard, automations, and tool fixes</span></div>
+    <div><small>Last</small><span>Dashboard rollback and cron updates completed</span></div>
+    <div><small>Next</small><span>Build approved upgrades after concept check</span></div>
+  </div>
 </div>
 </div>
     </div>
