@@ -222,6 +222,9 @@
     .agent-ops div { border-top:1px solid rgba(255,255,255,.045); padding-top:8px; }
     .agent-ops small { display:block; color:#64748b; text-transform:uppercase; letter-spacing:.08em; font-size:.58rem; font-weight:800; margin-bottom:3px; }
     .agent-ops span { display:block; color:#cbd5e1; font-size:.72rem; line-height:1.3; }
+    .agent-ops .current-job { border-color:rgba(74,222,128,.14); background:rgba(74,222,128,.045); border-radius:10px; padding:8px; }
+    .agent-ops .current-job small { color:#86efac; }
+    .agent-ops .current-job span { color:#f8fafc; font-weight:650; }
     @media (max-width: 1000px) { .mission-metrics { grid-template-columns: repeat(3, 1fr); } .evo-grid { grid-template-columns:1fr; } .focus-strip { grid-template-columns:1fr; } }
     @media (max-width: 800px) { .mission-top { grid-template-columns: 1fr; } .mission-metrics { grid-template-columns: repeat(2, 1fr); } .evo-agents { grid-template-columns:1fr; } }
     @media (max-width: 700px) { .cal-grid { grid-template-columns: 1fr; } .cal-day:nth-child(n+4) { display:none; } }
@@ -235,7 +238,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 19, 4:44PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 19, 4:46PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -489,13 +492,13 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£257.34</span><br><small style="color:var(--green);font-size:0.72rem">+19.92</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£145.87</span><br><small style="color:var(--green);font-size:0.72rem">+14.41</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£85.50</span><br><small style="color:var(--green);font-size:0.72rem">+15.61</small></span></div>
-<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.15</span><br><small style="color:var(--green);font-size:0.72rem">+9.05</small></span></div>
-<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£66.86</span><br><small style="color:var(--green);font-size:0.72rem">+7.19</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.39</span><br><small style="color:var(--green);font-size:0.72rem">+9.47</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£46.92</span><br><small style="color:var(--red);font-size:0.72rem">-1.01</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.28</span><br><small style="color:var(--green);font-size:0.72rem">+8.36</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£145.99</span><br><small style="color:var(--green);font-size:0.72rem">+14.53</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£85.49</span><br><small style="color:var(--green);font-size:0.72rem">+15.60</small></span></div>
+<div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.16</span><br><small style="color:var(--green);font-size:0.72rem">+9.06</small></span></div>
+<div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£66.91</span><br><small style="color:var(--green);font-size:0.72rem">+7.24</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.38</span><br><small style="color:var(--green);font-size:0.72rem">+9.46</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£46.93</span><br><small style="color:var(--red);font-size:0.72rem">-1.00</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.29</span><br><small style="color:var(--green);font-size:0.72rem">+8.37</small></span></div>
 
     </div>
 
@@ -570,7 +573,7 @@
   <div class="agent-ops">
     <div><small>Mission</small><span>Watch sales, dispatch, alerts, and calendar pressure</span></div>
     <div><small>Last</small><span>Checked eBay/listing monitor state</span></div>
-    <div><small>Next</small><span>Alert Lewis if payment, dispatch, or listing issue appears</span></div>
+    <div class="current-job"><small>Current Job</small><span>Ready for eBay active-listing monitor, dispatch/payment alerts, dashboard heartbeat checks</span></div>
   </div>
 </div>
 <div class="agent-card">
@@ -580,7 +583,7 @@
   <div class="agent-ops">
     <div><small>Mission</small><span>Keep US/UK stock accurate and find listing gaps</span></div>
     <div><small>Last</small><span>Updated shipped AF1 orders and stock state</span></div>
-    <div><small>Next</small><span>Flag 1 unlisted UK unit(s) and reorder gaps</span></div>
+    <div class="current-job"><small>Current Job</small><span>Ready for UK AF1 listing gaps + Essentials inbound stock tracking</span></div>
   </div>
 </div>
 <div class="agent-card">
@@ -590,7 +593,7 @@
   <div class="agent-ops">
     <div><small>Mission</small><span>Track Trading 212, money risk, and daily P/L</span></div>
     <div><small>Last</small><span>4pm Trading 212 report configured</span></div>
-    <div><small>Next</small><span>Send daily 4pm report, even if insignificant</span></div>
+    <div class="current-job"><small>Current Job</small><span>Ready; Trading 212 portfolio/news watch scheduled</span></div>
   </div>
 </div>
 <div class="agent-card">
@@ -600,7 +603,7 @@
   <div class="agent-ops">
     <div><small>Mission</small><span>Find stock opportunities, comps, and supplier angles</span></div>
     <div><small>Last</small><span>Essentials buying plan saved</span></div>
-    <div><small>Next</small><span>Research supplier prices/profit margins when asked</span></div>
+    <div class="current-job"><small>Current Job</small><span>Next: supplier/comps research when Essentials prices arrive</span></div>
   </div>
 </div>
 <div class="agent-card">
@@ -610,7 +613,7 @@
   <div class="agent-ops">
     <div><small>Mission</small><span>Draft listings, messages, essays, and human-sounding copy</span></div>
     <div><small>Last</small><span>History final paper supported</span></div>
-    <div><small>Next</small><span>Polish copy when needed with full context</span></div>
+    <div class="current-job"><small>Current Job</small><span>Ready for listing copy, supplier messages, school writing</span></div>
   </div>
 </div>
 <div class="agent-card working">
@@ -620,7 +623,7 @@
   <div class="agent-ops">
     <div><small>Mission</small><span>Build dashboard, automations, and tool fixes</span></div>
     <div><small>Last</small><span>Dashboard rollback and cron updates completed</span></div>
-    <div><small>Next</small><span>Making taskforce cards show current jobs</span></div>
+    <div class="current-job"><small>Current Job</small><span>Making taskforce cards show current jobs</span></div>
   </div>
 </div>
 </div>
