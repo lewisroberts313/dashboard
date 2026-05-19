@@ -47,16 +47,6 @@
     .business-card .item:first-of-type, .business-card .email-item:first-of-type { margin-top: 2px; }
     .business-card .item, .business-card .email-item { padding: 7px 0; }
     .business-card .label, .business-card .email-subject { font-size: .8rem; }
-    .stock-pipeline { grid-column: 1 / -1; }
-    .pipeline-flow { display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 10px; align-items: stretch; }
-    .pipeline-stage { border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:12px 10px; background:rgba(0,0,0,.16); min-width:0; }
-    .pipeline-value { font-size:1.35rem; font-weight:900; color:#fff; line-height:1; }
-    .pipeline-value.green { color:var(--green); }
-    .pipeline-value.yellow { color:var(--yellow); }
-    .pipeline-value.blue { color:#60a5fa; }
-    .pipeline-label { margin-top:7px; color:#e2e8f0; font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:.04em; }
-    .pipeline-sub { margin-top:4px; color:#64748b; font-size:.72rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .pipeline-arrow { align-self:center; justify-self:center; margin-left:-19px; margin-right:-19px; z-index:2; color:#64748b; font-weight:900; }
     .business-listings { position: relative; max-height: 430px; overflow: auto; scrollbar-width: none; }
     .business-listings::-webkit-scrollbar { width: 0; height: 0; }
     .business-listings::before { content:''; position:absolute; inset:0 0 auto 0; height:1px; background:linear-gradient(90deg, transparent, rgba(74,222,128,.5), transparent); }
@@ -76,7 +66,6 @@
     @media (max-width: 700px) { .business-pl .card { padding: 14px; } .business-pl canvas { max-height: 190px; } }
     @media (max-width: 1200px) { .business-four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 1100px) { .stock-pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 700px) { .business-four { grid-template-columns: 1fr; } .pipeline-flow { grid-template-columns: 1fr; } .pipeline-arrow { display:none; } }
     @media (max-width: 700px) { .stock-pipeline { grid-template-columns: 1fr; } .pipe-stage:not(:last-child)::after { content:''; } }
     .nav-tabs { display: flex; gap: 8px; margin: -16px 0 18px; flex-wrap: wrap; }
     .nav-tab { border: 1px solid var(--border); background: rgba(255,255,255,0.035); color: #94a3b8; border-radius: 999px; padding: 9px 14px; font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
@@ -234,7 +223,7 @@
       <div class="logo">🤖</div>
       <div>
         <div class="header-title">Ultron</div>
-        <div class="header-sub">Lewis Roberts · May 19, 4:17PM EST</div>
+        <div class="header-sub">Lewis Roberts · May 19, 4:19PM EST</div>
       </div>
     </div>
     <div class="header-right">
@@ -303,38 +292,6 @@
       <div class="card">
         <h2><span class="icon">📈</span> Profit/Loss Chart — US ($) + UK (£)</h2>
         <canvas id="plChart" height="80"></canvas>
-      </div>
-    </div>
-
-    <div class="card page-card active stock-pipeline" data-pages="overview business">
-      <h2><span class="icon">🌊</span> Stock Pipeline</h2>
-      <div class="pipeline-flow">
-        <div class="pipeline-stage">
-          <div class="pipeline-value blue">30</div>
-          <div class="pipeline-label">Ordered / Shipping</div>
-          <div class="pipeline-sub">shipped inbound to uk</div>
-        </div><span class="pipeline-arrow">→</span>
-<div class="pipeline-stage">
-          <div class="pipeline-value green">16</div>
-          <div class="pipeline-label">In Stock</div>
-          <div class="pipeline-sub">3 to list</div>
-        </div><span class="pipeline-arrow">→</span>
-<div class="pipeline-stage">
-          <div class="pipeline-value yellow">15</div>
-          <div class="pipeline-label">Listed</div>
-          <div class="pipeline-sub">3 unlisted</div>
-        </div><span class="pipeline-arrow">→</span>
-<div class="pipeline-stage">
-          <div class="pipeline-value green">21</div>
-          <div class="pipeline-label">Watchers</div>
-          <div class="pipeline-sub">interest live</div>
-        </div><span class="pipeline-arrow">→</span>
-<div class="pipeline-stage">
-          <div class="pipeline-value green">3</div>
-          <div class="pipeline-label">Sold / Shipping</div>
-          <div class="pipeline-sub">shipped/paid clear</div>
-        </div>
-
       </div>
     </div>
 
@@ -431,7 +388,7 @@
 
     <div class="card stock-pipeline-card page-card active" data-pages="overview business">
       <h2><span class="icon">🌊</span> Stock Pipeline — FlowOPS</h2>
-      <div class="stock-pipeline"><div class="pipe-stage"><div class="pipe-step">1</div><div><strong>Shipping</strong><span>30</span><small>Potential £611 · £20.37/unit</small></div></div><div class="pipe-stage"><div class="pipe-step">2</div><div><strong>In stock</strong><span>16</span><small>1 unlisted gap(s)</small></div></div><div class="pipe-stage"><div class="pipe-step">3</div><div><strong>Listed</strong><span>15</span><small>Active eBay units</small></div></div><div class="pipe-stage"><div class="pipe-step">4</div><div><strong>Demand</strong><span>21</span><small>Total watchers</small></div></div><div class="pipe-stage"><div class="pipe-step">5</div><div><strong>Sold</strong><span>3</span><small>Recorded UK sales</small></div></div></div>
+      <div class="stock-pipeline"><div class="pipe-stage"><div class="pipe-step">1</div><div><strong>Ordered / Shipping</strong><span>30</span><small>Inbound potential £611 · £20.37/unit</small></div></div><div class="pipe-stage"><div class="pipe-step">2</div><div><strong>In stock</strong><span>16</span><small>1 unlisted gap(s)</small></div></div><div class="pipe-stage"><div class="pipe-step">3</div><div><strong>Listed</strong><span>15</span><small>Active eBay units</small></div></div><div class="pipe-stage"><div class="pipe-step">4</div><div><strong>Watchers</strong><span>21</span><small>Buyer interest across listings</small></div></div><div class="pipe-stage"><div class="pipe-step">5</div><div><strong>Sold / Shipping</strong><span>3</span><small>0 pending shipment</small></div></div></div>
     </div>
 
     <div class="card page-card active" data-pages="overview calendar">
@@ -551,13 +508,13 @@
         <div class="stat"><div class="num green">57</div><div class="lbl">Positions</div></div>
       </div>
       <div class="item"><span class="label">Vanguard FTSE All-World (Acc)<br><small style="color:#555">VWRPl_EQ · qty 1.87924587</small></span><span style="text-align:right"><span class="badge">£257.34</span><br><small style="color:var(--green);font-size:0.72rem">+19.92</small></span></div>
-<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£146.46</span><br><small style="color:var(--green);font-size:0.72rem">+15.00</small></span></div>
-<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£85.49</span><br><small style="color:var(--green);font-size:0.72rem">+15.60</small></span></div>
+<div class="item"><span class="label">Nebius Group NV<br><small style="color:#555">YNDX_US_EQ · qty 0.99111577</small></span><span style="text-align:right"><span class="badge">£146.09</span><br><small style="color:var(--green);font-size:0.72rem">+14.63</small></span></div>
+<div class="item"><span class="label">Amazon<br><small style="color:#555">AMZN_US_EQ · qty 0.44231151</small></span><span style="text-align:right"><span class="badge">£85.56</span><br><small style="color:var(--green);font-size:0.72rem">+15.67</small></span></div>
 <div class="item"><span class="label">Apple<br><small style="color:#555">AAPL_US_EQ · qty 0.30124243</small></span><span style="text-align:right"><span class="badge">£67.12</span><br><small style="color:var(--green);font-size:0.72rem">+9.02</small></span></div>
 <div class="item"><span class="label">Microsoft<br><small style="color:#555">MSFT_US_EQ · qty 0.21531124</small></span><span style="text-align:right"><span class="badge">£66.91</span><br><small style="color:var(--green);font-size:0.72rem">+7.24</small></span></div>
-<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.48</span><br><small style="color:var(--green);font-size:0.72rem">+9.56</small></span></div>
-<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£46.96</span><br><small style="color:var(--red);font-size:0.72rem">-0.97</small></span></div>
-<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.34</span><br><small style="color:var(--green);font-size:0.72rem">+8.42</small></span></div>
+<div class="item"><span class="label">Nvidia<br><small style="color:#555">NVDA_US_EQ · qty 0.35998819</small></span><span style="text-align:right"><span class="badge">£59.44</span><br><small style="color:var(--green);font-size:0.72rem">+9.52</small></span></div>
+<div class="item"><span class="label">Meta Platforms<br><small style="color:#555">FB_US_EQ · qty 0.1043948</small></span><span style="text-align:right"><span class="badge">£46.94</span><br><small style="color:var(--red);font-size:0.72rem">-0.99</small></span></div>
+<div class="item"><span class="label">Alphabet (Class A)<br><small style="color:#555">GOOGL_US_EQ · qty 0.13936963</small></span><span style="text-align:right"><span class="badge">£40.35</span><br><small style="color:var(--green);font-size:0.72rem">+8.43</small></span></div>
 
     </div>
 
