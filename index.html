@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ultron Dashboard</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; background:radial-gradient(circle at top,#1e1b4b,#050511 55%,#020207); color:#f8fafc; }
+    main { width:min(760px, calc(100vw - 32px)); border:1px solid rgba(255,255,255,.10); border-radius:24px; padding:28px; background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025)); box-shadow:0 24px 80px rgba(0,0,0,.35); }
+    .logo { width:56px; height:56px; border-radius:16px; display:grid; place-items:center; font-size:1.8rem; background:linear-gradient(135deg,#6366f1,#22c55e); box-shadow:0 0 32px rgba(99,102,241,.35); }
+    h1 { margin:18px 0 8px; font-size:clamp(2rem,6vw,4rem); letter-spacing:-.06em; }
+    p { color:#94a3b8; line-height:1.6; font-size:1rem; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:22px; }
+    .card { border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:16px; background:rgba(0,0,0,.20); }
+    .card b { display:block; font-size:.8rem; color:#e2e8f0; margin-bottom:6px; }
+    .card span { color:#64748b; font-size:.78rem; }
+    .status { display:inline-flex; gap:8px; align-items:center; margin-top:18px; color:#86efac; font-weight:700; font-size:.85rem; }
+    .dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 14px #22c55e; }
+    footer { margin-top:22px; color:#475569; font-size:.75rem; }
+    @media (max-width:650px) { .grid { grid-template-columns:1fr; } main { padding:22px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="logo">🤖</div>
+    <h1>Ultron</h1>
+    <p>Public-safe status page. The live personal dashboard has been moved out of public GitHub Pages so calendar, tasks, email, finance, stock, buyer, order, and tracking details are not exposed.</p>
+    <div class="status"><i class="dot"></i> Systems online</div>
+    <section class="grid" aria-label="public status">
+      <div class="card"><b>Dashboard</b><span>Private data hidden</span></div>
+      <div class="card"><b>Automation</b><span>Running server-side</span></div>
+      <div class="card"><b>Privacy</b><span>Public view sanitized</span></div>
+    </section>
+    <footer>Last public refresh: May 26, 4:12PM EST</footer>
+  </main>
+</body>
+</html>
